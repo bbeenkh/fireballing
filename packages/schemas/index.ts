@@ -6,3 +6,10 @@ export {
   type LoginRequest,
   type RefreshRequest,
 } from './auth.js'
+
+export {
+  createPortfolioSchema,
+  updatePortfolioSchema,
+  type CreatePortfolioRequest,
+  type UpdatePortfolioRequest,
+} from './portfolio.js'
