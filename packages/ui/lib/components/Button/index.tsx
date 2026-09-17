@@ -1,75 +1,70 @@
 import React from 'react';
-import { Slot } from '@radix-ui/react-slot';
+import { Pressable, type PressableProps } from 'react-native';
 import { twMerge } from 'tailwind-merge';
-import Spinner from '../Spinner';
 
-interface StyleClass {
-  root?: string;
-}
+type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'link';
+type ButtonSize = 'sm' | 'md' | 'lg';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface IButtonProps extends PressableProps {
+  /** 버튼 스타일 변형 */
+  variant?: ButtonVariant;
+  /** 버튼 크기 (기본값: 'md') */
+  size?: ButtonSize;
+  className?: string;
   children: React.ReactNode;
-  type?: 'button' | 'submit' | 'reset';
-  styleClass?: StyleClass;
-  asChild?: boolean;
-  isLoading?: boolean;
-  loadingUI?: React.ReactNode;
 }
+
+const variantStyles: Record<ButtonVariant, string> = {
+  primary: 'bg-primary rounded-xl active:bg-primary-deep',
+  secondary: 'bg-surface border border-outline rounded-lg active:bg-background',
+  ghost: 'rounded-lg active:opacity-70',
+  link: 'active:opacity-70',
+};
+
+const sizeStyles: Record<ButtonSize, string> = {
+  sm: 'px-sm py-xs',
+  md: 'px-md py-sm',
+  lg: 'px-lg py-md',
+};
 
 /**
- * # Button UI
+ * # Button
  * ---
- * - `styleClass.root`: 버튼 루트 요소에 적용할 Tailwind 클래스
- * - `asChild`: true 시 children 컴포넌트가 button을 대체 (Radix Slot 패턴)
- * - `type`: 버튼 타입 (기본값 `'button'`)
- * - isLoading : loading 여부 플래그
- * - loadingUI : 로딩중일때 나올 fallback ui, 없으면 Spinner 등장
- * - 기본 스타일 없음 — 모든 스타일은 `styleClass`로 주입
+ * - 간단설명: 디자인시스템 버튼 컴포넌트
+ * - variant로 스타일 변형, size로 크기 조절
+ * - 제약사항: children에 텍스트를 직접 넣지 말고 Typography 등을 사용할 것
  * ---
+ * @param variant 버튼 스타일 변형 (primary, secondary, ghost, link)
+ * @param size 버튼 크기 (sm, md, lg)
  * @param children 버튼 내부 콘텐츠
- * @param type 버튼 타입 (기본값: `'button'`)
- * @param styleClass 커스텀 스타일 클래스 객체
- * @param asChild true 시 children 컴포넌트로 button 대체 (Radix Slot 패턴)
+ * ---
  * @example
- * // 기본 버튼
- * <Button styleClass={{ root: 'bg-primary text-white px-4 py-2 rounded' }}>확인</Button>
- *
- * // asChild: Link 컴포넌트를 버튼처럼 렌더
- * <Button asChild styleClass={{ root: 'text-blue-500 underline' }}>
- *   <Link href="/about">About</Link>
+ * <Button variant="primary" size="lg" onPress={handleSubmit}>
+ *   <Typography variant="label-md" className="text-on-primary">확인</Typography>
  * </Button>
  */
-function Button({
+export function Button({
+  variant = 'primary',
+  size = 'md',
+  className,
   children,
-  type = 'button',
-  styleClass,
-  asChild = false,
   disabled,
-  isLoading,
-  loadingUI,
   ...props
-}: Props) {
-  const Comp = asChild ? Slot : 'button';
-  const _loadingUI = loadingUI || <Spinner size="sm" />;
-  const _disabled = isLoading || disabled;
+}: IButtonProps) {
   return (
-    <Comp
-      type={asChild ? undefined : type}
+    <Pressable
       className={twMerge(
-        'relative',
-        disabled ? 'cursor-not-allowed' : 'cursor-pointer',
-        styleClass?.root,
+        'items-center justify-center',
+        variantStyles[variant],
+        sizeStyles[size],
+        disabled && 'opacity-50',
+        className,
       )}
-      disabled={_disabled}
+      disabled={disabled}
       {...props}
     >
-      <div className={isLoading ? 'opacity-0' : ''}>{children}</div>
-      {isLoading && (
-        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-          {_loadingUI}
-        </div>
-      )}
-    </Comp>
+      {children}
+    </Pressable>
   );
 }
 

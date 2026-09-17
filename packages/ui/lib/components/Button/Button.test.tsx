@@ -56,9 +56,64 @@ describe('Button', () => {
       expect(screen.getByRole('button')).toBeInTheDocument();
     });
 
-    it('기본 스타일이 없다 — styleClass 없이 렌더링 시 className이 비어있다', () => {
+    it('variant 미지정 시 variant 관련 스타일 클래스가 없다', () => {
       render(<Button>Button</Button>);
-      expect(screen.getByRole('button').className.trim()).toBe('');
+      const button = screen.getByRole('button');
+      expect(button).not.toHaveClass('bg-primary');
+      expect(button).not.toHaveClass('rounded-xl');
+    });
+  });
+
+  describe('variant prop', () => {
+    it('variant 미지정 시 variant 관련 스타일이 적용되지 않는다 (후방 호환)', () => {
+      render(<Button>Button</Button>);
+      const button = screen.getByRole('button');
+      expect(button).not.toHaveClass('bg-primary');
+      expect(button).not.toHaveClass('bg-surface');
+    });
+
+    it('variant="primary" 시 primary 스타일이 적용된다', () => {
+      render(<Button variant="primary">확인</Button>);
+      expect(screen.getByRole('button').className).toContain('bg-');
+    });
+
+    it('variant="secondary" 시 border 스타일이 적용된다', () => {
+      render(<Button variant="secondary">취소</Button>);
+      expect(screen.getByRole('button').className).toContain('border');
+    });
+
+    it('variant="ghost" 시 투명 배경 스타일이 적용된다', () => {
+      render(<Button variant="ghost">메뉴</Button>);
+      expect(screen.getByRole('button').className).toContain('bg-transparent');
+    });
+
+    it('variant="link" 시 link 스타일이 적용된다', () => {
+      render(<Button variant="link">전체보기</Button>);
+      expect(screen.getByRole('button').className).toContain('bg-transparent');
+    });
+
+    it('variant + styleClass 병합: styleClass가 우선한다', () => {
+      render(<Button variant="primary" styleClass={{ root: 'bg-blue-500' }}>Button</Button>);
+      const button = screen.getByRole('button');
+      expect(button).toHaveClass('bg-blue-500');
+    });
+  });
+
+  describe('size prop', () => {
+    it('size 미지정 시 기본값 md가 적용된다', () => {
+      render(<Button variant="primary">Button</Button>);
+      const button = screen.getByRole('button');
+      expect(button.className).toContain('px-4');
+    });
+
+    it('size="sm" 스타일이 적용된다', () => {
+      render(<Button variant="primary" size="sm">Small</Button>);
+      expect(screen.getByRole('button').className).toContain('px-3');
+    });
+
+    it('size="lg" 스타일이 적용된다', () => {
+      render(<Button variant="primary" size="lg">Large</Button>);
+      expect(screen.getByRole('button').className).toContain('px-6');
     });
   });
 

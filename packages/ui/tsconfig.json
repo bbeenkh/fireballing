@@ -4,8 +4,13 @@
     "noEmit": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["vitest/globals"]
+    "types": ["nativewind/types"]
   },
   "include": ["lib"],
-  "exclude": ["node_modules", "lib/components/original", "**/*.test.tsx", "**/*.test.ts", "**/*.stories.tsx"]
+  "exclude": [
+    "node_modules",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "**/*.stories.tsx"
+  ]
 }

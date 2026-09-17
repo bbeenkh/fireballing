@@ -1,58 +1,67 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { Text } from 'react-native';
 import Button from '.';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    children: {
-      name: '내용',
-      control: 'text',
-      description: '버튼에 나타낼 내용',
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'ghost', 'link'],
     },
-    disabled: {
-      name: '비활성화',
-      control: 'boolean',
-      description: '비활성화 사용 여부 선택',
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
     },
-    asChild: {
-      name: 'asChild',
-      control: 'boolean',
-      description: 'Radix Slot 패턴으로 children 컴포넌트가 button을 대체',
-    },
-    isLoading: {
-      name: '로딩 중',
-      control: 'boolean',
-      description: 'true 시 children 대신 loadingUI(없으면 Spinner) 표시, 버튼 비활성화',
-    },
+    disabled: { control: 'boolean' },
   },
 };
 export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const DefaultButton: Story = {
-  args: {
-    children: 'I am Button',
-    disabled: false,
-    asChild: false,
-    styleClass: { root: 'bg-blue-500 text-white px-4 py-2 rounded' },
-  },
+export const Primary: Story = {
+  args: { variant: 'primary', size: 'md' },
+  render: (args) => (
+    <Button {...args}>
+      <Text className="text-on-primary text-label-md">매수하기</Text>
+    </Button>
+  ),
 };
 
-export const LoadingButton: Story = {
-  args: {
-    children: 'I am Button',
-    isLoading: true,
-    styleClass: { root: 'bg-blue-500 text-white px-4 py-2 rounded' },
-  },
+export const Secondary: Story = {
+  args: { variant: 'secondary', size: 'md' },
+  render: (args) => (
+    <Button {...args}>
+      <Text className="text-on-surface text-label-md">취소</Text>
+    </Button>
+  ),
 };
 
-export const LoadingWithCustomUI: Story = {
-  args: {
-    children: 'I am Button',
-    isLoading: true,
-    loadingUI: <span>로딩 중...</span>,
-    styleClass: { root: 'bg-blue-500 text-white px-4 py-2 rounded' },
-  },
+export const Ghost: Story = {
+  args: { variant: 'ghost', size: 'md' },
+  render: (args) => (
+    <Button {...args}>
+      <Text className="text-on-surface text-label-md">더보기</Text>
+    </Button>
+  ),
+};
+
+export const Link: Story = {
+  args: { variant: 'link' },
+  render: (args) => (
+    <Button {...args}>
+      <Text className="text-primary text-label-md">전체보기</Text>
+    </Button>
+  ),
+};
+
+export const Disabled: Story = {
+  args: { variant: 'primary', size: 'md', disabled: true },
+  render: (args) => (
+    <Button {...args}>
+      <Text className="text-on-primary text-label-md">비활성화</Text>
+    </Button>
+  ),
 };

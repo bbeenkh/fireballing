@@ -81,6 +81,38 @@ describe('Input', () => {
     });
   });
 
+  describe('variant prop', () => {
+    it('variant 미지정 시 variant 스타일이 없다 (후방 호환)', () => {
+      const { container } = render(<Input />);
+      const wrapper = container.firstChild as HTMLElement;
+      expect(wrapper.className).not.toContain('bg-[var(--color-surface)]');
+    });
+
+    it('variant="default" 시 surface 배경 + border 스타일이 적용된다', () => {
+      const { container } = render(<Input variant="default" />);
+      const wrapper = container.firstChild as HTMLElement;
+      expect(wrapper.className).toContain('border');
+      expect(wrapper.className).toContain('rounded-lg');
+    });
+
+    it('variant="filled" 시 filled 스타일이 적용된다', () => {
+      const { container } = render(<Input variant="filled" />);
+      const wrapper = container.firstChild as HTMLElement;
+      expect(wrapper.className).toContain('rounded-lg');
+      expect(wrapper.className).toContain('border-none');
+    });
+
+    it('variant + prefix 시 input에 pl-9 패딩이 적용된다', () => {
+      render(<Input variant="default" prefix={<span>P</span>} />);
+      expect(screen.getByRole('textbox')).toHaveClass('pl-9');
+    });
+
+    it('variant + suffix 시 input에 pr-9 패딩이 적용된다', () => {
+      render(<Input variant="default" suffix={<span>S</span>} />);
+      expect(screen.getByRole('textbox')).toHaveClass('pr-9');
+    });
+  });
+
   describe('styleClass prop', () => {
     it('styleClass.root이 래퍼에 적용된다', () => {
       const { container } = render(<Input styleClass={{ root: 'border rounded' }} />);

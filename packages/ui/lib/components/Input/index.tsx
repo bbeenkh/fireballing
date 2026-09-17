@@ -1,78 +1,56 @@
 import React from 'react';
+import { TextInput, View, Text, type TextInputProps, type ViewProps } from 'react-native';
 import { twMerge } from 'tailwind-merge';
 
-interface StyleClass {
-  root?: string;
-  input?: string;
-  icon?: string;
-  prefix?: string;
-  suffix?: string;
+type InputVariant = 'default' | 'filled';
+
+interface IInputProps extends TextInputProps {
+  /** 디자인시스템 스타일 변형 */
+  variant?: InputVariant;
+  /** 입력 필드 위 라벨 */
+  label?: string;
+  className?: string;
+  inputClassName?: string;
 }
 
-interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefix'> {
-  prefix?: React.ReactNode;
-  suffix?: React.ReactNode;
-  onEnter?: () => void;
-  styleClass?: StyleClass;
-}
+const variantStyles: Record<InputVariant, string> = {
+  default: 'bg-surface border border-outline rounded-lg px-md py-sm text-body text-on-surface',
+  filled: 'bg-outline/30 rounded-lg px-md py-sm text-body text-on-surface',
+};
 
 /**
- * # Input UI
+ * # Input
  * ---
- * - `prefix`: input 좌측에 렌더링할 ReactNode (아이콘, 텍스트 등)
- * - `suffix`: input 우측에 렌더링할 ReactNode (단위, 버튼 등)
- * - `onEnter`: Enter 키 입력 시 호출되는 콜백
- * - 기본 스타일 없음 — 모든 스타일은 `styleClass`로 주입
+ * - 간단설명: 디자인시스템 텍스트 입력 컴포넌트
+ * - variant로 스타일 변형, label로 상단 라벨 표시
  * ---
- * @param prefix input 좌측에 렌더링할 ReactNode
- * @param suffix input 우측에 렌더링할 ReactNode
- * @param onEnter Enter 키 입력 시 호출되는 콜백
- * @param styleClass 커스텀 스타일 클래스 객체
- * - `styleClass.root`: 래퍼 div 클래스
- * - `styleClass.input`: input 요소 클래스
- * - `styleClass.icon`: 아이콘 래퍼 클래스
- * - `styleClass.prefix`: prefix 래퍼 클래스
- * - `styleClass.suffix`: suffix 래퍼 클래스
+ * @param variant 입력 스타일 변형 ('default' | 'filled')
+ * @param label 입력 필드 위 라벨
+ * @param className 래퍼 View 클래스
+ * @param inputClassName TextInput 클래스
+ * ---
  * @example
- * // 기본 스타일(relative, absolute 배치)이 적용되며, styleClass로 확장 가능
- * <Input
- *   prefix={<SearchIcon />}
- *   suffix={<span>원</span>}
- *   placeholder="금액 입력"
- *   styleClass={{
- *     root: 'border rounded h-10',   // relative flex items-center에 병합
- *     input: 'pl-8 pr-8',            // w-full outline-none에 병합
- *     prefix: 'text-gray-400',       // absolute 기본값에 병합
- *     suffix: 'text-gray-500',       // absolute 기본값에 병합
- *   }}
- * />
+ * <Input variant="default" label="종목명" placeholder="검색어 입력" />
+ * <Input variant="filled" placeholder="금액" keyboardType="numeric" />
  */
-function Input({ prefix, suffix, onEnter, styleClass, ...props }: Props) {
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && onEnter) {
-      e.preventDefault();
-      onEnter();
-    }
-  };
-
+export function Input({
+  variant = 'default',
+  label,
+  className,
+  inputClassName,
+  ...props
+}: IInputProps) {
   return (
-    <div className={twMerge('relative flex items-center', styleClass?.root)}>
-      {prefix && (
-        <div className={twMerge('absolute left-2 top-1/2 -translate-y-1/2 pointer-events-none', styleClass?.prefix)}>
-          {prefix}
-        </div>
+    <View className={twMerge('gap-xs', className)}>
+      {label && (
+        <Text className="text-label-sm text-on-surface-variant">{label}</Text>
       )}
-      <input
-        className={twMerge('w-full outline-none', styleClass?.input)}
-        onKeyDown={handleKeyDown}
+      <TextInput
+        className={twMerge(variantStyles[variant], inputClassName)}
+        placeholderTextColor="#9e928e"
         {...props}
       />
-      {suffix && (
-        <div className={twMerge('absolute right-2 top-1/2 -translate-y-1/2', styleClass?.suffix)}>
-          {suffix}
-        </div>
-      )}
-    </div>
+    </View>
   );
 }
 

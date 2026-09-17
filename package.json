@@ -11,7 +11,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "storybook": "pnpm --filter @fblg/core-ui storybook",
-    "build-storybook": "pnpm --filter @fblg/core-ui build-storybook",
+    "storybook:web": "pnpm --filter @fblg/core-ui storybook:web",
+    "storybook:generate": "pnpm --filter @fblg/core-ui storybook:generate",
     "prepare": "husky",
     "test": "turbo run test",
     "test:e2e": "pnpm --filter fblg-web test:e2e"
