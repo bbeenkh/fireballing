@@ -21,6 +21,8 @@
     "@fblg/schemas": "workspace:^",
     "@fblg/types": "workspace:^",
     "@fblg/utils": "workspace:^",
+    "@react-navigation/bottom-tabs": "^7",
+    "@react-navigation/native": "^7",
     "@gorhom/bottom-sheet": "^5",
     "@react-native/new-app-screen": "0.85.3",
     "nativewind": "^4",
@@ -31,6 +33,7 @@
     "react-native-gesture-handler": "^3.0.0",
     "react-native-reanimated": "^4.4.0",
     "react-native-safe-area-context": "^5.5.2",
+    "react-native-screens": "^4",
     "react-native-worklets": "^0.9.1",
     "tailwindcss": "^3"
   },
