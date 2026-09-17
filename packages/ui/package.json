@@ -39,7 +39,7 @@
     "eslint": "^9.39.1",
     "nativewind": "^4",
     "storybook": "catalog:",
-    "tailwindcss": "^3",
+    "tailwindcss": "catalog:",
     "typescript": "^5.8.3",
     "vite": "catalog:",
     "@vitejs/plugin-react": "catalog:"
