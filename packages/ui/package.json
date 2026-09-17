@@ -31,6 +31,7 @@
     "@storybook/addon-ondevice-actions": "catalog:",
     "@storybook/addon-ondevice-controls": "catalog:",
     "@storybook/react-native": "catalog:",
+    "@storybook/react": "^10.4.6",
     "@storybook/react-vite": "catalog:",
     "react-dom": "catalog:",
     "react-native-web": "^0.19.13",
