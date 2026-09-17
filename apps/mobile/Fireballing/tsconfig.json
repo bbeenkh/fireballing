@@ -4,7 +4,11 @@
     "types": [
       "jest",
       "react-native"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "**/*.ts",
