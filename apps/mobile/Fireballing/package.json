@@ -16,6 +16,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fblg/mobile-ui": "workspace:^",
     "@fblg/authmanager": "workspace:^",
     "@fblg/schemas": "workspace:^",
     "@fblg/types": "workspace:^",
