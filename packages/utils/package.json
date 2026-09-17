@@ -1,0 +1,27 @@
+{
+  "name": "@fblg/utils",
+  "private": true,
+  "version": "1.1.0",
+  "description": "파이어볼링 유틸 모듈",
+  "main": "index.js",
+  "keywords": [],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "exports": {
+    ".": "./index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.11.21",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@fblg/testing-config": "workspace:*",
+    "@fblg/typescript-config": "workspace:*",
+    "@types/lodash-es": "^4.17.12",
+    "vitest": "*"
+  }
+}

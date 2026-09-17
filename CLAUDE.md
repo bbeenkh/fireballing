@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+# 케이스
+- storybook: xxx.stories.tsx
+- test: xxx.test.ts / xxx.spec.ts
+- compoent: PascalCase
+- others: camelCase
+
 # 작업 순서: 신규 작업 시, 반드시 다음 플로우를 준수하여 작업 진행할 것
 1. 기획&요구사항 정리
 - atlassian mcp 사용해 Jira 접근하여 기획 확인
@@ -117,32 +123,55 @@ pnpm check-types       # TypeScript type-check across all packages
 pnpm format            # Prettier format (*.ts, *.tsx, *.md)
 
 # Run tasks for a specific package only
-pnpm --filter @repo/ui build
+pnpm --filter @fblg/core-ui build
 pnpm --filter web dev
 ```
 
+## Project Summary
+
+**fireballing** — 개인 포트폴리오 프로젝트. Web, Server, Mobile 3개 앱을 포함하는 Turborepo 모노레포.
+
 ## Architecture
 
-This is a **Turborepo monorepo** structured as:
-
 ```
-apps/         # Applications (web, docs, mobile — currently stubs)
-packages/
-  ui/         # @repo/ui — shared React 19 component library
-  eslint-config/   # Shared ESLint configs (base, next, react-internal)
-  typescript-config/  # Shared tsconfig presets (base, nextjs, react-library)
-  api/         # stub
-  shared/      # stub
-  types/       # stub
+fireballing/
+├── apps/
+│   ├── web/fireballing-web/           # TanStack Start + Vite 프론트엔드
+│   ├── server/fireballing-server/     # Hono 백엔드 서버
+│   └── mobile/DdasangfolioApp/        # React Native 모바일 앱
+├── packages/
+│   ├── ui/                            # @fblg/core-ui — 공용 React 컴포넌트 (button, card, code)
+│   ├── typescript-config/             # 공용 tsconfig (base, nextjs, react-library)
+│   └── eslint-config/                 # 공용 ESLint 설정 (base, next, react-internal)
+├── turbo.json                         # 파이프라인 설정
+└── pnpm-workspace.yaml                # 워크스페이스 정의 (apps/web/*, apps/server/*, apps/mobile/*, packages/*)
 ```
 
 **Key patterns:**
-- Apps consume `@repo/ui` components and extend shared configs from `@repo/eslint-config` and `@repo/typescript-config`
+- Apps consume `@fblg/core-ui` components and extend shared configs from `@fblg/eslint-config` and `@fblg/typescript-config`
 - TypeScript strict mode + ES2022 target is enforced via `packages/typescript-config/base.json`
 - Turbo task pipeline: `build` depends on upstream `^build`; `dev` runs persistently with no cache
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router)
-- **UI**: React 19 + TypeScript 5.9
-- **Styling**: (not yet configured — add when decided)
+| 영역 | 기술 |
+|------|------|
+| **Web 프레임워크** | TanStack Start (React 19 + Vite 8) |
+| **서버 프레임워크** | Hono 4 (Node.js) |
+| **모바일** | React Native 0.85 (React 19) |
+| **스타일링** | Tailwind CSS 4 (@tailwindcss/vite) |
+| **테스트 (Web)** | Vitest + Testing Library |
+| **테스트 (Mobile)** | Jest |
+| **TypeScript** | 5.8 ~ 6.0 (앱별 상이) |
+| **린트/포맷** | ESLint 9 (FlatConfig) + Prettier 3 |
+| **모노레포** | Turborepo 2.9 + pnpm 9.0 |
+| **공용 컴포넌트** | @fblg/core-ui (React 19) |
+
+
+### 타입정의 규칙
+- type, interface: xxx.types.ts에 정의
+- zod schema, infer 사용해 나온 타입: xxx.schema.ts 에 정의
+- 네이밍 규칙: 파스칼 케이스를 기본으로 한다
+  - interface: I{name} ex) IUserInfo
+  - type: {name} ex) FavoriteList
+  - schema from zod: {name}Schema ex) MyPageSchema

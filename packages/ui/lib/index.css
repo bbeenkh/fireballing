@@ -1,0 +1,237 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+@layer base {
+  :root {
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* ODS/layout 사이즈 조정 변수들 */
+    /* drawer width 값 */
+    --drawer-width: 12.5em;
+    /* header 높이 값 */
+    --header-height: 4em;
+    /* 레이아웃이 줄어들 때 생기는 좌우 여백 padding 값 */
+    --layout-padding: 1.5em;
+    /* 레이아웃의 body에 사용되는 padding */
+    --body-padding: 1.5em;
+    /* 레이아웃의 footer height */
+    --footer-height: 6em;
+    /* 레이아웃의 width 속성, body 컨텐츠의 min-width, max-width는 여기서 지정 */
+    --min-width: 13.12rem;
+
+    /* ===== Fireballing 컬러팔레트 (Figma 디자인 스펙 기반) ===== */
+
+    /* Primary Hot Core */
+    --color-primary: #ff5a26;
+    --color-primary-deep: #ff2e00;
+    --color-primary-amber: #ff9f1c;
+    --color-on-primary: #0d0b0a;
+
+    /* Primary Gradient */
+    --color-primary-gradient-start: #ff2e00;
+    --color-primary-gradient-end: #ff9f1c;
+
+    /* Surface (Ember Charcoal & Neutrals) */
+    --color-background: #0d0b0a;
+    --color-surface: #171311;
+    --color-surface-dim: #0d0b0a;
+    --color-on-surface: #f4efef;
+    --color-on-surface-variant: #9e928e;
+
+    /* Border */
+    --color-outline: #261e1c;
+    --color-outline-variant: #261e1c;
+
+    /* Neutral Tones */
+    --color-white-smoke: #f4efef;
+    --color-cream-soft: #faf8f5;
+    --color-cool-charcoal: #9e928e;
+
+    /* Yield Semantics (금융 상태) */
+    --color-profit: #00e676;
+    --color-loss: #ff1744;
+    --color-info: #2979ff;
+
+    /* Error */
+    --color-error: #ff1744;
+    --color-on-error: #ffffff;
+
+    /* 레거시 호환 매핑 */
+    --color-black: #0d0b0a;
+    --color-white: #f4efef;
+    --color-card: #171311;
+
+    /* ===== 타이포그래피 (Figma 디자인 스펙 기반) ===== */
+
+    /* 폰트 패밀리 */
+    --font-family-heading: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+    --font-family-body: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+    --font-family-mono: 'Geist Mono', ui-monospace, monospace;
+
+    /* Heading 1 */
+    --font-h1-size: 48px;
+    --font-h1-weight: 800;
+    --font-h1-line: 110%;
+    --font-h1-spacing: -0.02em;
+
+    /* Heading 2 */
+    --font-h2-size: 32px;
+    --font-h2-weight: 700;
+    --font-h2-line: 120%;
+    --font-h2-spacing: -0.01em;
+
+    /* Heading 3 */
+    --font-h3-size: 20px;
+    --font-h3-weight: 600;
+    --font-h3-line: 130%;
+
+    /* Body Copy */
+    --font-body-size: 15px;
+    --font-body-weight: 400;
+    --font-body-line: 150%;
+
+    /* Meta Caption */
+    --font-caption-size: 11px;
+    --font-caption-weight: 600;
+    --font-caption-line: 140%;
+
+    /* Monospace Numbers */
+    --font-mono-size: 28px;
+    --font-mono-weight: 700;
+    --font-mono-line: 110%;
+
+    /* Label Medium */
+    --font-label-md-size: 14px;
+    --font-label-md-weight: 600;
+    --font-label-md-line: 20px;
+
+    /* Label Small */
+    --font-label-sm-size: 12px;
+    --font-label-sm-weight: 500;
+    --font-label-sm-line: 16px;
+
+    /* ===== 라운딩 ===== */
+    --rounded-sm: 0.25rem;
+    --rounded-default: 0.5rem;
+    --rounded-md: 0.75rem;
+    --rounded-lg: 1rem;
+    --rounded-xl: 1.5rem;
+    --rounded-full: 9999px;
+
+    /* ===== 간격 (4px 기준 베이스라인) ===== */
+    --space-unit: 4px;
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-gutter: 20px;
+    --space-margin-mobile: 16px;
+    --space-margin-desktop: 40px;
+
+    /* ===== 반응형 레이아웃 ===== */
+    --layout-mobile: 375px;
+    --layout-tablet: 768px;
+    --layout-desktop: 1024px;
+    --layout-max-width: 1200px;
+  }
+
+  .markdown > * {
+    all: revert;
+  }
+
+  /* Modal */
+  .DialogOverlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .DialogContent {
+    background-color: var(--color-surface);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 85vh;
+    z-index: 50;
+    overflow-y: auto;
+    animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .DialogContent:focus {
+    outline: none;
+  }
+
+  @keyframes overlayShow {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes contentShow {
+    from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  body {
+    /** header 요소의 height값 */
+    .layout__header-height {
+      height: var(--header-height);
+    }
+
+    /** 레이아웃의 width 속성, body 컨텐츠의 min-width, max-width는 여기서 지정 **/
+    .layout__width {
+      min-width: var(--min-width);
+    }
+
+    /**
+      * 레이아웃이 줄어들 때 생기는 좌우 여백 padding
+      * padding: Layout.Header, Layout.Footer에서 사용 중
+      * padding 값은 항상 같은 값을 유지해야 함
+    **/
+    .layout__padding {
+      padding-left: var(--layout-padding);
+      padding-right: var(--layout-padding);
+    }
+
+    /**
+      * 레이아웃의 body에 사용되는 padding
+      * margin-top: Layout.Header와 Layout.Body 사이 간격 지정
+      * margin-bottom: Layout.Body와 Layout.Footer 사이 간격 지정
+    **/
+    .body__padding {
+      padding-top: var(--body-padding);
+      padding-bottom: var(--body-padding);
+    }
+
+    /** drawer open 상태일 때 body가 밀려날 여백, .drawer__drawer-width과 동일하게 지정 */
+    .body__drawer-open-margin {
+      margin-left: var(--drawer-width);
+    }
+
+    /** 레이아웃의 footer height **/
+    .layout__footer-height {
+      height: var(--footer-height);
+    }
+
+    /** drawer margin top 속성, layout__header-height와 동일한 사이즈로 지정할 것 **/
+    .drawer__margin-top {
+      margin-top: var(--header-height);
+    }
+
+    /** drawer width값 */
+    .drawer__drawer-width {
+      width: var(--drawer-width);
+    }
+  }
+}
