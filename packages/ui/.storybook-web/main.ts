@@ -13,17 +13,22 @@ const config: StorybookConfig = {
     '../lib/components/Chip/**/*.stories.?(ts|tsx)',
     '../lib/components/Input/**/*.stories.?(ts|tsx)',
     '../lib/components/CardUI/**/*.stories.?(ts|tsx)',
+    '../lib/components/Layout/**/*.stories.?(ts|tsx)',
+    '../lib/components/Header/**/*.stories.?(ts|tsx)',
+    '../lib/components/Footer/**/*.stories.?(ts|tsx)',
+    '../lib/assets/icons/**/*.stories.?(ts|tsx)',
   ],
   addons: [],
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
-  viteFinal: (config) => {
+  viteFinal: config => {
     config.resolve ??= {};
     config.resolve.alias = {
       ...config.resolve.alias,
       'react-native': resolve(__dirname, 'react-native-web-shim.tsx'),
+      'react-native-svg': resolve(__dirname, 'react-native-svg-shim.tsx'),
     };
     config.plugins ??= [];
     config.plugins.push(tailwindcss());

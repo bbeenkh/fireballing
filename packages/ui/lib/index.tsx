@@ -9,6 +9,26 @@ export { default as Layout } from './components/Layout';
 export { default as Header } from './components/Header';
 export { default as Footer } from './components/Footer';
 
+// Icons
+export {
+  IconSearch,
+  IconHome,
+  IconChevronDown,
+  IconChevronRight,
+  IconChevronLeft,
+  IconBell,
+  IconBellAlt,
+  IconPlus,
+  IconInfo,
+  IconClose,
+  IconSimulator,
+  IconMore,
+  IconStar,
+  IconEdit,
+  IconPortfolio,
+  IconFlame,
+} from './assets/icons';
+
 // Utils
 export { today, formatedDate } from './utils/date';
 export { truncateString } from './utils/format';

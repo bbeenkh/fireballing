@@ -23,6 +23,7 @@
   "dependencies": {
     "react": "19.2.3",
     "react-native": "0.85.3",
+    "react-native-svg": "^15.15.5",
     "tailwind-merge": "catalog:"
   },
   "devDependencies": {
@@ -30,20 +31,20 @@
     "@fblg/typescript-config": "workspace:*",
     "@storybook/addon-ondevice-actions": "catalog:",
     "@storybook/addon-ondevice-controls": "catalog:",
-    "@storybook/react-native": "catalog:",
     "@storybook/react": "^10.4.6",
+    "@storybook/react-native": "catalog:",
     "@storybook/react-vite": "catalog:",
-    "react-dom": "catalog:",
-    "react-native-web": "^0.19.13",
     "@tailwindcss/vite": "catalog:",
     "@types/react": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
     "eslint": "^9.39.1",
     "nativewind": "^4",
+    "react-dom": "catalog:",
     "react-native-css-interop": "^0.2.4",
+    "react-native-web": "^0.19.13",
     "storybook": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "^5.8.3",
-    "vite": "catalog:",
-    "@vitejs/plugin-react": "catalog:"
+    "vite": "catalog:"
   }
 }
