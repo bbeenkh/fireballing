@@ -1,9 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen } from '../../pages/home/HomeScreen';
-import { PortfolioScreen } from '../../pages/portfolio/PortfolioScreen';
-import { SimulatorScreen } from '../../pages/simulator/SimulatorScreen';
-import { MyPageScreen } from '../../pages/mypage/MyPageScreen';
+import { View } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,23 +30,8 @@ export function TabNavigator() {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={() => <View>Home</View>}
         options={{ tabBarLabel: '홈' }}
-      />
-      <Tab.Screen
-        name="Portfolio"
-        component={PortfolioScreen}
-        options={{ tabBarLabel: '포트폴리오' }}
-      />
-      <Tab.Screen
-        name="Simulator"
-        component={SimulatorScreen}
-        options={{ tabBarLabel: '시뮬레이터' }}
-      />
-      <Tab.Screen
-        name="MyPage"
-        component={MyPageScreen}
-        options={{ tabBarLabel: '마이페이지' }}
       />
     </Tab.Navigator>
   );
