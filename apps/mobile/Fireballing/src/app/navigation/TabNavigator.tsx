@@ -1,8 +1,23 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View } from 'react-native';
+import { ScrollView, Text, StyleSheet } from 'react-native';
+import { DummyForm } from '../../shared/ui/DummyForm';
 
 const Tab = createBottomTabNavigator();
+
+function HomeScreen() {
+  return (
+    <ScrollView testID="home-screen" style={styles.homeScreen}>
+      <Text style={styles.homeTitle}>테스트 환경 검증</Text>
+      <DummyForm />
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  homeScreen: {flex: 1, backgroundColor: '#0d0b0a'},
+  homeTitle: {color: '#fff', fontSize: 20, padding: 16},
+});
 
 /**
  * # TabNavigator
@@ -30,7 +45,7 @@ export function TabNavigator() {
     >
       <Tab.Screen
         name="Home"
-        component={() => <View>Home</View>}
+        component={HomeScreen}
         options={{ tabBarLabel: '홈' }}
       />
     </Tab.Navigator>

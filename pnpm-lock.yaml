@@ -69,6 +69,9 @@ importers:
       '@fblg/authmanager':
         specifier: workspace:^
         version: link:../../../packages/authmanager
+      '@fblg/core-ui':
+        specifier: workspace:^
+        version: link:../../../packages/ui
       '@fblg/schemas':
         specifier: workspace:^
         version: link:../../../packages/schemas
@@ -155,10 +158,10 @@ importers:
         version: 8.2.1(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
       react-native-nitro-image:
         specifier: ^0.15.1
-        version: 0.15.2(react-native-nitro-modules@0.35.10(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3))(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
+        version: 0.15.2(react-native-nitro-modules@0.37.1(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3))(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
       react-native-nitro-modules:
-        specifier: ^0.35.9
-        version: 0.35.10(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
+        specifier: ^0.37.1
+        version: 0.37.1(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
       react-native-permissions:
         specifier: ^5.5.3
         version: 5.6.2(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
@@ -6425,8 +6428,8 @@ packages:
       react-native-nitro-modules:
         optional: true
 
-  react-native-nitro-modules@0.35.10:
-    resolution: {integrity: sha512-KsySOAIkbSTjNiX2GvXiNT9P5DMeZd99yvtE/+Lw7RXV7Ztxh9Z+YyAbYkBqadhN5J/KXXuPjhRYgyLOIZgsbQ==}
+  react-native-nitro-modules@0.37.1:
+    resolution: {integrity: sha512-KpW6EQVQ/bfegpCGxN9Be+ndvsfj56t4IESEvCASu9gWpJa/NDfHpIeIwCOvZQ3eXmLEj6YD4wCLqcC1FJPr2w==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -14606,14 +14609,14 @@ snapshots:
       prop-types: 15.8.1
       react-native: 0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3)
 
-  react-native-nitro-image@0.15.2(react-native-nitro-modules@0.35.10(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3))(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3):
+  react-native-nitro-image@0.15.2(react-native-nitro-modules@0.37.1(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3))(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3):
     dependencies:
       react: 19.2.3
       react-native: 0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3)
     optionalDependencies:
-      react-native-nitro-modules: 0.35.10(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
+      react-native-nitro-modules: 0.37.1(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3)
 
-  react-native-nitro-modules@0.35.10(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3):
+  react-native-nitro-modules@0.37.1(react-native@0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3))(react@19.2.3):
     dependencies:
       react: 19.2.3
       react-native: 0.85.3(@babel/core@7.29.7)(@react-native-community/cli@20.1.0(typescript@5.9.2))(@react-native/jest-preset@0.85.3(@babel/core@7.29.7)(react@19.2.3))(@react-native/metro-config@0.85.3(@babel/core@7.29.7))(@types/react@19.2.3)(react@19.2.3)

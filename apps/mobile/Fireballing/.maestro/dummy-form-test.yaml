@@ -1,0 +1,13 @@
+appId: com.fireballing
+---
+- launchApp
+- assertVisible: "테스트 환경 검증"
+- tapOn:
+    id: "input-name"
+- inputText: "홍길동"
+- tapOn:
+    id: "input-email"
+- inputText: "test@test.com"
+- tapOn:
+    id: "btn-submit"
+- assertVisible: "제출 완료"
