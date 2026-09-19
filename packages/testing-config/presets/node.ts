@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig } from 'vitest/config';
 
 /**
  * # defineNodeConfig
@@ -14,16 +14,19 @@ import { defineConfig } from 'vitest/config'
  * export default defineNodeConfig()
  */
 export function defineNodeConfig(
-  overrides: { test?: { setupFiles?: string | string[]; [key: string]: unknown }; [key: string]: unknown } = {}
+  overrides: {
+    test?: { setupFiles?: string | string[]; [key: string]: unknown };
+    [key: string]: unknown;
+  } = {},
 ): ReturnType<typeof defineConfig> {
-  const { test: overrideTest, ...restOverrides } = overrides
-  const { setupFiles: extraSetup, ...restTest } = overrideTest ?? {}
+  const { test: overrideTest, ...restOverrides } = overrides;
+  const { setupFiles: extraSetup, ...restTest } = overrideTest ?? {};
 
   const extraSetupArray = extraSetup
     ? Array.isArray(extraSetup)
       ? extraSetup
       : [extraSetup]
-    : []
+    : [];
 
   return defineConfig({
     ...restOverrides,
@@ -35,5 +38,5 @@ export function defineNodeConfig(
       setupFiles: [...extraSetupArray],
       ...restTest,
     },
-  })
+  });
 }

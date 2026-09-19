@@ -9,11 +9,11 @@
  */
 export interface UserProfile {
   /** Supabase Auth user ID */
-  id: string
+  id: string;
   /** 사용자 이메일 */
-  email: string
+  email: string;
   /** 사용자 이름 */
-  name: string | null
+  name: string | null;
   /** 프로필 이미지 URL */
-  profileImage: string | null
+  profileImage: string | null;
 }

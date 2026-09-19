@@ -19,7 +19,7 @@ type Story = StoryObj<typeof Layout>;
 
 export const Default: Story = {
   args: { maxWidth: '390px' },
-  render: (args) => (
+  render: args => (
     <Layout {...args}>
       <Layout.Header>
         <Text className="text-[18px] font-medium tracking-[-1px] text-[#0d0b0a]">
@@ -74,7 +74,7 @@ export const Default: Story = {
 
 export const HeaderOnly: Story = {
   args: { maxWidth: '390px' },
-  render: (args) => (
+  render: args => (
     <Layout {...args}>
       <Layout.Header>
         <Text className="text-[18px] font-medium text-[#0d0b0a]">
@@ -92,7 +92,7 @@ export const HeaderOnly: Story = {
 
 export const FullPage: Story = {
   args: { maxWidth: '390px' },
-  render: (args) => (
+  render: args => (
     <Layout {...args}>
       <Layout.Header>
         <Text className="text-[18px] font-medium tracking-[-1px] text-[#0d0b0a]">

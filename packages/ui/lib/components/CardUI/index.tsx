@@ -39,10 +39,7 @@ export function Card({
   ...props
 }: ICardProps) {
   return (
-    <View
-      className={twMerge(variantStyles[variant], className)}
-      {...props}
-    >
+    <View className={twMerge(variantStyles[variant], className)} {...props}>
       {children}
     </View>
   );

@@ -1,5 +1,5 @@
-import type { ErrorHandler } from 'hono'
-import { HttpError } from '../../shared/errors/http-error.js'
+import type { ErrorHandler } from 'hono';
+import { HttpError } from '../../shared/errors/http-error.js';
 
 /**
  * # errorHandler
@@ -11,8 +11,14 @@ import { HttpError } from '../../shared/errors/http-error.js'
  */
 export const errorHandler: ErrorHandler = (err, c) => {
   if (err instanceof HttpError) {
-    return c.json({ success: false, error: err.message }, err.statusCode as any)
+    return c.json(
+      { success: false, error: err.message },
+      err.statusCode as any,
+    );
   }
 
-  return c.json({ success: false, error: '서버 내부 오류가 발생했습니다' }, 500)
-}
+  return c.json(
+    { success: false, error: '서버 내부 오류가 발생했습니다' },
+    500,
+  );
+};

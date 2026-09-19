@@ -3,18 +3,18 @@
 if (typeof window !== 'undefined') {
   // pointer capture (Radix Select, Popover 등)
   if (!window.Element.prototype.hasPointerCapture) {
-    window.Element.prototype.hasPointerCapture = () => false
+    window.Element.prototype.hasPointerCapture = () => false;
   }
   if (!window.Element.prototype.setPointerCapture) {
-    window.Element.prototype.setPointerCapture = () => {}
+    window.Element.prototype.setPointerCapture = () => {};
   }
   if (!window.Element.prototype.releasePointerCapture) {
-    window.Element.prototype.releasePointerCapture = () => {}
+    window.Element.prototype.releasePointerCapture = () => {};
   }
 
   // scrollIntoView (Radix Select)
   if (!window.Element.prototype.scrollIntoView) {
-    window.Element.prototype.scrollIntoView = () => {}
+    window.Element.prototype.scrollIntoView = () => {};
   }
 
   // ResizeObserver (Radix 컴포넌트)
@@ -23,7 +23,7 @@ if (typeof window !== 'undefined') {
       observe() {}
       unobserve() {}
       disconnect() {}
-    }
+    };
   }
 
   // IntersectionObserver (InfiniteScroll)
@@ -32,6 +32,6 @@ if (typeof window !== 'undefined') {
       observe() {}
       unobserve() {}
       disconnect() {}
-    } as unknown as typeof IntersectionObserver
+    } as unknown as typeof IntersectionObserver;
   }
 }

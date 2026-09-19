@@ -8,7 +8,7 @@
  * const response: ApiResponse<{ user: User }> = { success: true, data: { user } }
  */
 export interface ApiResponse<T = unknown> {
-  success: boolean
-  data?: T
-  error?: string
+  success: boolean;
+  data?: T;
+  error?: string;
 }

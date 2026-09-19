@@ -1,4 +1,4 @@
-import type { IAuthManager, Tokens } from './authManager.types.js'
+import type { IAuthManager, Tokens } from './authManager.types.js';
 
 /**
  * # AuthManager
@@ -13,28 +13,28 @@ import type { IAuthManager, Tokens } from './authManager.types.js'
  * await manager.revalidateTokens(() => api.refresh(manager.refreshToken!))
  */
 export class AuthManager implements IAuthManager {
-  private _accessToken: string | null
-  private _refreshToken: string | null
+  private _accessToken: string | null;
+  private _refreshToken: string | null;
 
-  isLogined = false
-  isRefreshing = false
+  isLogined = false;
+  isRefreshing = false;
   failedQueue: Array<{
-    resolve: (token: string) => void
-    reject: (reason?: unknown) => void
-  }> = []
+    resolve: (token: string) => void;
+    reject: (reason?: unknown) => void;
+  }> = [];
 
   constructor({ accessToken, refreshToken }: Tokens) {
-    this._accessToken = accessToken
-    this._refreshToken = refreshToken
-    this.isLogined = !!(accessToken && refreshToken)
+    this._accessToken = accessToken;
+    this._refreshToken = refreshToken;
+    this.isLogined = !!(accessToken && refreshToken);
   }
 
   get accessToken() {
-    return this._accessToken
+    return this._accessToken;
   }
 
   get refreshToken() {
-    return this._refreshToken
+    return this._refreshToken;
   }
 
   /**
@@ -45,12 +45,12 @@ export class AuthManager implements IAuthManager {
    */
   setTokens({ accessToken, refreshToken }: Tokens) {
     if (!accessToken || !refreshToken) {
-      throw new Error('token not found')
+      throw new Error('token not found');
     }
 
-    this._accessToken = accessToken
-    this._refreshToken = refreshToken
-    this.isLogined = true
+    this._accessToken = accessToken;
+    this._refreshToken = refreshToken;
+    this.isLogined = true;
   }
 
   /**
@@ -59,13 +59,13 @@ export class AuthManager implements IAuthManager {
   private processQueue(error?: unknown, token?: string) {
     this.failedQueue.forEach(({ resolve, reject }) => {
       if (error) {
-        reject(error)
+        reject(error);
       } else {
-        resolve(token!)
+        resolve(token!);
       }
-    })
+    });
 
-    this.failedQueue = []
+    this.failedQueue = [];
   }
 
   /**
@@ -82,32 +82,32 @@ export class AuthManager implements IAuthManager {
   async revalidateTokens(revalidateFn: () => Promise<Tokens>): Promise<string> {
     if (this.isRefreshing) {
       return new Promise((resolve, reject) => {
-        this.failedQueue.push({ resolve, reject })
-      })
+        this.failedQueue.push({ resolve, reject });
+      });
     }
 
     if (!this.refreshToken) {
-      this.clearToken()
-      const error = new Error('NO_REFRESH_TOKEN')
-      this.processQueue(error)
-      throw error
+      this.clearToken();
+      const error = new Error('NO_REFRESH_TOKEN');
+      this.processQueue(error);
+      throw error;
     }
 
-    this.isRefreshing = true
+    this.isRefreshing = true;
 
     try {
-      const tokens = await revalidateFn()
+      const tokens = await revalidateFn();
 
-      this.setTokens(tokens)
-      this.processQueue(undefined, tokens.accessToken!)
+      this.setTokens(tokens);
+      this.processQueue(undefined, tokens.accessToken!);
 
-      return tokens.accessToken!
+      return tokens.accessToken!;
     } catch (e) {
-      this.processQueue(e)
-      this.clearToken()
-      throw new Error('TOKEN_REFRESH_FAILED')
+      this.processQueue(e);
+      this.clearToken();
+      throw new Error('TOKEN_REFRESH_FAILED');
     } finally {
-      this.isRefreshing = false
+      this.isRefreshing = false;
     }
   }
 
@@ -115,8 +115,8 @@ export class AuthManager implements IAuthManager {
    * 로그아웃 / 토큰 전체 초기화
    */
   clearToken() {
-    this._accessToken = null
-    this._refreshToken = null
-    this.isLogined = false
+    this._accessToken = null;
+    this._refreshToken = null;
+    this.isLogined = false;
   }
 }

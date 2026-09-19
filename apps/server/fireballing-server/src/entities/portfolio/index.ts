@@ -1,1 +1,1 @@
-export type { IPortfolioRecord } from '@fblg/types'
+export type { IPortfolioRecord } from '@fblg/types';

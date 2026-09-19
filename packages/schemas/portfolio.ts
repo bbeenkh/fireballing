@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 /**
  * # createPortfolioSchema
@@ -26,7 +26,7 @@ export const createPortfolioSchema = z.object({
   startDate: z.string().date(),
   /** 프로젝트 종료일 (ISO 8601) */
   endDate: z.string().date().optional(),
-})
+});
 
 /**
  * # updatePortfolioSchema
@@ -37,9 +37,9 @@ export const createPortfolioSchema = z.object({
  * @example
  * const parsed = updatePortfolioSchema.safeParse(body)
  */
-export const updatePortfolioSchema = createPortfolioSchema.partial()
+export const updatePortfolioSchema = createPortfolioSchema.partial();
 
 /** 포트폴리오 생성 요청 타입 */
-export type CreatePortfolioRequest = z.infer<typeof createPortfolioSchema>
+export type CreatePortfolioRequest = z.infer<typeof createPortfolioSchema>;
 /** 포트폴리오 수정 요청 타입 */
-export type UpdatePortfolioRequest = z.infer<typeof updatePortfolioSchema>
+export type UpdatePortfolioRequest = z.infer<typeof updatePortfolioSchema>;

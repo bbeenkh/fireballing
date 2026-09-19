@@ -37,7 +37,11 @@ describe('Button', () => {
 
     it('disabled 상태에서 onClick이 호출되지 않는다', () => {
       const onClick = vi.fn();
-      render(<Button disabled onClick={onClick}>Disabled</Button>);
+      render(
+        <Button disabled onClick={onClick}>
+          Disabled
+        </Button>,
+      );
       fireEvent.click(screen.getByRole('button'));
       expect(onClick).not.toHaveBeenCalled();
     });
@@ -45,7 +49,9 @@ describe('Button', () => {
 
   describe('styleClass prop', () => {
     it('styleClass.root이 버튼 요소에 적용된다', () => {
-      render(<Button styleClass={{ root: 'bg-blue-500 text-white' }}>Button</Button>);
+      render(
+        <Button styleClass={{ root: 'bg-blue-500 text-white' }}>Button</Button>,
+      );
       const button = screen.getByRole('button');
       expect(button).toHaveClass('bg-blue-500');
       expect(button).toHaveClass('text-white');
@@ -93,7 +99,11 @@ describe('Button', () => {
     });
 
     it('variant + styleClass 병합: styleClass가 우선한다', () => {
-      render(<Button variant="primary" styleClass={{ root: 'bg-blue-500' }}>Button</Button>);
+      render(
+        <Button variant="primary" styleClass={{ root: 'bg-blue-500' }}>
+          Button
+        </Button>,
+      );
       const button = screen.getByRole('button');
       expect(button).toHaveClass('bg-blue-500');
     });
@@ -107,12 +117,20 @@ describe('Button', () => {
     });
 
     it('size="sm" 스타일이 적용된다', () => {
-      render(<Button variant="primary" size="sm">Small</Button>);
+      render(
+        <Button variant="primary" size="sm">
+          Small
+        </Button>,
+      );
       expect(screen.getByRole('button').className).toContain('px-3');
     });
 
     it('size="lg" 스타일이 적용된다', () => {
-      render(<Button variant="primary" size="lg">Large</Button>);
+      render(
+        <Button variant="primary" size="lg">
+          Large
+        </Button>,
+      );
       expect(screen.getByRole('button').className).toContain('px-6');
     });
   });

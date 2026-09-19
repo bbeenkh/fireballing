@@ -1,5 +1,11 @@
 import React from 'react';
-import { Pressable, View, Text, type PressableProps, type ViewProps } from 'react-native';
+import {
+  Pressable,
+  View,
+  Text,
+  type PressableProps,
+  type ViewProps,
+} from 'react-native';
 import { twMerge } from 'tailwind-merge';
 
 type ChipSize = 'sm' | 'md';
@@ -51,16 +57,19 @@ function Chip({
     <Pressable
       className={twMerge(
         'rounded-full items-center justify-center',
-        selected
-          ? 'bg-primary'
-          : 'bg-transparent border border-outline',
+        selected ? 'bg-primary' : 'bg-transparent border border-outline',
         sizeStyles[size],
         className,
       )}
       {...props}
     >
       <Text
-        className={['text-label-md', selected ? 'text-on-primary' : 'text-on-surface-variant'].filter(Boolean).join(' ')}
+        className={[
+          'text-label-md',
+          selected ? 'text-on-primary' : 'text-on-surface-variant',
+        ]
+          .filter(Boolean)
+          .join(' ')}
       >
         {children}
       </Text>
@@ -77,7 +86,10 @@ function Chip({
  */
 function ChipGroup({ className, children, ...props }: IChipGroupProps) {
   return (
-    <View className={twMerge('flex-row items-center gap-xs', className)} {...props}>
+    <View
+      className={twMerge('flex-row items-center gap-xs', className)}
+      {...props}
+    >
       {children}
     </View>
   );

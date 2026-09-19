@@ -1,12 +1,12 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import type { UserProfile } from '../../../entities/user/index.js'
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import type { UserProfile } from '../../../entities/user/index.js';
 
-const mockSignUp = vi.fn()
-const mockSignInWithPassword = vi.fn()
-const mockSignInWithIdToken = vi.fn()
-const mockSignOut = vi.fn()
-const mockGetUser = vi.fn()
-const mockRefreshSession = vi.fn()
+const mockSignUp = vi.fn();
+const mockSignInWithPassword = vi.fn();
+const mockSignInWithIdToken = vi.fn();
+const mockSignOut = vi.fn();
+const mockGetUser = vi.fn();
+const mockRefreshSession = vi.fn();
 
 vi.mock('../../../shared/lib/supabase.js', () => ({
   getSupabaseClient: () => ({
@@ -23,7 +23,7 @@ vi.mock('../../../shared/lib/supabase.js', () => ({
       getUser: mockGetUser,
     },
   }),
-}))
+}));
 
 import {
   signup,
@@ -33,12 +33,12 @@ import {
   getCurrentUser,
   refreshToken,
   mapToUserProfile,
-} from './auth.service.js'
+} from './auth.service.js';
 
 describe('auth.service', () => {
   beforeEach(() => {
-    vi.clearAllMocks()
-  })
+    vi.clearAllMocks();
+  });
 
   describe('signup', () => {
     it('이메일과 비밀번호로 회원가입하고 유저와 토큰을 반환한다', async () => {
@@ -56,35 +56,35 @@ describe('auth.service', () => {
           },
         },
         error: null,
-      })
+      });
 
       const result = await signup({
         email: 'test@test.com',
         password: 'password123',
         name: '홍길동',
-      })
+      });
 
-      expect(result.user.email).toBe('test@test.com')
-      expect(result.user.name).toBe('홍길동')
-      expect(result.tokens.accessToken).toBe('access-token')
+      expect(result.user.email).toBe('test@test.com');
+      expect(result.user.name).toBe('홍길동');
+      expect(result.tokens.accessToken).toBe('access-token');
       expect(mockSignUp).toHaveBeenCalledWith({
         email: 'test@test.com',
         password: 'password123',
         options: { data: { name: '홍길동' } },
-      })
-    })
+      });
+    });
 
     it('Supabase 에러 시 에러를 던진다', async () => {
       mockSignUp.mockResolvedValue({
         data: { user: null, session: null },
         error: { message: 'User already registered' },
-      })
+      });
 
       await expect(
         signup({ email: 'test@test.com', password: 'password123' }),
-      ).rejects.toThrow('User already registered')
-    })
-  })
+      ).rejects.toThrow('User already registered');
+    });
+  });
 
   describe('login', () => {
     it('이메일과 비밀번호로 로그인하고 유저와 토큰을 반환한다', async () => {
@@ -102,37 +102,37 @@ describe('auth.service', () => {
           },
         },
         error: null,
-      })
+      });
 
       const result = await login({
         email: 'test@test.com',
         password: 'password123',
-      })
+      });
 
-      expect(result.user.email).toBe('test@test.com')
-      expect(result.tokens.accessToken).toBe('access-token')
-    })
+      expect(result.user.email).toBe('test@test.com');
+      expect(result.tokens.accessToken).toBe('access-token');
+    });
 
     it('잘못된 자격증명이면 에러를 던진다', async () => {
       mockSignInWithPassword.mockResolvedValue({
         data: { user: null, session: null },
         error: { message: 'Invalid login credentials' },
-      })
+      });
 
       await expect(
         login({ email: 'test@test.com', password: 'wrong' }),
-      ).rejects.toThrow('Invalid login credentials')
-    })
-  })
+      ).rejects.toThrow('Invalid login credentials');
+    });
+  });
 
   describe('logout', () => {
     it('로그아웃에 성공한다', async () => {
-      mockSignOut.mockResolvedValue({ error: null })
+      mockSignOut.mockResolvedValue({ error: null });
 
-      await expect(logout('access-token')).resolves.not.toThrow()
-      expect(mockSignOut).toHaveBeenCalled()
-    })
-  })
+      await expect(logout('access-token')).resolves.not.toThrow();
+      expect(mockSignOut).toHaveBeenCalled();
+    });
+  });
 
   describe('getCurrentUser', () => {
     it('토큰으로 현재 유저 정보를 반환한다', async () => {
@@ -141,29 +141,34 @@ describe('auth.service', () => {
           user: {
             id: 'user-1',
             email: 'test@test.com',
-            user_metadata: { name: '홍길동', avatar_url: 'https://img.com/a.png' },
+            user_metadata: {
+              name: '홍길동',
+              avatar_url: 'https://img.com/a.png',
+            },
           },
         },
         error: null,
-      })
+      });
 
-      const user = await getCurrentUser('access-token')
+      const user = await getCurrentUser('access-token');
 
-      expect(user.id).toBe('user-1')
-      expect(user.email).toBe('test@test.com')
-      expect(user.name).toBe('홍길동')
-      expect(user.profileImage).toBe('https://img.com/a.png')
-    })
+      expect(user.id).toBe('user-1');
+      expect(user.email).toBe('test@test.com');
+      expect(user.name).toBe('홍길동');
+      expect(user.profileImage).toBe('https://img.com/a.png');
+    });
 
     it('유저가 없으면 에러를 던진다', async () => {
       mockGetUser.mockResolvedValue({
         data: { user: null },
         error: { message: 'Invalid token' },
-      })
+      });
 
-      await expect(getCurrentUser('invalid-token')).rejects.toThrow('Invalid token')
-    })
-  })
+      await expect(getCurrentUser('invalid-token')).rejects.toThrow(
+        'Invalid token',
+      );
+    });
+  });
 
   describe('refreshToken', () => {
     it('리프레시 토큰으로 새 토큰을 발급한다', async () => {
@@ -176,14 +181,14 @@ describe('auth.service', () => {
           },
         },
         error: null,
-      })
+      });
 
-      const tokens = await refreshToken('old-refresh-token')
+      const tokens = await refreshToken('old-refresh-token');
 
-      expect(tokens.accessToken).toBe('new-access-token')
-      expect(tokens.refreshToken).toBe('new-refresh-token')
-    })
-  })
+      expect(tokens.accessToken).toBe('new-access-token');
+      expect(tokens.refreshToken).toBe('new-refresh-token');
+    });
+  });
 
   describe('mapToUserProfile', () => {
     it('Supabase User를 UserProfile로 변환한다', () => {
@@ -191,31 +196,31 @@ describe('auth.service', () => {
         id: 'user-1',
         email: 'test@test.com',
         user_metadata: { name: '홍길동', avatar_url: 'https://img.com/a.png' },
-      }
+      };
 
-      const profile = mapToUserProfile(supabaseUser as any)
+      const profile = mapToUserProfile(supabaseUser as any);
 
       expect(profile).toEqual({
         id: 'user-1',
         email: 'test@test.com',
         name: '홍길동',
         profileImage: 'https://img.com/a.png',
-      })
-    })
+      });
+    });
 
     it('메타데이터가 없으면 null로 채운다', () => {
       const supabaseUser = {
         id: 'user-1',
         email: 'test@test.com',
         user_metadata: {},
-      }
+      };
 
-      const profile = mapToUserProfile(supabaseUser as any)
+      const profile = mapToUserProfile(supabaseUser as any);
 
-      expect(profile.name).toBeNull()
-      expect(profile.profileImage).toBeNull()
-    })
-  })
+      expect(profile.name).toBeNull();
+      expect(profile.profileImage).toBeNull();
+    });
+  });
 
   describe('googleLogin', () => {
     it('Google ID 토큰으로 로그인하고 유저와 토큰을 반환한다', async () => {
@@ -224,7 +229,10 @@ describe('auth.service', () => {
           user: {
             id: 'google-user-1',
             email: 'google@gmail.com',
-            user_metadata: { name: '구글유저', avatar_url: 'https://lh3.google.com/photo.jpg' },
+            user_metadata: {
+              name: '구글유저',
+              avatar_url: 'https://lh3.google.com/photo.jpg',
+            },
           },
           session: {
             access_token: 'google-access-token',
@@ -233,36 +241,38 @@ describe('auth.service', () => {
           },
         },
         error: null,
-      })
+      });
 
-      const result = await googleLogin('google-id-token-123')
+      const result = await googleLogin('google-id-token-123');
 
-      expect(result.user.email).toBe('google@gmail.com')
-      expect(result.user.name).toBe('구글유저')
-      expect(result.user.profileImage).toBe('https://lh3.google.com/photo.jpg')
-      expect(result.tokens.accessToken).toBe('google-access-token')
+      expect(result.user.email).toBe('google@gmail.com');
+      expect(result.user.name).toBe('구글유저');
+      expect(result.user.profileImage).toBe('https://lh3.google.com/photo.jpg');
+      expect(result.tokens.accessToken).toBe('google-access-token');
       expect(mockSignInWithIdToken).toHaveBeenCalledWith({
         provider: 'google',
         token: 'google-id-token-123',
-      })
-    })
+      });
+    });
 
     it('Supabase 에러 시 에러를 던진다', async () => {
       mockSignInWithIdToken.mockResolvedValue({
         data: { user: null, session: null },
         error: { message: 'Invalid ID token' },
-      })
+      });
 
-      await expect(googleLogin('invalid-token')).rejects.toThrow('Invalid ID token')
-    })
+      await expect(googleLogin('invalid-token')).rejects.toThrow(
+        'Invalid ID token',
+      );
+    });
 
     it('세션이 없으면 에러를 던진다', async () => {
       mockSignInWithIdToken.mockResolvedValue({
         data: { user: null, session: null },
         error: null,
-      })
+      });
 
-      await expect(googleLogin('token')).rejects.toThrow()
-    })
-  })
-})
+      await expect(googleLogin('token')).rejects.toThrow();
+    });
+  });
+});

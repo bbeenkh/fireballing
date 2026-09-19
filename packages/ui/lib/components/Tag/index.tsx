@@ -58,7 +58,9 @@ export function Tag({
 
   return (
     <Text
-      className={[intentStyles[resolvedIntent], sizeStyles[size], className].filter(Boolean).join(' ')}
+      className={[intentStyles[resolvedIntent], sizeStyles[size], className]
+        .filter(Boolean)
+        .join(' ')}
       {...props}
     >
       {children}

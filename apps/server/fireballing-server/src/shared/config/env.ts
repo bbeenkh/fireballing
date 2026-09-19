@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 /**
  * # envSchema
@@ -12,14 +12,14 @@ const envSchema = z.object({
   SUPABASE_ANON_KEY: z.string().min(1),
   SUPABASE_JWT_SECRET: z.string().min(1),
   PORT: z.coerce.number().default(8080),
-})
+});
 
 /**
  * # Env
  * ---
  * - 간단설명: 파싱된 환경변수 타입
  */
-export type Env = z.infer<typeof envSchema>
+export type Env = z.infer<typeof envSchema>;
 
 /**
  * # loadEnv
@@ -32,5 +32,5 @@ export type Env = z.infer<typeof envSchema>
  * console.log(env.SUPABASE_URL)
  */
 export function loadEnv(): Env {
-  return envSchema.parse(process.env)
+  return envSchema.parse(process.env);
 }

@@ -8,14 +8,18 @@ const colors = {
     { name: 'primary-amber', var: '--color-primary-amber', hex: '#ff9f1c' },
     { name: 'on-primary', var: '--color-on-primary', hex: '#0d0b0a' },
   ],
-  'Surface': [
+  Surface: [
     { name: 'background', var: '--color-background', hex: '#0d0b0a' },
     { name: 'surface', var: '--color-surface', hex: '#171311' },
     { name: 'surface-dim', var: '--color-surface-dim', hex: '#0d0b0a' },
     { name: 'on-surface', var: '--color-on-surface', hex: '#f4efef' },
-    { name: 'on-surface-variant', var: '--color-on-surface-variant', hex: '#9e928e' },
+    {
+      name: 'on-surface-variant',
+      var: '--color-on-surface-variant',
+      hex: '#9e928e',
+    },
   ],
-  'Border': [
+  Border: [
     { name: 'outline', var: '--color-outline', hex: '#261e1c' },
     { name: 'outline-variant', var: '--color-outline-variant', hex: '#261e1c' },
   ],
@@ -29,11 +33,11 @@ const colors = {
     { name: 'loss', var: '--color-loss', hex: '#ff1744' },
     { name: 'info', var: '--color-info', hex: '#2979ff' },
   ],
-  'Error': [
+  Error: [
     { name: 'error', var: '--color-error', hex: '#ff1744' },
     { name: 'on-error', var: '--color-on-error', hex: '#ffffff' },
   ],
-  'Legacy': [
+  Legacy: [
     { name: 'black', var: '--color-black', hex: '#0d0b0a' },
     { name: 'white', var: '--color-white', hex: '#f4efef' },
     { name: 'card', var: '--color-card', hex: '#171311' },
@@ -63,7 +67,9 @@ function Swatch({ name, hex }: { name: string; hex: string; var: string }) {
       <Text style={{ color: textColor, fontWeight: '600', fontSize: 14 }}>
         {name}
       </Text>
-      <Text style={{ color: textColor, fontSize: 12, opacity: 0.8, marginTop: 4 }}>
+      <Text
+        style={{ color: textColor, fontSize: 12, opacity: 0.8, marginTop: 4 }}
+      >
         {hex}
       </Text>
     </View>
@@ -86,7 +92,7 @@ export const AllColors: Story = {
             {group}
           </Text>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
-            {swatches.map((s) => (
+            {swatches.map(s => (
               <Swatch key={s.name} {...s} />
             ))}
           </View>

@@ -7,7 +7,7 @@
  * - expiresIn: access token 만료 시간 (초)
  */
 export interface AuthTokens {
-  accessToken: string
-  refreshToken: string
-  expiresIn: number
+  accessToken: string;
+  refreshToken: string;
+  expiresIn: number;
 }

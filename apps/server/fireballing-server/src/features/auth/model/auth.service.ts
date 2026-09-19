@@ -1,9 +1,16 @@
-import type { User } from '@supabase/supabase-js'
-import type { UserProfile } from '../../../entities/user/index.js'
-import type { SignupRequest, LoginRequest, AuthTokens } from '../types/auth.types.js'
-import { getSupabaseClient, createSupabaseClientWithToken } from '../../../shared/lib/supabase.js'
-import { HttpError } from '../../../shared/errors/http-error.js'
-import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error.js'
+import type { User } from '@supabase/supabase-js';
+import type { UserProfile } from '../../../entities/user/index.js';
+import type {
+  SignupRequest,
+  LoginRequest,
+  AuthTokens,
+} from '../types/auth.types.js';
+import {
+  getSupabaseClient,
+  createSupabaseClientWithToken,
+} from '../../../shared/lib/supabase.js';
+import { HttpError } from '../../../shared/errors/http-error.js';
+import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error.js';
 
 /**
  * # signup
@@ -16,26 +23,31 @@ import { SupabaseConnectionError } from '../../../shared/errors/supabase-connect
  * @example
  * const { user, tokens } = await signup({ email: 'a@b.com', password: '123456' })
  */
-export async function signup(data: SignupRequest): Promise<{ user: UserProfile; tokens: AuthTokens }> {
-  const supabase = getSupabaseClient()
+export async function signup(
+  data: SignupRequest,
+): Promise<{ user: UserProfile; tokens: AuthTokens }> {
+  const supabase = getSupabaseClient();
 
-  let result, error
+  let result, error;
   try {
     ({ data: result, error } = await supabase.auth.signUp({
       email: data.email,
       password: data.password,
       options: data.name ? { data: { name: data.name } } : undefined,
-    }))
+    }));
   } catch (e) {
-    if (SupabaseConnectionError.isConnectionError(e)) throw new SupabaseConnectionError(e)
-    throw e
+    if (SupabaseConnectionError.isConnectionError(e))
+      throw new SupabaseConnectionError(e);
+    throw e;
   }
 
   if (error) {
-    if (SupabaseConnectionError.isConnectionError(error)) throw new SupabaseConnectionError(error)
-    throw new HttpError(400, error.message)
+    if (SupabaseConnectionError.isConnectionError(error))
+      throw new SupabaseConnectionError(error);
+    throw new HttpError(400, error.message);
   }
-  if (!result.user || !result.session) throw new HttpError(400, '회원가입에 실패했습니다')
+  if (!result.user || !result.session)
+    throw new HttpError(400, '회원가입에 실패했습니다');
 
   return {
     user: mapToUserProfile(result.user),
@@ -44,7 +56,7 @@ export async function signup(data: SignupRequest): Promise<{ user: UserProfile; 
       refreshToken: result.session.refresh_token,
       expiresIn: result.session.expires_in,
     },
-  }
+  };
 }
 
 /**
@@ -57,25 +69,30 @@ export async function signup(data: SignupRequest): Promise<{ user: UserProfile; 
  * @example
  * const { user, tokens } = await login({ email: 'a@b.com', password: '123456' })
  */
-export async function login(data: LoginRequest): Promise<{ user: UserProfile; tokens: AuthTokens }> {
-  const supabase = getSupabaseClient()
+export async function login(
+  data: LoginRequest,
+): Promise<{ user: UserProfile; tokens: AuthTokens }> {
+  const supabase = getSupabaseClient();
 
-  let result, error
+  let result, error;
   try {
     ({ data: result, error } = await supabase.auth.signInWithPassword({
       email: data.email,
       password: data.password,
-    }))
+    }));
   } catch (e) {
-    if (SupabaseConnectionError.isConnectionError(e)) throw new SupabaseConnectionError(e)
-    throw e
+    if (SupabaseConnectionError.isConnectionError(e))
+      throw new SupabaseConnectionError(e);
+    throw e;
   }
 
   if (error) {
-    if (SupabaseConnectionError.isConnectionError(error)) throw new SupabaseConnectionError(error)
-    throw new HttpError(401, error.message)
+    if (SupabaseConnectionError.isConnectionError(error))
+      throw new SupabaseConnectionError(error);
+    throw new HttpError(401, error.message);
   }
-  if (!result.user || !result.session) throw new HttpError(401, '로그인에 실패했습니다')
+  if (!result.user || !result.session)
+    throw new HttpError(401, '로그인에 실패했습니다');
 
   return {
     user: mapToUserProfile(result.user),
@@ -84,7 +101,7 @@ export async function login(data: LoginRequest): Promise<{ user: UserProfile; to
       refreshToken: result.session.refresh_token,
       expiresIn: result.session.expires_in,
     },
-  }
+  };
 }
 
 /**
@@ -95,19 +112,21 @@ export async function login(data: LoginRequest): Promise<{ user: UserProfile; to
  * @param accessToken JWT access token
  */
 export async function logout(accessToken: string): Promise<void> {
-  const supabase = createSupabaseClientWithToken(accessToken)
+  const supabase = createSupabaseClientWithToken(accessToken);
 
-  let error
+  let error;
   try {
-    ({ error } = await supabase.auth.signOut())
+    ({ error } = await supabase.auth.signOut());
   } catch (e) {
-    if (SupabaseConnectionError.isConnectionError(e)) throw new SupabaseConnectionError(e)
-    throw e
+    if (SupabaseConnectionError.isConnectionError(e))
+      throw new SupabaseConnectionError(e);
+    throw e;
   }
 
   if (error) {
-    if (SupabaseConnectionError.isConnectionError(error)) throw new SupabaseConnectionError(error)
-    throw new HttpError(500, error.message)
+    if (SupabaseConnectionError.isConnectionError(error))
+      throw new SupabaseConnectionError(error);
+    throw new HttpError(500, error.message);
   }
 }
 
@@ -121,24 +140,28 @@ export async function logout(accessToken: string): Promise<void> {
  * @example
  * const user = await getCurrentUser('eyJ...')
  */
-export async function getCurrentUser(accessToken: string): Promise<UserProfile> {
-  const supabase = createSupabaseClientWithToken(accessToken)
+export async function getCurrentUser(
+  accessToken: string,
+): Promise<UserProfile> {
+  const supabase = createSupabaseClientWithToken(accessToken);
 
-  let data, error
+  let data, error;
   try {
-    ({ data, error } = await supabase.auth.getUser())
+    ({ data, error } = await supabase.auth.getUser());
   } catch (e) {
-    if (SupabaseConnectionError.isConnectionError(e)) throw new SupabaseConnectionError(e)
-    throw e
+    if (SupabaseConnectionError.isConnectionError(e))
+      throw new SupabaseConnectionError(e);
+    throw e;
   }
 
   if (error) {
-    if (SupabaseConnectionError.isConnectionError(error)) throw new SupabaseConnectionError(error)
-    throw new HttpError(401, error.message)
+    if (SupabaseConnectionError.isConnectionError(error))
+      throw new SupabaseConnectionError(error);
+    throw new HttpError(401, error.message);
   }
-  if (!data.user) throw new HttpError(401, '유저를 찾을 수 없습니다')
+  if (!data.user) throw new HttpError(401, '유저를 찾을 수 없습니다');
 
-  return mapToUserProfile(data.user)
+  return mapToUserProfile(data.user);
 }
 
 /**
@@ -149,27 +172,31 @@ export async function getCurrentUser(accessToken: string): Promise<UserProfile> 
  * @param token 리프레시 토큰
  */
 export async function refreshToken(token: string): Promise<AuthTokens> {
-  const supabase = getSupabaseClient()
+  const supabase = getSupabaseClient();
 
-  let data, error
+  let data, error;
   try {
-    ({ data, error } = await supabase.auth.refreshSession({ refresh_token: token }))
+    ({ data, error } = await supabase.auth.refreshSession({
+      refresh_token: token,
+    }));
   } catch (e) {
-    if (SupabaseConnectionError.isConnectionError(e)) throw new SupabaseConnectionError(e)
-    throw e
+    if (SupabaseConnectionError.isConnectionError(e))
+      throw new SupabaseConnectionError(e);
+    throw e;
   }
 
   if (error) {
-    if (SupabaseConnectionError.isConnectionError(error)) throw new SupabaseConnectionError(error)
-    throw new HttpError(401, error.message)
+    if (SupabaseConnectionError.isConnectionError(error))
+      throw new SupabaseConnectionError(error);
+    throw new HttpError(401, error.message);
   }
-  if (!data.session) throw new HttpError(401, '토큰 갱신에 실패했습니다')
+  if (!data.session) throw new HttpError(401, '토큰 갱신에 실패했습니다');
 
   return {
     accessToken: data.session.access_token,
     refreshToken: data.session.refresh_token,
     expiresIn: data.session.expires_in,
-  }
+  };
 }
 
 /**
@@ -183,25 +210,30 @@ export async function refreshToken(token: string): Promise<AuthTokens> {
  * @example
  * const { user, tokens } = await googleLogin('eyJ...')
  */
-export async function googleLogin(idToken: string): Promise<{ user: UserProfile; tokens: AuthTokens }> {
-  const supabase = getSupabaseClient()
+export async function googleLogin(
+  idToken: string,
+): Promise<{ user: UserProfile; tokens: AuthTokens }> {
+  const supabase = getSupabaseClient();
 
-  let data, error
+  let data, error;
   try {
     ({ data, error } = await supabase.auth.signInWithIdToken({
       provider: 'google',
       token: idToken,
-    }))
+    }));
   } catch (e) {
-    if (SupabaseConnectionError.isConnectionError(e)) throw new SupabaseConnectionError(e)
-    throw e
+    if (SupabaseConnectionError.isConnectionError(e))
+      throw new SupabaseConnectionError(e);
+    throw e;
   }
 
   if (error) {
-    if (SupabaseConnectionError.isConnectionError(error)) throw new SupabaseConnectionError(error)
-    throw new HttpError(401, error.message)
+    if (SupabaseConnectionError.isConnectionError(error))
+      throw new SupabaseConnectionError(error);
+    throw new HttpError(401, error.message);
   }
-  if (!data.user || !data.session) throw new HttpError(401, 'Google 로그인에 실패했습니다')
+  if (!data.user || !data.session)
+    throw new HttpError(401, 'Google 로그인에 실패했습니다');
 
   return {
     user: mapToUserProfile(data.user),
@@ -210,7 +242,7 @@ export async function googleLogin(idToken: string): Promise<{ user: UserProfile;
       refreshToken: data.session.refresh_token,
       expiresIn: data.session.expires_in,
     },
-  }
+  };
 }
 
 /**
@@ -226,5 +258,5 @@ export function mapToUserProfile(user: User): UserProfile {
     email: user.email!,
     name: (user.user_metadata?.['name'] as string) ?? null,
     profileImage: (user.user_metadata?.['avatar_url'] as string) ?? null,
-  }
+  };
 }

@@ -1,5 +1,5 @@
-import { createClient } from '@supabase/supabase-js'
-import { loadEnv } from '../config/env.js'
+import { createClient } from '@supabase/supabase-js';
+import { loadEnv } from '../config/env.js';
 
 /**
  * # getSupabaseClient
@@ -11,8 +11,8 @@ import { loadEnv } from '../config/env.js'
  * const { data } = await supabase.auth.signUp({ email, password })
  */
 export function getSupabaseClient() {
-  const env = loadEnv()
-  return createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY)
+  const env = loadEnv();
+  return createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY);
 }
 
 /**
@@ -28,10 +28,10 @@ export function getSupabaseClient() {
  * const { data } = await supabase.auth.getUser()
  */
 export function createSupabaseClientWithToken(accessToken: string) {
-  const env = loadEnv()
+  const env = loadEnv();
   return createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
     global: {
       headers: { Authorization: `Bearer ${accessToken}` },
     },
-  })
+  });
 }

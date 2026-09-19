@@ -1,4 +1,4 @@
-import type { UserProfile } from '../../entities/user/index.js'
+import type { UserProfile } from '../../entities/user/index.js';
 
 /**
  * # AppEnv
@@ -9,7 +9,7 @@ import type { UserProfile } from '../../entities/user/index.js'
  */
 export type AppEnv = {
   Variables: {
-    userId: string
-    user: UserProfile
-  }
-}
+    userId: string;
+    user: UserProfile;
+  };
+};

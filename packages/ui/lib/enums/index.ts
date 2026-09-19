@@ -1,14 +1,7 @@
 export type USAGE_TYPE_LIST = 'box' | 'line';
 
 export type SIZE_LIST =
-  | 'full'
-  | 'xxl'
-  | 'xl'
-  | 'lg'
-  | 'md'
-  | 'sm'
-  | 'xs'
-  | 'xxs';
+  'full' | 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
 
 export type TCssUnits = '%' | 'px' | 'rem' | 'em' | 'vw' | 'vh';
 

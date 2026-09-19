@@ -1,1 +1,1 @@
-export { portfolioRoutes } from './api/portfolio.routes.js'
+export { portfolioRoutes } from './api/portfolio.routes.js';

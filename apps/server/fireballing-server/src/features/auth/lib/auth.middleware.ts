@@ -1,5 +1,5 @@
-import { createMiddleware } from 'hono/factory'
-import { createSupabaseClientWithToken } from '../../../shared/lib/supabase.js'
+import { createMiddleware } from 'hono/factory';
+import { createSupabaseClientWithToken } from '../../../shared/lib/supabase.js';
 
 /**
  * # authMiddleware
@@ -11,20 +11,20 @@ import { createSupabaseClientWithToken } from '../../../shared/lib/supabase.js'
  * app.use('/protected/*', authMiddleware)
  */
 export const authMiddleware = createMiddleware(async (c, next) => {
-  const authHeader = c.req.header('Authorization')
+  const authHeader = c.req.header('Authorization');
 
   if (!authHeader?.startsWith('Bearer ')) {
-    return c.json({ success: false, error: '인증 토큰이 필요합니다' }, 401)
+    return c.json({ success: false, error: '인증 토큰이 필요합니다' }, 401);
   }
 
-  const token = authHeader.slice(7)
-  const supabase = createSupabaseClientWithToken(token)
-  const { data, error } = await supabase.auth.getUser()
+  const token = authHeader.slice(7);
+  const supabase = createSupabaseClientWithToken(token);
+  const { data, error } = await supabase.auth.getUser();
 
   if (error || !data.user) {
-    return c.json({ success: false, error: '유효하지 않은 토큰입니다' }, 401)
+    return c.json({ success: false, error: '유효하지 않은 토큰입니다' }, 401);
   }
 
-  c.set('userId' as any, data.user.id)
-  await next()
-})
+  c.set('userId' as any, data.user.id);
+  await next();
+});

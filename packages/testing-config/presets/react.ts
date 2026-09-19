@@ -1,5 +1,5 @@
-import { defineConfig, type Plugin } from 'vitest/config'
-import react from '@vitejs/plugin-react'
+import { defineConfig, type Plugin } from 'vitest/config';
+import react from '@vitejs/plugin-react';
 
 /**
  * CSS와 SVG 파일을 테스트 환경에서 빈/모의 모듈로 처리하는 플러그인
@@ -9,22 +9,22 @@ import react from '@vitejs/plugin-react'
 const mockStaticAssetsPlugin: Plugin = {
   name: 'mock-static-assets',
   resolveId(id: string) {
-    if (id.endsWith('.css')) return '\0mock-css'
-    const cleanId = id.split('?')[0] ?? id
-    if (cleanId.endsWith('.svg')) return '\0mock-svg'
+    if (id.endsWith('.css')) return '\0mock-css';
+    const cleanId = id.split('?')[0] ?? id;
+    if (cleanId.endsWith('.svg')) return '\0mock-svg';
   },
   load(id: string) {
-    if (id === '\0mock-css') return ''
+    if (id === '\0mock-css') return '';
     if (id === '\0mock-svg') {
       return `
         import React from 'react';
         const SvgMock = (props) => React.createElement('svg', props);
         export default SvgMock;
         export const ReactComponent = SvgMock;
-      `
+      `;
     }
   },
-}
+};
 
 /**
  * # defineReactConfig
@@ -44,19 +44,23 @@ const mockStaticAssetsPlugin: Plugin = {
  */
 export function defineReactConfig(
   overrides: {
-    test?: { setupFiles?: string | string[]; [key: string]: unknown }
-    plugins?: Plugin[]
-    [key: string]: unknown
-  } = {}
+    test?: { setupFiles?: string | string[]; [key: string]: unknown };
+    plugins?: Plugin[];
+    [key: string]: unknown;
+  } = {},
 ): ReturnType<typeof defineConfig> {
-  const { test: overrideTest, plugins: extraPlugins = [], ...restOverrides } = overrides
-  const { setupFiles: extraSetup, ...restTest } = overrideTest ?? {}
+  const {
+    test: overrideTest,
+    plugins: extraPlugins = [],
+    ...restOverrides
+  } = overrides;
+  const { setupFiles: extraSetup, ...restTest } = overrideTest ?? {};
 
   const extraSetupArray = extraSetup
     ? Array.isArray(extraSetup)
       ? extraSetup
       : [extraSetup]
-    : []
+    : [];
 
   return defineConfig({
     plugins: [react(), mockStaticAssetsPlugin, ...extraPlugins],
@@ -68,5 +72,5 @@ export function defineReactConfig(
       exclude: ['**/node_modules/**', '**/dist/**'],
       ...restTest,
     },
-  })
+  });
 }

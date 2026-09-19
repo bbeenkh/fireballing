@@ -31,7 +31,9 @@ export const Hero: Story = {
     <Card variant="hero">
       <Typography variant="h2">배당 수익률</Typography>
       <Typography variant="mono">+3.2%</Typography>
-      <Text className="text-caption text-on-surface-variant">연간 배당금 기준</Text>
+      <Text className="text-caption text-on-surface-variant">
+        연간 배당금 기준
+      </Text>
     </Card>
   ),
 };

@@ -17,18 +17,28 @@ type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 };
 
 export const View = React.forwardRef<HTMLDivElement, ViewProps>(
-  ({ children, ...props }, ref) => <div ref={ref} data-rn-view="" {...props}>{children}</div>,
+  ({ children, ...props }, ref) => (
+    <div ref={ref} data-rn-view="" {...props}>
+      {children}
+    </div>
+  ),
 );
 View.displayName = 'View';
 
 export const Text = React.forwardRef<HTMLSpanElement, TextProps>(
-  ({ children, ...props }, ref) => <span ref={ref} {...props}>{children}</span>,
+  ({ children, ...props }, ref) => (
+    <span ref={ref} {...props}>
+      {children}
+    </span>
+  ),
 );
 Text.displayName = 'Text';
 
 export const Pressable = React.forwardRef<HTMLButtonElement, PressableProps>(
   ({ children, onPress, ...props }, ref) => (
-    <button ref={ref} type="button" onClick={onPress} {...props}>{children}</button>
+    <button ref={ref} type="button" onClick={onPress} {...props}>
+      {children}
+    </button>
   ),
 );
 Pressable.displayName = 'Pressable';
@@ -38,11 +48,23 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     <input
       ref={ref}
       {...props}
-      style={{ ...((props.style as React.CSSProperties) || {}), ...(placeholderTextColor ? { '--placeholder-color': placeholderTextColor } as React.CSSProperties : {}) }}
+      style={{
+        ...((props.style as React.CSSProperties) || {}),
+        ...(placeholderTextColor
+          ? ({
+              '--placeholder-color': placeholderTextColor,
+            } as React.CSSProperties)
+          : {}),
+      }}
     />
   ),
 );
 TextInput.displayName = 'TextInput';
 
 // re-export types
-export type { ViewProps, TextProps, PressableProps as PressableProps, TextInputProps };
+export type {
+  ViewProps,
+  TextProps,
+  PressableProps as PressableProps,
+  TextInputProps,
+};

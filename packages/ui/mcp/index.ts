@@ -55,7 +55,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
           },
           target_dir: {
             type: 'string',
-            description: '타겟 프로젝트의 컴포넌트 폴더 절대경로 (예: /Users/me/my-app/src/components)',
+            description:
+              '타겟 프로젝트의 컴포넌트 폴더 절대경로 (예: /Users/me/my-app/src/components)',
           },
         },
         required: ['name', 'target_dir'],
@@ -64,7 +65,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
   ],
 }));
 
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
+server.setRequestHandler(CallToolRequestSchema, async request => {
   const { name, arguments: args } = request.params;
 
   if (name === 'list_components') {
@@ -73,7 +74,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       .map(([key, entry]) => `• **${key}** — ${entry.description}`)
       .join('\n');
     return {
-      content: [{ type: 'text', text: `사용 가능한 컴포넌트 (${Object.keys(registry).length}개):\n\n${list}` }],
+      content: [
+        {
+          type: 'text',
+          text: `사용 가능한 컴포넌트 (${Object.keys(registry).length}개):\n\n${list}`,
+        },
+      ],
     };
   }
 
@@ -92,7 +98,11 @@ function getDestPath(srcRelative: string, targetDir: string): string {
     return path.join(targetDir, srcRelative.slice('lib/components/'.length));
   }
   if (srcRelative.startsWith('lib/utils/')) {
-    return path.join(targetDir, 'utils', srcRelative.slice('lib/utils/'.length));
+    return path.join(
+      targetDir,
+      'utils',
+      srcRelative.slice('lib/utils/'.length),
+    );
   }
   return path.join(targetDir, path.basename(srcRelative));
 }
@@ -117,7 +127,7 @@ function handleAddComponent(args: { name: string; target_dir: string }) {
 
   // 1. 컴포넌트 조회 (case-insensitive)
   const key = Object.keys(registry).find(
-    (k) => k.toLowerCase() === args.name.toLowerCase(),
+    k => k.toLowerCase() === args.name.toLowerCase(),
   );
   if (!key) {
     const available = Object.keys(registry).join(', ');
@@ -190,7 +200,7 @@ function handleAddComponent(args: { name: string; target_dir: string }) {
           `✅ ${key} 컴포넌트 설치 완료`,
           '',
           '**복사된 파일:**',
-          ...copiedFiles.map((f) => `  - ${f}`),
+          ...copiedFiles.map(f => `  - ${f}`),
           '',
           `**의존성:** ${installResult}`,
           noteSection,

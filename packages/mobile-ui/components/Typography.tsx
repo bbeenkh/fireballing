@@ -13,13 +13,7 @@ import { twMerge } from 'tailwind-merge';
  * - label-sm = 작은 라벨 (12px/500)
  */
 type TypographyVariant =
-  | 'h1'
-  | 'h2'
-  | 'h3'
-  | 'body'
-  | 'caption'
-  | 'label-md'
-  | 'label-sm';
+  'h1' | 'h2' | 'h3' | 'body' | 'caption' | 'label-md' | 'label-sm';
 
 interface ITypographyProps extends TextProps {
   /** 타이포그래피 스타일 variant */

@@ -1,9 +1,9 @@
-import dayjs from "dayjs"
+import dayjs from 'dayjs';
 import { isNil, isNaN } from 'lodash-es';
 
 /**
  * 현재 날짜 획득 (dayjs)
- * @returns 
+ * @returns
  */
 export function getCurDate() {
   return '수정됨';
@@ -25,7 +25,6 @@ export function getCurDate() {
  * getSafeNumber("abc")     // 0
  */
 export function getSafeNumber(num: number | string | null | undefined) {
-
   if (isNil(num)) {
     return 0;
   }
@@ -56,15 +55,18 @@ export function getSafeNumber(num: number | string | null | undefined) {
  * getFormattedNumberStr(null, { placeholder: 0 })      // 0
  * getFormattedNumberStr(50, { prefix: "$", suffix: "%" }) // "$50%"
  */
-export function getFormattedNumberStr(num: number | null | undefined, options: {
-  placeholder?: number;
-  suffix?: string;
-  prefix?: string;
-} = {
+export function getFormattedNumberStr(
+  num: number | null | undefined,
+  options: {
+    placeholder?: number;
+    suffix?: string;
+    prefix?: string;
+  } = {
     placeholder: 0,
-  }) {
+  },
+) {
   if (isNil(num)) {
     return options.placeholder ?? '';
   }
-  return `${options.prefix ?? ''}${num}${options.suffix ?? ''}`
+  return `${options.prefix ?? ''}${num}${options.suffix ?? ''}`;
 }

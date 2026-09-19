@@ -24,7 +24,10 @@ describe('Chip', () => {
   describe('selected 상태', () => {
     it('selected=true 시 data-selected 속성이 적용된다', () => {
       render(<Chip selected>KRW</Chip>);
-      expect(screen.getByRole('button')).toHaveAttribute('data-selected', 'true');
+      expect(screen.getByRole('button')).toHaveAttribute(
+        'data-selected',
+        'true',
+      );
     });
 
     it('selected=false 시 data-selected가 없다', () => {

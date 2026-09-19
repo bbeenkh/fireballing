@@ -1,3 +1,3 @@
-import { defineNodeConfig } from '@fblg/testing-config'
+import { defineNodeConfig } from '@fblg/testing-config';
 
-export default defineNodeConfig()
+export default defineNodeConfig();

@@ -1,8 +1,8 @@
-import { Hono } from 'hono'
-import { cors } from 'hono/cors'
-import { errorHandler } from './middleware/error-handler.js'
-import { authRoutes } from '../features/auth/index.js'
-import { portfolioRoutes } from '../features/portfolio/index.js'
+import { Hono } from 'hono';
+import { cors } from 'hono/cors';
+import { errorHandler } from './middleware/error-handler.js';
+import { authRoutes } from '../features/auth/index.js';
+import { portfolioRoutes } from '../features/portfolio/index.js';
 
 /**
  * # app
@@ -14,27 +14,30 @@ import { portfolioRoutes } from '../features/portfolio/index.js'
  * import { app } from './app/index.js'
  * serve({ fetch: app.fetch, port: 3001 })
  */
-export const app = new Hono()
+export const app = new Hono();
 
-app.onError(errorHandler)
+app.onError(errorHandler);
 
-app.use('/*', cors({
-  origin: 'http://localhost:3000',
-  credentials: true,
-}))
+app.use(
+  '/*',
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  }),
+);
 
 // 기능 라우트 마운트
-app.route('/api/auth', authRoutes)
-app.route('/api/portfolio', portfolioRoutes)
+app.route('/api/auth', authRoutes);
+app.route('/api/portfolio', portfolioRoutes);
 
 /**
  * # GET /
  * ---
  * - 간단설명: 헬스체크 엔드포인트
  */
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.get('/', c => {
+  return c.text('Hello Hono!');
+});
 
 /**
  * # GET /api/hello
@@ -43,6 +46,6 @@ app.get('/', (c) => {
  * ---
  * @example GET /api/hello → { "message": "Hello World!" }
  */
-app.get('/api/hello', (c) => {
-  return c.json({ message: 'Hello World!' })
-})
+app.get('/api/hello', c => {
+  return c.json({ message: 'Hello World!' });
+});

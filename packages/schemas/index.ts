@@ -5,10 +5,10 @@ export {
   type SignupRequest,
   type LoginRequest,
   type RefreshRequest,
-} from './auth.js'
+} from './auth.js';
 export {
   createPortfolioSchema,
   updatePortfolioSchema,
   type CreatePortfolioRequest,
   type UpdatePortfolioRequest,
-} from './portfolio.js'
+} from './portfolio.js';

@@ -1,5 +1,11 @@
 import React from 'react';
-import { TextInput, View, Text, type TextInputProps, type ViewProps } from 'react-native';
+import {
+  TextInput,
+  View,
+  Text,
+  type TextInputProps,
+  type ViewProps,
+} from 'react-native';
 import { twMerge } from 'tailwind-merge';
 
 type InputVariant = 'default' | 'filled';
@@ -14,7 +20,8 @@ interface IInputProps extends TextInputProps {
 }
 
 const variantStyles: Record<InputVariant, string> = {
-  default: 'bg-surface border border-outline rounded-lg px-md py-sm text-body text-on-surface',
+  default:
+    'bg-surface border border-outline rounded-lg px-md py-sm text-body text-on-surface',
   filled: 'bg-outline/30 rounded-lg px-md py-sm text-body text-on-surface',
 };
 
@@ -46,7 +53,9 @@ export function Input({
         <Text className="text-label-sm text-on-surface-variant">{label}</Text>
       )}
       <TextInput
-        className={[variantStyles[variant], inputClassName].filter(Boolean).join(' ')}
+        className={[variantStyles[variant], inputClassName]
+          .filter(Boolean)
+          .join(' ')}
         placeholderTextColor="#9e928e"
         {...props}
       />

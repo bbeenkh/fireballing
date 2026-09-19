@@ -17,7 +17,10 @@ describe('Tag', () => {
   describe('intent 자동감지', () => {
     it('"+"로 시작하는 텍스트는 profit intent가 적용된다', () => {
       render(<Tag>+12.4%</Tag>);
-      expect(screen.getByText('+12.4%')).toHaveAttribute('data-intent', 'profit');
+      expect(screen.getByText('+12.4%')).toHaveAttribute(
+        'data-intent',
+        'profit',
+      );
     });
 
     it('"-"로 시작하는 텍스트는 loss intent가 적용된다', () => {
@@ -27,12 +30,22 @@ describe('Tag', () => {
 
     it('부호 없는 텍스트는 neutral intent가 적용된다', () => {
       render(<Tag>0.00%</Tag>);
-      expect(screen.getByText('0.00%')).toHaveAttribute('data-intent', 'neutral');
+      expect(screen.getByText('0.00%')).toHaveAttribute(
+        'data-intent',
+        'neutral',
+      );
     });
 
     it('문자열이 아닌 children은 neutral intent가 적용된다', () => {
-      render(<Tag><span>복합</span></Tag>);
-      expect(screen.getByText('복합').closest('[data-intent]')).toHaveAttribute('data-intent', 'neutral');
+      render(
+        <Tag>
+          <span>복합</span>
+        </Tag>,
+      );
+      expect(screen.getByText('복합').closest('[data-intent]')).toHaveAttribute(
+        'data-intent',
+        'neutral',
+      );
     });
   });
 

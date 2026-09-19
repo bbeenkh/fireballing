@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
 /**
  * # signupSchema
@@ -13,7 +13,7 @@ export const signupSchema = z.object({
   password: z.string().min(6),
   /** 사용자 이름 (선택) */
   name: z.string().min(1).optional(),
-})
+});
 
 /**
  * # loginSchema
@@ -25,7 +25,7 @@ export const loginSchema = z.object({
   email: z.string().email(),
   /** 비밀번호 */
   password: z.string().min(1),
-})
+});
 
 /**
  * # refreshSchema
@@ -35,8 +35,8 @@ export const loginSchema = z.object({
 export const refreshSchema = z.object({
   /** 리프레시 토큰 */
   refreshToken: z.string().min(1),
-})
+});
 
-export type SignupRequest = z.infer<typeof signupSchema>
-export type LoginRequest = z.infer<typeof loginSchema>
-export type RefreshRequest = z.infer<typeof refreshSchema>
+export type SignupRequest = z.infer<typeof signupSchema>;
+export type LoginRequest = z.infer<typeof loginSchema>;
+export type RefreshRequest = z.infer<typeof refreshSchema>;

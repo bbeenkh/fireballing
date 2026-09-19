@@ -1,4 +1,4 @@
-import { defineNodeConfig } from '@fblg/testing-config'
+import { defineNodeConfig } from '@fblg/testing-config';
 
 export default defineNodeConfig({
   test: {
@@ -6,4 +6,4 @@ export default defineNodeConfig({
     exclude: ['**/node_modules/**'],
     passWithNoTests: true,
   },
-})
+});

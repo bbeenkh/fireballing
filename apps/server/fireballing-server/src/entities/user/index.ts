@@ -1,1 +1,1 @@
-export type { UserProfile } from '@fblg/types'
+export type { UserProfile } from '@fblg/types';

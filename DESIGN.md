@@ -142,16 +142,20 @@ The design system utilizes a **Rounded** corner strategy with the following conv
 ## Components
 
 ### Buttons
+
 - **Primary:** Solid Magma Core (#FF5A26) background, Void Space (#0D0B0A) text, bold uppercase. 8px rounded, 44px height.
 - **Secondary:** Transparent with 1px Magma Core border, Magma Core text.
 - **Ghost:** Transparent background with Cool Charcoal (#9E928E) text.
 
 ### Cards
+
 Cards use Ember Surface (#171311) background with 1px Ashes Border (#261E1C), 16px rounding, and subtle warm glow shadow.
 
 ### Status Badges
+
 - **Positive:** 10% opacity Yield Gain background with solid Yield Gain text.
 - **Negative:** 10% opacity Ember Loss background with solid Ember Loss text.
 
 ### Progress Bars
+
 Dark track (Void Space #0D0B0A with Ashes Border), gradient fill from Molten Lava (#FF2E00) to Magma Core (#FF5A26).

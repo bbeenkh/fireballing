@@ -60,6 +60,7 @@ class APIService<Q extends Record<string, any>> {
 ```
 
 **핵심 특징:**
+
 - `$axios` — protected이므로 서비스 메서드에서 직접 사용
 - `queries` — 데코레이터 기반으로 자동 생성된 queryKey 팩토리 모음
 - 프록시 모드 지원 (`NEXT_PUBLIC_USE_API_PROXY`)
@@ -108,31 +109,40 @@ export interface IAgencyActivationListReq {
   perPage?: number;
 }
 
-export interface IAgencyActivationListRes extends IPaginationInfo, IResponseInfo {
+export interface IAgencyActivationListRes
+  extends IPaginationInfo, IResponseInfo {
   data: IActivation[];
 }
 
 // ② 서비스 클래스: APIService 상속
 class AgencyContractService extends APIService<{}> {
   // ③ 메서드: async, 파라미터 단일 객체, return res.data
-  async activationList(params: IAgencyActivationListReq): Promise<IAgencyActivationListRes> {
-    const res = await this.$axios.get<IAgencyActivationListRes>('/api/agency/activations', { params });
+  async activationList(
+    params: IAgencyActivationListReq,
+  ): Promise<IAgencyActivationListRes> {
+    const res = await this.$axios.get<IAgencyActivationListRes>(
+      '/api/agency/activations',
+      { params },
+    );
     return res.data;
   }
 
   // 동적 경로: 구조분해로 path param 분리
   async activationDetail({ activationId }: IAgencyActivationDetailReq) {
     const res = await this.$axios.get<IAgencyActivationDetailRes>(
-      `/api/agency/activations/${activationId}`
+      `/api/agency/activations/${activationId}`,
     );
     return res.data;
   }
 
   // POST: path param을 구조분해, 나머지를 body로
-  async rejectActivation({ activationId, ...payload }: IAgencyActivationRejectReq) {
+  async rejectActivation({
+    activationId,
+    ...payload
+  }: IAgencyActivationRejectReq) {
     const res = await this.$axios.post<IAgencyActivationRejectRes>(
       `/api/agency/activations/${activationId}/reject`,
-      payload
+      payload,
     );
     return res.data;
   }
@@ -143,11 +153,11 @@ export default AgencyContractService;
 
 ### 3-2. Interface 네이밍 규칙
 
-| 구분 | 네이밍 | 예시 |
-|------|--------|------|
-| 요청 파라미터 | `I[Name]Req` | `IAgencyActivationListReq` |
-| 응답 타입 | `I[Name]Res` | `IAgencyActivationListRes` |
-| 요청/응답 단일 인터페이스 | 쪼개지 않고 단일 작성 | — |
+| 구분                      | 네이밍                | 예시                       |
+| ------------------------- | --------------------- | -------------------------- |
+| 요청 파라미터             | `I[Name]Req`          | `IAgencyActivationListReq` |
+| 응답 타입                 | `I[Name]Res`          | `IAgencyActivationListRes` |
+| 요청/응답 단일 인터페이스 | 쪼개지 않고 단일 작성 | —                          |
 
 ### 3-3. 메서드 작성 규칙
 
@@ -192,7 +202,7 @@ export const agencyContractQueryFactory = createQueryKeys('contract-agency', {
   detail: ({ activationId }: { activationId: number }) => ({
     queryKey: [activationId],
     queryFn: () => AgencyContractService.activationDetail({ activationId }),
-    staleTime: Infinity,  // queryOptions도 같이 포함 가능
+    staleTime: Infinity, // queryOptions도 같이 포함 가능
   }),
 });
 ```
@@ -218,7 +228,10 @@ export const inventoryQueryKeyFactory = createQueryKeyStore({
     grouppedByDevice: (params: IGrouppedInventoriesByDeviceReq) => ({
       queryKey: ['inventoryGrouppedByDevice', params],
       queryFn: (paginationParams: Record<string, any>) =>
-        InventoryService.fetchGrouppedInventoriesByDevice({ ...params, ...paginationParams }),
+        InventoryService.fetchGrouppedInventoriesByDevice({
+          ...params,
+          ...paginationParams,
+        }),
     }),
   },
   // 도메인 2
@@ -233,9 +246,9 @@ export const inventoryQueryKeyFactory = createQueryKeyStore({
 
 ### 4-3. createQueryKeys vs createQueryKeyStore 선택 기준
 
-| 상황 | 선택 |
-|------|------|
-| 단일 서비스, 단순 쿼리 | `createQueryKeys` |
+| 상황                           | 선택                  |
+| ------------------------------ | --------------------- |
+| 단일 서비스, 단순 쿼리         | `createQueryKeys`     |
 | 복수 서비스 / 도메인 분류 필요 | `createQueryKeyStore` |
 
 ---
@@ -261,14 +274,16 @@ const { data, isLoading } = useQuery({
 // 재사용 가능한 무한 스크롤 wrapper
 // queryFactory의 queryFn을 그대로 활용
 const factory = inventoryQueryKeyFactory.inventory.list({ carrier: 'SKT' });
-const { flattenData, totalCount, isLoading, fetchNextPage } = useInfiniteTableQuery({
-  params: { carrier: 'SKT' },
-  queryKey: factory.queryKey,
-  queryFn: factory.queryFn,
-});
+const { flattenData, totalCount, isLoading, fetchNextPage } =
+  useInfiniteTableQuery({
+    params: { carrier: 'SKT' },
+    queryKey: factory.queryKey,
+    queryFn: factory.queryFn,
+  });
 ```
 
 내부적으로 `useInfiniteQuery` 사용:
+
 - `pageParam` 기반으로 자동 페이지네이션
 - `meta.last_page >= meta.current_page` 로 마지막 페이지 판단
 - `flattenData` — 모든 페이지 flat하게 합산
@@ -310,10 +325,12 @@ const { mutateAsync } = useMutation({
   mutationFn: (payload: IAgencyActivationRejectReq) =>
     AgencyContractService.rejectActivation(payload),
   onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: agencyContractQueryFactory.list._def });
+    queryClient.invalidateQueries({
+      queryKey: agencyContractQueryFactory.list._def,
+    });
     toast.success('거절되었습니다.');
   },
-  onError: (error) => {
+  onError: error => {
     toast.error(parseErrorMessage(error));
   },
 });
@@ -363,6 +380,7 @@ export const inventoryHandlers = [
 ```
 
 **Mock 작성 원칙:**
+
 - 모듈 레벨 변수로 상태 유지 (POST/PATCH 변경 반영)
 - 실제 API 응답 shape 동일하게 유지
 - 성공 / 실패(404, 400, 500) 케이스 각각 작성
@@ -387,7 +405,12 @@ interface IPaginationInfo {
     links: { url: string; label: string; active: boolean }[];
     path: string;
   };
-  links: { first: string; last: string; prev: string | null; next: string | null };
+  links: {
+    first: string;
+    last: string;
+    prev: string | null;
+    next: string | null;
+  };
 }
 
 // 생성/수정/삭제 응답에 사용

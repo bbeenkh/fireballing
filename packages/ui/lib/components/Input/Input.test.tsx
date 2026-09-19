@@ -21,13 +21,19 @@ describe('Input', () => {
     it('onChange가 호출된다', () => {
       const onChange = vi.fn();
       render(<Input onChange={onChange} />);
-      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'abc' } });
+      fireEvent.change(screen.getByRole('textbox'), {
+        target: { value: 'abc' },
+      });
       expect(onChange).toHaveBeenCalledTimes(1);
     });
 
     it('래퍼 div에 relative flex items-center 클래스가 적용된다', () => {
       const { container } = render(<Input />);
-      expect(container.firstChild).toHaveClass('relative', 'flex', 'items-center');
+      expect(container.firstChild).toHaveClass(
+        'relative',
+        'flex',
+        'items-center',
+      );
     });
 
     it('input에 w-full outline-none 클래스가 적용된다', () => {
@@ -72,12 +78,16 @@ describe('Input', () => {
 
     it('prefix 없으면 prefix 래퍼가 없다', () => {
       const { container } = render(<Input />);
-      expect(container.querySelector('[class*="left-2"]')).not.toBeInTheDocument();
+      expect(
+        container.querySelector('[class*="left-2"]'),
+      ).not.toBeInTheDocument();
     });
 
     it('suffix 없으면 suffix 래퍼가 없다', () => {
       const { container } = render(<Input />);
-      expect(container.querySelector('[class*="right-2"]')).not.toBeInTheDocument();
+      expect(
+        container.querySelector('[class*="right-2"]'),
+      ).not.toBeInTheDocument();
     });
   });
 
@@ -115,7 +125,9 @@ describe('Input', () => {
 
   describe('styleClass prop', () => {
     it('styleClass.root이 래퍼에 적용된다', () => {
-      const { container } = render(<Input styleClass={{ root: 'border rounded' }} />);
+      const { container } = render(
+        <Input styleClass={{ root: 'border rounded' }} />,
+      );
       expect(container.firstChild).toHaveClass('border', 'rounded');
     });
 
@@ -126,7 +138,10 @@ describe('Input', () => {
 
     it('styleClass.prefix가 prefix 래퍼에 적용된다', () => {
       const { container } = render(
-        <Input prefix={<span>P</span>} styleClass={{ prefix: 'text-gray-400' }} />,
+        <Input
+          prefix={<span>P</span>}
+          styleClass={{ prefix: 'text-gray-400' }}
+        />,
       );
       const prefixWrapper = container.querySelector('[class*="left-2"]');
       expect(prefixWrapper).toHaveClass('text-gray-400');
@@ -134,7 +149,10 @@ describe('Input', () => {
 
     it('styleClass.suffix가 suffix 래퍼에 적용된다', () => {
       const { container } = render(
-        <Input suffix={<span>S</span>} styleClass={{ suffix: 'text-gray-500' }} />,
+        <Input
+          suffix={<span>S</span>}
+          styleClass={{ suffix: 'text-gray-500' }}
+        />,
       );
       const suffixWrapper = container.querySelector('[class*="right-2"]');
       expect(suffixWrapper).toHaveClass('text-gray-500');

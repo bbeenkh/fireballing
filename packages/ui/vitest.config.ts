@@ -1,4 +1,4 @@
-import { defineReactConfig } from '@fblg/testing-config'
+import { defineReactConfig } from '@fblg/testing-config';
 
 export default defineReactConfig({
   test: {
@@ -9,4 +9,4 @@ export default defineReactConfig({
       '**/lib/components/original/**',
     ],
   },
-})
+});

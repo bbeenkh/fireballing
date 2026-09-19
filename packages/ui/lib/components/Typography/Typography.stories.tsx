@@ -8,7 +8,16 @@ const meta: Meta<typeof Typography> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['h1', 'h2', 'h3', 'body', 'caption', 'mono', 'label-md', 'label-sm'],
+      options: [
+        'h1',
+        'h2',
+        'h3',
+        'body',
+        'caption',
+        'mono',
+        'label-md',
+        'label-sm',
+      ],
     },
   },
 };

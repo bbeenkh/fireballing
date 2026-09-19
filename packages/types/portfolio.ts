@@ -9,27 +9,27 @@
  */
 export interface IPortfolioRecord {
   /** 고유 식별자 (UUID) */
-  id: string
+  id: string;
   /** 작성자 ID (Supabase Auth user.id) */
-  userId: string
+  userId: string;
   /** 프로젝트 제목 */
-  title: string
+  title: string;
   /** 프로젝트 설명 */
-  description: string
+  description: string;
   /** 사용 기술 스택 */
-  techStack: string[]
+  techStack: string[];
   /** 썸네일 이미지 URL */
-  thumbnailUrl: string | null
+  thumbnailUrl: string | null;
   /** 프로젝트 URL */
-  projectUrl: string | null
+  projectUrl: string | null;
   /** GitHub 저장소 URL */
-  githubUrl: string | null
+  githubUrl: string | null;
   /** 프로젝트 시작일 (ISO 8601) */
-  startDate: string
+  startDate: string;
   /** 프로젝트 종료일 (ISO 8601, 진행중이면 null) */
-  endDate: string | null
+  endDate: string | null;
   /** 생성일시 */
-  createdAt: string
+  createdAt: string;
   /** 수정일시 */
-  updatedAt: string
+  updatedAt: string;
 }

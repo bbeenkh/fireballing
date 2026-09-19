@@ -58,12 +58,20 @@ describe('Typography', () => {
 
   describe('as prop (태그 오버라이드)', () => {
     it('as="div"로 h1 variant의 태그를 오버라이드할 수 있다', () => {
-      render(<Typography variant="h1" as="div">제목</Typography>);
+      render(
+        <Typography variant="h1" as="div">
+          제목
+        </Typography>,
+      );
       expect(screen.getByText('제목').tagName).toBe('DIV');
     });
 
     it('as="strong"으로 body variant의 태그를 오버라이드할 수 있다', () => {
-      render(<Typography variant="body" as="strong">강조</Typography>);
+      render(
+        <Typography variant="body" as="strong">
+          강조
+        </Typography>,
+      );
       expect(screen.getByText('강조').tagName).toBe('STRONG');
     });
   });

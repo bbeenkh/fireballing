@@ -10,13 +10,13 @@
  * throw new SupabaseConnectionError(error)
  */
 export class SupabaseConnectionError extends Error {
-  public readonly statusCode = 503
+  public readonly statusCode = 503;
 
   constructor(originalError?: unknown) {
-    super('supabase connection error')
-    this.name = 'SupabaseConnectionError'
+    super('supabase connection error');
+    this.name = 'SupabaseConnectionError';
     if (originalError instanceof Error) {
-      this.cause = originalError
+      this.cause = originalError;
     }
   }
 
@@ -29,16 +29,19 @@ export class SupabaseConnectionError extends Error {
    */
   static isConnectionError(error: unknown): boolean {
     if (error instanceof TypeError && error.message === 'fetch failed') {
-      return true
+      return true;
     }
     if (error instanceof Error) {
       if (error.message.includes('fetch failed')) {
-        return true
+        return true;
       }
-      if (error.cause && SupabaseConnectionError.isConnectionError(error.cause)) {
-        return true
+      if (
+        error.cause &&
+        SupabaseConnectionError.isConnectionError(error.cause)
+      ) {
+        return true;
       }
     }
-    return false
+    return false;
   }
 }
