@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "android:local": "APP_ENV=local react-native run-android",
+    "android:local": "APP_ENV=dev react-native run-android",
     "android:dev": "APP_ENV=dev react-native run-android",
     "android:prod": "APP_ENV=prod react-native run-android",
     "ios": "react-native run-ios",
-    "ios:local": "APP_ENV=local react-native run-ios",
+    "ios:local": "APP_ENV=dev react-native run-ios",
     "ios:dev": "APP_ENV=dev react-native run-ios",
     "ios:prod": "APP_ENV=prod react-native run-ios",
     "check-types": "tsc --noEmit",
