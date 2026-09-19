@@ -41,9 +41,7 @@ export const Default: Story = {
               <Text className="text-label-sm font-medium text-[#9e928e]">
                 내 평단가 기준 분배수익률
               </Text>
-              <Text className="text-h3 font-bold text-[#ff5a26]">
-                12.4%
-              </Text>
+              <Text className="text-h3 font-bold text-[#ff5a26]">12.4%</Text>
             </View>
             <View className="gap-xs items-end">
               <Text className="text-label-sm font-medium text-[#9e928e]">
@@ -114,9 +112,7 @@ export const FullPage: Story = {
               <Text className="text-label-sm font-medium text-[#9e928e]">
                 내 평단가 기준 분배수익률
               </Text>
-              <Text className="text-h3 font-bold text-[#ff5a26]">
-                12.4%
-              </Text>
+              <Text className="text-h3 font-bold text-[#ff5a26]">12.4%</Text>
             </View>
             <View className="gap-xs items-end">
               <Text className="text-label-sm font-medium text-[#9e928e]">

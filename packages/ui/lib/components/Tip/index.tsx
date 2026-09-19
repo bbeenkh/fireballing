@@ -26,8 +26,7 @@ interface ITipProps extends ViewProps {
 const containerStyles: Record<TipVariant, string> = {
   guidance: 'bg-white border border-[#e7ded6] rounded-md p-md',
   info: 'bg-white border-l-[3px] border-[#ff5a26] rounded p-3',
-  insight:
-    'bg-white border border-[#ff5a26] border-l-4 rounded-md px-7 py-lg',
+  insight: 'bg-white border border-[#ff5a26] border-l-4 rounded-md px-7 py-lg',
 };
 
 /**
