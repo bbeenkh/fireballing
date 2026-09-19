@@ -25,7 +25,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CodePushDeploymentKey</key>
-	<string>mfGDaVGMwUhLSalYBo6ZDG6p4eny4J-LM0Kd4x</string>
+	<string>DYNAMIC</string>
 	<key>CodePushServerURL</key>
 	<string>https://api.revopush.org</string>
 	<key>LSRequiresIPhoneOS</key>

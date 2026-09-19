@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
+import { Platform, StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import codePush from '@revopush/react-native-code-push';
+import Config from 'react-native-config';
 import { TabNavigator } from './src/app/navigation';
 import { QueryProvider } from './src/app/providers/QueryProvider';
 import { loadTokensFromStorage } from './src/entities/auth';
@@ -44,6 +45,10 @@ const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
   installMode: codePush.InstallMode.ON_NEXT_RESUME,
   minimumBackgroundDuration: 600,
+  deploymentKey: Platform.select({
+    android: Config.CODEPUSH_KEY_ANDROID,
+    ios: Config.CODEPUSH_KEY_IOS,
+  }),
 };
 
 export default codePush(codePushOptions)(App);
