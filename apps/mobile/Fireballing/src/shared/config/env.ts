@@ -11,6 +11,10 @@ export type EnvConfig = {
   API_URL: string;
   /** 현재 실행 환경 */
   APP_ENV: 'local' | 'dev' | 'prod';
+  /** Revopush Android 배포 키 */
+  CODEPUSH_KEY_ANDROID: string;
+  /** Revopush iOS 배포 키 */
+  CODEPUSH_KEY_IOS: string;
 };
 
 /**

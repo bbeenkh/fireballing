@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Fireballing</string>
+    <string moduleConfig="true" name="CodePushServerUrl">https://api.revopush.org</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">DYNAMIC</string>
+</resources>
