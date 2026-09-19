@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
+import codePush from '@revopush/react-native-code-push';
 import { TabNavigator } from './src/app/navigation';
 import { QueryProvider } from './src/app/providers/QueryProvider';
 import { loadTokensFromStorage } from './src/entities/auth';
@@ -30,4 +31,19 @@ function App() {
   );
 }
 
-export default App;
+/**
+ * # codePushOptions
+ * ---
+ * - 간단설명: Revopush OTA 업데이트 옵션
+ * - 제약사항 및 특이사항:
+ *   - ON_APP_RESUME: 앱 포그라운드 복귀 시 업데이트 확인
+ *   - ON_NEXT_RESUME: 다음 포그라운드 복귀 시 업데이트 적용 (세션 중단 방지)
+ *   - minimumBackgroundDuration: 10분 이상 백그라운드 후 적용
+ */
+const codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  installMode: codePush.InstallMode.ON_NEXT_RESUME,
+  minimumBackgroundDuration: 600,
+};
+
+export default codePush(codePushOptions)(App);

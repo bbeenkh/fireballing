@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply from: "../../node_modules/@revopush/react-native-code-push/android/codepush.gradle"
 
 // react-native-config: APP_ENV 환경변수에 따라 .env 파일 선택
 project.ext.envConfigFiles = [
