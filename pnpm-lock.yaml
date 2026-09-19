@@ -436,6 +436,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.2.3(react@19.2.3)
+      react-native-css-interop:
+        specifier: ^0.2.4
+        version: 0.2.7(zzx3isikfcxiksle3yvwd5yukq)
       react-native-web:
         specifier: ^0.19.13
         version: 0.19.13(react-dom@19.2.3(react@19.2.3))(react@19.2.3)

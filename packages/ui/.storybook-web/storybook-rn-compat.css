@@ -1,0 +1,7 @@
+/* RN View 기본 동작: flexbox column — @layer base로 utilities보다 낮은 우선순위 */
+@layer base {
+  [data-rn-view] {
+    display: flex;
+    flex-direction: column;
+  }
+}

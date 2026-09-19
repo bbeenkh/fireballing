@@ -45,35 +45,31 @@
   --font-body: 'Outfit', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, monospace;
 
-  /* ===== Font Size ===== */
-  --font-size-h1: 48px;
-  --font-size-h2: 32px;
-  --font-size-h3: 20px;
-  --font-size-body: 15px;
-  --font-size-caption: 11px;
-  --font-size-mono: 28px;
-  --font-size-label-md: 14px;
-  --font-size-label-sm: 12px;
-
-  /* ===== Line Height ===== */
-  --leading-h1: 110%;
-  --leading-h2: 120%;
-  --leading-h3: 130%;
-  --leading-body: 150%;
-  --leading-caption: 140%;
-  --leading-mono: 110%;
-  --leading-label-md: 20px;
-  --leading-label-sm: 16px;
-
-  /* ===== Font Weight ===== */
-  --font-weight-h1: 800;
-  --font-weight-h2: 700;
-  --font-weight-h3: 600;
-  --font-weight-body: 400;
-  --font-weight-caption: 600;
-  --font-weight-mono: 700;
-  --font-weight-label-md: 600;
-  --font-weight-label-sm: 500;
+  /* ===== Font Size (--text-* → text-* utility) ===== */
+  --text-h1: 48px;
+  --text-h1--line-height: 110%;
+  --text-h1--font-weight: 800;
+  --text-h2: 32px;
+  --text-h2--line-height: 120%;
+  --text-h2--font-weight: 700;
+  --text-h3: 20px;
+  --text-h3--line-height: 130%;
+  --text-h3--font-weight: 600;
+  --text-body: 15px;
+  --text-body--line-height: 150%;
+  --text-body--font-weight: 400;
+  --text-caption: 11px;
+  --text-caption--line-height: 140%;
+  --text-caption--font-weight: 600;
+  --text-mono: 28px;
+  --text-mono--line-height: 110%;
+  --text-mono--font-weight: 700;
+  --text-label-md: 14px;
+  --text-label-md--line-height: 20px;
+  --text-label-md--font-weight: 600;
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--font-weight: 500;
 
   /* ===== 라운딩 ===== */
   --radius-sm: 0.25rem;

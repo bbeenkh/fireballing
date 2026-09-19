@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, type TextProps } from 'react-native';
-import { twMerge } from 'tailwind-merge';
 
 type TagIntent = 'profit' | 'loss' | 'neutral';
 type TagSize = 'sm' | 'md';
@@ -59,7 +58,7 @@ export function Tag({
 
   return (
     <Text
-      className={twMerge(intentStyles[resolvedIntent], sizeStyles[size], className)}
+      className={[intentStyles[resolvedIntent], sizeStyles[size], className].filter(Boolean).join(' ')}
       {...props}
     >
       {children}

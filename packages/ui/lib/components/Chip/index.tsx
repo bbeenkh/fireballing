@@ -60,10 +60,7 @@ function Chip({
       {...props}
     >
       <Text
-        className={twMerge(
-          'text-label-md',
-          selected ? 'text-on-primary' : 'text-on-surface-variant',
-        )}
+        className={['text-label-md', selected ? 'text-on-primary' : 'text-on-surface-variant'].filter(Boolean).join(' ')}
       >
         {children}
       </Text>

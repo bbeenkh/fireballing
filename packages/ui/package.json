@@ -39,6 +39,7 @@
     "@types/react": "catalog:",
     "eslint": "^9.39.1",
     "nativewind": "^4",
+    "react-native-css-interop": "^0.2.4",
     "storybook": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "^5.8.3",

@@ -1,5 +1,9 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import tailwindcss from '@tailwindcss/vite';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const config: StorybookConfig = {
   stories: [
@@ -19,7 +23,7 @@ const config: StorybookConfig = {
     config.resolve ??= {};
     config.resolve.alias = {
       ...config.resolve.alias,
-      'react-native': 'react-native-web',
+      'react-native': resolve(__dirname, 'react-native-web-shim.tsx'),
     };
     config.plugins ??= [];
     config.plugins.push(tailwindcss());

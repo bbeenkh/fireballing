@@ -1,16 +1,8 @@
 import React from 'react';
 import { Text, type TextProps } from 'react-native';
-import { twMerge } from 'tailwind-merge';
 
 type TypographyVariant =
-  | 'h1'
-  | 'h2'
-  | 'h3'
-  | 'body'
-  | 'caption'
-  | 'mono'
-  | 'label-md'
-  | 'label-sm';
+  'h1' | 'h2' | 'h3' | 'body' | 'caption' | 'mono' | 'label-md' | 'label-sm';
 
 interface ITypographyProps extends TextProps {
   /** 타이포그래피 스타일 변형 (기본값: 'body') */
@@ -20,14 +12,14 @@ interface ITypographyProps extends TextProps {
 }
 
 const variantStyles: Record<TypographyVariant, string> = {
-  h1: 'text-h1 text-on-surface',
-  h2: 'text-h2 text-on-surface',
-  h3: 'text-h3 text-on-surface',
-  body: 'text-body text-on-surface',
-  caption: 'text-caption text-on-surface-variant',
-  mono: 'text-mono text-on-surface',
-  'label-md': 'text-label-md text-on-surface',
-  'label-sm': 'text-label-sm text-on-surface-variant',
+  h1: 'text-h1 text-black',
+  h2: 'text-h2 text-black',
+  h3: 'text-h3 text-black',
+  body: 'text-body text-black',
+  caption: 'text-caption text-black',
+  mono: 'text-mono text-black',
+  'label-md': 'text-label-md text-black',
+  'label-sm': 'text-label-sm text-black',
 };
 
 /**
@@ -43,17 +35,20 @@ const variantStyles: Record<TypographyVariant, string> = {
  * <Typography variant="h1">제목</Typography>
  * <Typography variant="mono">$142,850.45</Typography>
  */
-export function Typography({
+export function _Typography({
   variant = 'body',
   className,
   children,
   ...props
 }: ITypographyProps) {
   return (
-    <Text className={twMerge(variantStyles[variant], className)} {...props}>
+    <Text
+      className={[variantStyles[variant], className].filter(Boolean).join(' ')}
+      {...props}
+    >
       {children}
     </Text>
   );
 }
 
-export default Typography;
+export default _Typography;

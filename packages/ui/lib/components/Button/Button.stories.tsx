@@ -43,7 +43,7 @@ export const Ghost: Story = {
   args: { variant: 'ghost', size: 'md' },
   render: (args) => (
     <Button {...args}>
-      <Text className="text-on-surface text-label-md">더보기</Text>
+      <Text className="text-primary text-label-md">더보기</Text>
     </Button>
   ),
 };
@@ -60,7 +60,7 @@ export const Link: Story = {
 export const Disabled: Story = {
   args: { variant: 'primary', size: 'md', disabled: true },
   render: (args) => (
-    <Button {...args}>
+    <Button {...args} disabled>
       <Text className="text-on-primary text-label-md">비활성화</Text>
     </Button>
   ),

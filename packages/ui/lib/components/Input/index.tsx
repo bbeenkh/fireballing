@@ -46,7 +46,7 @@ export function Input({
         <Text className="text-label-sm text-on-surface-variant">{label}</Text>
       )}
       <TextInput
-        className={twMerge(variantStyles[variant], inputClassName)}
+        className={[variantStyles[variant], inputClassName].filter(Boolean).join(' ')}
         placeholderTextColor="#9e928e"
         {...props}
       />
