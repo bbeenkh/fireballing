@@ -16,6 +16,7 @@ const config: StorybookConfig = {
     '../lib/components/Layout/**/*.stories.?(ts|tsx)',
     '../lib/components/Header/**/*.stories.?(ts|tsx)',
     '../lib/components/Footer/**/*.stories.?(ts|tsx)',
+    '../lib/components/BottomSheet/**/*.stories.?(ts|tsx)',
     '../lib/components/SelectButton/**/*.stories.?(ts|tsx)',
     '../lib/components/Tip/**/*.stories.?(ts|tsx)',
     '../lib/assets/icons/**/*.stories.?(ts|tsx)',
@@ -31,6 +32,7 @@ const config: StorybookConfig = {
       ...config.resolve.alias,
       'react-native': resolve(__dirname, 'react-native-web-shim.tsx'),
       'react-native-svg': resolve(__dirname, 'react-native-svg-shim.tsx'),
+      '@gorhom/bottom-sheet': resolve(__dirname, 'gorhom-bottom-sheet-shim.tsx'),
     };
     config.plugins ??= [];
     config.plugins.push(tailwindcss());

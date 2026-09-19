@@ -18,8 +18,7 @@
   },
   "dependencies": {
     "@fblg/authmanager": "workspace:^",
-    "@fblg/mobile-ui": "workspace:^",
-    "@fblg/schemas": "workspace:^",
+"@fblg/schemas": "workspace:^",
     "@fblg/types": "workspace:^",
     "@fblg/utils": "workspace:^",
     "@gorhom/bottom-sheet": "^5",

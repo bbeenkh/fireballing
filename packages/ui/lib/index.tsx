@@ -10,6 +10,7 @@ export { default as Header } from './components/Header';
 export { default as Footer } from './components/Footer';
 export { default as SelectButton } from './components/SelectButton';
 export { default as Tip } from './components/Tip';
+export { default as BottomSheet } from './components/BottomSheet';
 
 // Icons
 export {
