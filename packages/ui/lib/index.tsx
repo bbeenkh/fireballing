@@ -5,6 +5,9 @@ export { default as Tag } from './components/Tag';
 export { default as Chip } from './components/Chip';
 export { default as Input } from './components/Input';
 export { default as CardUI } from './components/CardUI';
+export { default as Layout } from './components/Layout';
+export { default as Header } from './components/Header';
+export { default as Footer } from './components/Footer';
 
 // Utils
 export { today, formatedDate } from './utils/date';
