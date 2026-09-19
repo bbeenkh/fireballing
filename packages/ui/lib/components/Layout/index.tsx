@@ -14,6 +14,7 @@ interface Props {
 interface LayoutProps extends Props {
   maxWidth?: string;
   minWidth?: string;
+  testID?: string;
 }
 
 const cx = (...classes: (string | undefined)[]) =>
@@ -41,9 +42,10 @@ const cx = (...classes: (string | undefined)[]) =>
  *   <Layout.Footer>푸터</Layout.Footer>
  * </Layout>
  */
-function Layout({ children, styleClass, maxWidth, minWidth }: LayoutProps) {
+function Layout({ children, styleClass, maxWidth, minWidth, testID }: LayoutProps) {
   return (
     <main
+      data-testid={testID}
       className={cx(
         'flex flex-col min-h-screen bg-white relative',
         styleClass?.root,

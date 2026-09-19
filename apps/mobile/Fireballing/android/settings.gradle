@@ -4,3 +4,20 @@ extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autoli
 rootProject.name = 'com.myapp.fireballing'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
+
+// 서드파티 라이브러리의 minSdkVersion 및 androidTest 호환성 수정
+gradle.afterProject { project ->
+    if (project.hasProperty("android") && project.name != rootProject.name) {
+        project.android {
+            if (defaultConfig.minSdkVersion != null && defaultConfig.minSdkVersion.apiLevel < 24) {
+                defaultConfig.minSdkVersion 24
+            }
+        }
+        // react-native-encrypted-storage의 androidTest는 RN 0.85와 비호환
+        if (project.name == "react-native-encrypted-storage") {
+            project.tasks.matching { it.name.contains("AndroidTest") }.configureEach {
+                enabled = false
+            }
+        }
+    }
+}

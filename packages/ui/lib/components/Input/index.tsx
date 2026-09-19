@@ -66,16 +66,19 @@ export function Input({
   leftIcon,
   className,
   inputClassName,
+  testID,
   ...props
 }: IInputProps) {
   return (
-    <View className={twMerge('gap-xs', className)}>
+    <View accessible={false} className={twMerge('gap-xs', className)}>
       {label && variant === 'default' && (
         <Text className="text-[#9e928e] text-detail">{label}</Text>
       )}
-      <View className={containerStyles[variant]}>
+      <View accessible={false} className={containerStyles[variant]}>
         {leftIcon && variant === 'search' && leftIcon}
         <TextInput
+          testID={testID}
+          accessible
           className={twMerge(inputStyles[variant], inputClassName)}
           placeholderTextColor="#9e928e"
           {...props}

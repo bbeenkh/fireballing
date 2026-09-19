@@ -7,6 +7,7 @@ interface StyleClass {
 interface FooterProps {
   children: React.ReactNode;
   styleClass?: StyleClass;
+  testID?: string;
 }
 
 const cx = (...classes: (string | undefined)[]) =>
@@ -31,9 +32,10 @@ const cx = (...classes: (string | undefined)[]) =>
  *   <Text>마이페이지</Text>
  * </Footer>
  */
-function Footer({ children, styleClass }: FooterProps) {
+function Footer({ children, styleClass, testID }: FooterProps) {
   return (
     <footer
+      data-testid={testID}
       className={cx(
         'bg-white border-t border-[#e7ded6] flex items-center gap-3 px-gutter py-3',
         styleClass?.root,

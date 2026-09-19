@@ -15,8 +15,8 @@ function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  homeScreen: { flex: 1, backgroundColor: '#0d0b0a' },
-  homeTitle: { color: '#fff', fontSize: 20, padding: 16 },
+  homeScreen: { flex: 1, backgroundColor: '#ffffff' },
+  homeTitle: { color: '#1a1a1a', fontSize: 20, padding: 16 },
 });
 
 /**
@@ -36,8 +36,8 @@ export function TabNavigator() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#0d0b0a',
-          borderTopColor: '#261e1c',
+          backgroundColor: '#ffffff',
+          borderTopColor: '#e5e5e5',
         },
         tabBarActiveTintColor: '#ff5a26',
         tabBarInactiveTintColor: '#9e928e',

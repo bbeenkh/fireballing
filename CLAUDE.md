@@ -1,6 +1,7 @@
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Bundle id/App id: com.myapp.fireballing
 
 # 케이스
 
@@ -140,7 +141,7 @@ fireballing/
 ├── apps/
 │   ├── web/fireballing-web/           # TanStack Start + Vite 프론트엔드
 │   ├── server/fireballing-server/     # Hono 백엔드 서버
-│   └── mobile/DdasangfolioApp/        # React Native 모바일 앱
+│   └── mobile/Fireballing/            # React Native 모바일 앱
 ├── packages/
 │   ├── ui/                            # @fblg/core-ui — 공용 React 컴포넌트 (button, card, code)
 │   ├── typescript-config/             # 공용 tsconfig (base, nextjs, react-library)

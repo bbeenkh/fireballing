@@ -7,6 +7,7 @@ interface StyleClass {
 interface HeaderProps {
   children: React.ReactNode;
   styleClass?: StyleClass;
+  testID?: string;
 }
 
 const cx = (...classes: (string | undefined)[]) =>
@@ -29,9 +30,10 @@ const cx = (...classes: (string | undefined)[]) =>
  *   <Icon name="bell" />
  * </Header>
  */
-function Header({ children, styleClass }: HeaderProps) {
+function Header({ children, styleClass, testID }: HeaderProps) {
   return (
     <header
+      data-testid={testID}
       className={cx(
         'bg-white border-b border-[#e7ded6] flex items-center justify-between px-gutter py-3',
         styleClass?.root,

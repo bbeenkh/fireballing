@@ -22,6 +22,8 @@ interface IBottomSheetProps {
   children: React.ReactNode;
   /** 추가 스타일 클래스 */
   className?: string;
+  /** 테스트 식별자 */
+  testID?: string;
 }
 
 interface IBottomSheetActionProps extends PressableProps {
@@ -62,6 +64,7 @@ function BottomSheet({
   title,
   children,
   className,
+  testID,
 }: IBottomSheetProps) {
   const bottomSheetRef = useRef<GorhomBottomSheet>(null);
 
@@ -93,7 +96,7 @@ function BottomSheet({
       }}
     >
       <BottomSheetView style={{ flex: 1 }}>
-        <View className={twMerge('flex flex-col gap-gutter p-lg', className)}>
+        <View testID={testID} className={twMerge('flex flex-col gap-gutter p-lg', className)}>
           {title && (
             <Text className="text-subtitle font-bold text-[#0d0b0a]">
               {title}
