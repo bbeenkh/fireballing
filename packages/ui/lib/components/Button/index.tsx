@@ -15,9 +15,10 @@ interface IButtonProps extends PressableProps {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-primary rounded-md active:bg-primary-deep',
-  secondary: 'bg-surface border border-outline rounded-md active:bg-background',
-  ghost: 'rounded-lg active:opacity-70',
+  primary: 'bg-[#ff5a26] rounded-[8px] active:bg-[#ff2e00]',
+  secondary:
+    'bg-white border border-[#e7ded6] rounded-[8px] active:bg-[#faf8f5]',
+  ghost: 'bg-transparent rounded-[8px] active:opacity-70',
   link: 'active:opacity-70',
 };
 

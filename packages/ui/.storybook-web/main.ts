@@ -16,6 +16,8 @@ const config: StorybookConfig = {
     '../lib/components/Layout/**/*.stories.?(ts|tsx)',
     '../lib/components/Header/**/*.stories.?(ts|tsx)',
     '../lib/components/Footer/**/*.stories.?(ts|tsx)',
+    '../lib/components/SelectButton/**/*.stories.?(ts|tsx)',
+    '../lib/components/Tip/**/*.stories.?(ts|tsx)',
     '../lib/assets/icons/**/*.stories.?(ts|tsx)',
   ],
   addons: [],

@@ -1,4 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Text, View } from 'react-native';
 import Input from '.';
 
 const meta: Meta<typeof Input> = {
@@ -7,7 +8,7 @@ const meta: Meta<typeof Input> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['default', 'filled'],
+      options: ['default', 'search', 'compact'],
     },
     label: { control: 'text' },
     placeholder: { control: 'text' },
@@ -21,29 +22,53 @@ type Story = StoryObj<typeof Input>;
 export const Default: Story = {
   args: {
     variant: 'default',
-    placeholder: '텍스트를 입력하세요',
-  },
-};
-
-export const WithLabel: Story = {
-  args: {
-    variant: 'default',
     label: '종목명',
-    placeholder: '검색어 입력',
+    placeholder: '검색어를 입력하세요',
   },
 };
 
-export const Filled: Story = {
+export const Search: Story = {
   args: {
-    variant: 'filled',
-    placeholder: '금액을 입력하세요',
+    variant: 'search',
+    placeholder: '검색',
   },
+  render: args => (
+    <Input
+      {...args}
+      leftIcon={<Text className="text-[#9e928e] text-[14px]">🔍</Text>}
+    />
+  ),
 };
 
-export const Disabled: Story = {
+export const Compact: Story = {
   args: {
-    variant: 'default',
-    placeholder: '비활성화된 입력창',
-    editable: false,
+    variant: 'compact',
+    placeholder: '0',
+    keyboardType: 'numeric',
   },
+  render: args => (
+    <View style={{ width: 80 }}>
+      <Input {...args} />
+    </View>
+  ),
+};
+
+export const AllVariants: Story = {
+  render: () => (
+    <View className="gap-[24px] p-[16px]">
+      <Input
+        variant="default"
+        label="종목명"
+        placeholder="검색어를 입력하세요"
+      />
+      <Input
+        variant="search"
+        placeholder="검색"
+        leftIcon={<Text className="text-[#9e928e] text-[14px]">🔍</Text>}
+      />
+      <View style={{ width: 80 }}>
+        <Input variant="compact" placeholder="0" />
+      </View>
+    </View>
+  ),
 };

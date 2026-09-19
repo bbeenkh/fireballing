@@ -8,6 +8,8 @@ export { default as CardUI } from './components/CardUI';
 export { default as Layout } from './components/Layout';
 export { default as Header } from './components/Header';
 export { default as Footer } from './components/Footer';
+export { default as SelectButton } from './components/SelectButton';
+export { default as Tip } from './components/Tip';
 
 // Icons
 export {

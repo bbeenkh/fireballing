@@ -33,7 +33,7 @@ function Header({ children, styleClass }: HeaderProps) {
   return (
     <header
       className={cx(
-        'bg-white border-b border-[#261e1c] flex items-center justify-between px-[20px] py-[12px]',
+        'bg-white border-b border-[#e7ded6] flex items-center justify-between px-[20px] py-[12px]',
         styleClass?.root,
       )}
     >
