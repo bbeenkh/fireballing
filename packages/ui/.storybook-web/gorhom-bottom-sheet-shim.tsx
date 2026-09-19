@@ -94,11 +94,7 @@ const BottomSheetScrollView = ({ children, ...props }: any) => (
 );
 
 export default BottomSheet;
-export {
-  BottomSheetView,
-  BottomSheetBackdrop,
-  BottomSheetScrollView,
-};
+export { BottomSheetView, BottomSheetBackdrop, BottomSheetScrollView };
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface BottomSheetProps {}
 export interface BottomSheetBackdropProps {}

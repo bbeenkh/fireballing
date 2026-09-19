@@ -88,7 +88,12 @@ export const WithContent: Story = {
               }}
             >
               <span
-                style={{ fontSize: 13, color: '#9e928e', display: 'block', marginBottom: 8 }}
+                style={{
+                  fontSize: 13,
+                  color: '#9e928e',
+                  display: 'block',
+                  marginBottom: 8,
+                }}
               >
                 그룹명 (필수, 20자)
               </span>

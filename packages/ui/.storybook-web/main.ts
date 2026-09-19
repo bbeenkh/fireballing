@@ -32,7 +32,10 @@ const config: StorybookConfig = {
       ...config.resolve.alias,
       'react-native': resolve(__dirname, 'react-native-web-shim.tsx'),
       'react-native-svg': resolve(__dirname, 'react-native-svg-shim.tsx'),
-      '@gorhom/bottom-sheet': resolve(__dirname, 'gorhom-bottom-sheet-shim.tsx'),
+      '@gorhom/bottom-sheet': resolve(
+        __dirname,
+        'gorhom-bottom-sheet-shim.tsx',
+      ),
     };
     config.plugins ??= [];
     config.plugins.push(tailwindcss());
