@@ -28,16 +28,16 @@ interface IInputProps extends TextInputProps {
 }
 
 const containerStyles: Record<InputVariant, string> = {
-  default: 'bg-white border border-[#e7ded6] rounded-[12px] p-[16px]',
+  default: 'bg-white border border-[#e7ded6] rounded-md p-sm',
   search:
-    'bg-white border border-[#e7ded6] rounded-[12px] px-[16px] py-[14px] flex-row items-center gap-[12px]',
-  compact: 'bg-white border border-[#e7ded6] rounded-[8px] p-[8px]',
+    'bg-white border border-[#e7ded6] rounded-md px-md py-3.5 flex-row items-center gap-3',
+  compact: 'bg-white border border-[#e7ded6] rounded p-sm',
 };
 
 const inputStyles: Record<InputVariant, string> = {
-  default: 'text-[#0d0b0a] text-[15px]',
-  search: 'text-[#0d0b0a] text-[15px] flex-1',
-  compact: 'text-[#ff5a26] text-[13px] font-bold',
+  default: 'text-[#0d0b0a] text-body',
+  search: 'text-[#0d0b0a] text-body flex-1',
+  compact: 'text-[#ff5a26] text-detail font-bold',
 };
 
 /**
@@ -69,9 +69,9 @@ export function Input({
   ...props
 }: IInputProps) {
   return (
-    <View className={twMerge('gap-[4px]', className)}>
+    <View className={twMerge('gap-xs', className)}>
       {label && variant === 'default' && (
-        <Text className="text-[#9e928e] text-[13px]">{label}</Text>
+        <Text className="text-[#9e928e] text-detail">{label}</Text>
       )}
       <View className={containerStyles[variant]}>
         {leftIcon && variant === 'search' && leftIcon}

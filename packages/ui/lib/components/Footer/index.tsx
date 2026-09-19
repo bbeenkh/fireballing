@@ -35,7 +35,7 @@ function Footer({ children, styleClass }: FooterProps) {
   return (
     <footer
       className={cx(
-        'bg-white border-t border-[#e7ded6] flex items-center gap-[12.5px] px-[22px] py-[12px]',
+        'bg-white border-t border-[#e7ded6] flex items-center gap-3 px-gutter py-3',
         styleClass?.root,
       )}
     >

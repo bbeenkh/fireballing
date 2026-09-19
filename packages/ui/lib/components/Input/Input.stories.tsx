@@ -35,7 +35,7 @@ export const Search: Story = {
   render: args => (
     <Input
       {...args}
-      leftIcon={<Text className="text-[#9e928e] text-[14px]">🔍</Text>}
+      leftIcon={<Text className="text-[#9e928e] text-label-md">🔍</Text>}
     />
   ),
 };
@@ -55,7 +55,7 @@ export const Compact: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <View className="gap-[24px] p-[16px]">
+    <View className="gap-lg p-md">
       <Input
         variant="default"
         label="종목명"
@@ -64,7 +64,7 @@ export const AllVariants: Story = {
       <Input
         variant="search"
         placeholder="검색"
-        leftIcon={<Text className="text-[#9e928e] text-[14px]">🔍</Text>}
+        leftIcon={<Text className="text-[#9e928e] text-label-md">🔍</Text>}
       />
       <View style={{ width: 80 }}>
         <Input variant="compact" placeholder="0" />

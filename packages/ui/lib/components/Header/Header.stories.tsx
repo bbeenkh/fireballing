@@ -16,8 +16,8 @@ type Story = StoryObj<typeof Header>;
 export const Default: Story = {
   render: () => (
     <Header>
-      <View className="flex-row gap-[8px] items-center">
-        <Text className="text-[18px] font-medium tracking-[-1px] text-[#0d0b0a]">
+      <View className="flex-row gap-sm items-center">
+        <Text className="text-subtitle font-medium tracking-[-1px] text-[#0d0b0a]">
           fireballing
         </Text>
       </View>
@@ -28,12 +28,12 @@ export const Default: Story = {
 export const WithAction: Story = {
   render: () => (
     <Header>
-      <View className="flex-row gap-[8px] items-center">
-        <Text className="text-[18px] font-medium tracking-[-1px] text-[#0d0b0a]">
+      <View className="flex-row gap-sm items-center">
+        <Text className="text-subtitle font-medium tracking-[-1px] text-[#0d0b0a]">
           fireballing
         </Text>
       </View>
-      <Text className="text-[14px] text-[#9e928e]">🔔</Text>
+      <Text className="text-label-md text-[#9e928e]">🔔</Text>
     </Header>
   ),
 };
@@ -41,7 +41,7 @@ export const WithAction: Story = {
 export const CustomStyle: Story = {
   render: () => (
     <Header styleClass={{ root: 'bg-[#0d0b0a]' }}>
-      <Text className="text-[18px] font-medium tracking-[-1px] text-white">
+      <Text className="text-subtitle font-medium tracking-[-1px] text-white">
         fireballing
       </Text>
     </Header>

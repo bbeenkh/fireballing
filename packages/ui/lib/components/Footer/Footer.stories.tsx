@@ -16,21 +16,21 @@ type Story = StoryObj<typeof Footer>;
 export const Default: Story = {
   render: () => (
     <Footer>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#ff5a26]">홈</Text>
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#ff5a26]">홈</Text>
       </View>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#9e928e]">
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#9e928e]">
           포트폴리오
         </Text>
       </View>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#9e928e]">
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#9e928e]">
           시뮬레이터
         </Text>
       </View>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#9e928e]">
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#9e928e]">
           마이페이지
         </Text>
       </View>
@@ -41,21 +41,21 @@ export const Default: Story = {
 export const ActivePortfolio: Story = {
   render: () => (
     <Footer>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#9e928e]">홈</Text>
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#9e928e]">홈</Text>
       </View>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#ff5a26]">
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#ff5a26]">
           포트폴리오
         </Text>
       </View>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#9e928e]">
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#9e928e]">
           시뮬레이터
         </Text>
       </View>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#9e928e]">
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#9e928e]">
           마이페이지
         </Text>
       </View>
@@ -66,11 +66,11 @@ export const ActivePortfolio: Story = {
 export const CustomStyle: Story = {
   render: () => (
     <Footer styleClass={{ root: 'bg-[#0d0b0a] border-[#261e1c]' }}>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#ff5a26]">홈</Text>
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#ff5a26]">홈</Text>
       </View>
-      <View className="flex-1 items-center py-[4px]">
-        <Text className="text-[12px] font-medium text-[#9e928e]">
+      <View className="flex-1 items-center py-xs">
+        <Text className="text-label-sm font-medium text-[#9e928e]">
           포트폴리오
         </Text>
       </View>

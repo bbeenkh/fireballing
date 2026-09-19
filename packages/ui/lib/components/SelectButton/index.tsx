@@ -49,7 +49,7 @@ function SelectButton({
   return (
     <Pressable
       className={twMerge(
-        'rounded-[10px] px-[16px] py-[12px] border items-center justify-center',
+        'rounded-pill px-md py-3 border items-center justify-center',
         selected
           ? 'bg-[rgba(255,90,38,0.1)] border-[#ff5a26]'
           : 'bg-white border-[#e7ded6]',
@@ -86,7 +86,7 @@ function SelectButtonGroup({
   return (
     <View className={twMerge('gap-sm', className)} {...props}>
       {label && (
-        <Text className="text-[13px] font-semibold text-[#9e928e]">
+        <Text className="text-detail font-semibold text-[#9e928e]">
           {label}
         </Text>
       )}

@@ -11,10 +11,10 @@ interface ICardProps extends ViewProps {
 }
 
 const variantStyles: Record<CardVariant, string> = {
-  default: 'bg-[#faf8f5] border border-[#e7ded6] rounded-[16px] p-md',
+  default: 'bg-[#faf8f5] border border-[#e7ded6] rounded-lg p-md',
   // ponytail: hero gradient은 RN에서 LinearGradient 필요 — 단색 fallback 사용, gradient 필요시 expo-linear-gradient로 래핑
-  hero: 'bg-[#faf8f5] border border-[#e7ded6] rounded-[16px] p-lg',
-  bento: 'bg-[#faf8f5] border border-[#e7ded6] rounded-[16px] p-md',
+  hero: 'bg-[#faf8f5] border border-[#e7ded6] rounded-lg p-lg',
+  bento: 'bg-[#faf8f5] border border-[#e7ded6] rounded-lg p-md',
 };
 
 /**

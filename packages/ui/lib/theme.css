@@ -55,9 +55,15 @@
   --text-h3: 20px;
   --text-h3--line-height: 130%;
   --text-h3--font-weight: 600;
+  --text-subtitle: 18px;
+  --text-subtitle--line-height: 24px;
+  --text-subtitle--font-weight: 700;
   --text-body: 15px;
   --text-body--line-height: 150%;
   --text-body--font-weight: 400;
+  --text-detail: 13px;
+  --text-detail--line-height: 18px;
+  --text-detail--font-weight: 500;
   --text-caption: 11px;
   --text-caption--line-height: 140%;
   --text-caption--font-weight: 600;
@@ -72,19 +78,25 @@
   --text-label-sm--font-weight: 500;
 
   /* ===== 라운딩 ===== */
-  --radius-sm: 0.25rem;
-  --radius-default: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+  --radius-sm: 6px;
+  --radius-default: 8px;
+  --radius-pill: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 
   /* ===== 간격 ===== */
   --spacing-xs: 4px;
+  --spacing-1_5: 6px;
   --spacing-sm: 8px;
+  --spacing-2_5: 10px;
+  --spacing-3: 12px;
+  --spacing-3_5: 14px;
   --spacing-md: 16px;
+  --spacing-gutter: 20px;
   --spacing-lg: 24px;
+  --spacing-7: 28px;
   --spacing-xl: 32px;
   --spacing-2xl: 48px;
-  --spacing-gutter: 20px;
 }

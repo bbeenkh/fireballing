@@ -39,24 +39,24 @@ const variantContainerStyles: Record<
   { base: string; selected?: string }
 > = {
   selection: {
-    base: 'bg-white border border-[#e7ded6] rounded-[10px] px-[16px] py-[12px]',
+    base: 'bg-white border border-[#e7ded6] rounded-pill px-md py-3',
     selected: 'bg-[rgba(255,90,38,0.1)] border-[#ff5a26]',
   },
   filter: {
-    base: 'bg-white border border-[#e7ded6] rounded-[20px] px-[14px] py-[8px]',
+    base: 'bg-white border border-[#e7ded6] rounded-xl px-3.5 py-sm',
     selected: 'bg-[rgba(255,90,38,0.1)] border-[#ff5a26]',
   },
   compliance: {
-    base: 'bg-white border border-[#e7ded6] rounded-[30px] px-[12px] py-[6px]',
+    base: 'bg-white border border-[#e7ded6] rounded-full px-3 py-1.5',
   },
   subtle: {
-    base: 'bg-[rgba(255,90,38,0.1)] rounded-[8px] px-[10px] py-[6px]',
+    base: 'bg-[rgba(255,90,38,0.1)] rounded px-2.5 py-1.5',
   },
   value: {
     base: '',
   },
   account: {
-    base: 'bg-[rgba(255,90,38,0.1)] rounded-[6px] px-[8px] py-[4px]',
+    base: 'bg-[rgba(255,90,38,0.1)] rounded-sm px-sm py-xs',
   },
 };
 
@@ -65,26 +65,26 @@ const variantTextStyles: Record<
   { base: string; selected?: string; unselected?: string }
 > = {
   selection: {
-    base: 'text-[14px] font-semibold',
+    base: 'text-label-md font-semibold',
     selected: 'text-[#ff5a26]',
     unselected: 'text-[#9e928e]',
   },
   filter: {
-    base: 'text-[13px] font-semibold',
+    base: 'text-detail font-semibold',
     selected: 'text-[#ff5a26]',
     unselected: 'text-[#9e928e]',
   },
   compliance: {
-    base: 'text-[#9e928e] text-[12px]',
+    base: 'text-[#9e928e] text-label-sm',
   },
   subtle: {
-    base: 'text-[#ff5a26] text-[11px]',
+    base: 'text-[#ff5a26] text-caption',
   },
   value: {
-    base: 'text-[#ff5a26] text-[14px] font-semibold',
+    base: 'text-[#ff5a26] text-label-md font-semibold',
   },
   account: {
-    base: 'text-[#ff5a26] text-[11px] font-bold',
+    base: 'text-[#ff5a26] text-caption font-bold',
   },
 };
 

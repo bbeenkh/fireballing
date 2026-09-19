@@ -24,10 +24,10 @@ interface ITipProps extends ViewProps {
 }
 
 const containerStyles: Record<TipVariant, string> = {
-  guidance: 'bg-white border border-[#e7ded6] rounded-[12px] p-[16px]',
-  info: 'bg-white border-l-[3px] border-[#ff5a26] rounded-[8px] p-[12px]',
+  guidance: 'bg-white border border-[#e7ded6] rounded-md p-md',
+  info: 'bg-white border-l-[3px] border-[#ff5a26] rounded p-3',
   insight:
-    'bg-white border border-[#ff5a26] border-l-4 rounded-[12px] px-[28px] py-[25px]',
+    'bg-white border border-[#ff5a26] border-l-4 rounded-md px-7 py-lg',
 };
 
 /**
@@ -73,7 +73,7 @@ function Tip({
 
   return (
     <View
-      className={twMerge(containerStyles[variant], 'gap-[8px]', className)}
+      className={twMerge(containerStyles[variant], 'gap-sm', className)}
       {...props}
     >
       {title && (
@@ -87,15 +87,15 @@ function Tip({
 }
 
 function titleStyle(variant: TipVariant): string {
-  if (variant === 'guidance') return 'text-[#ff5a26] text-[12px] font-bold';
-  return 'text-[#0d0b0a] text-[14px] font-medium';
+  if (variant === 'guidance') return 'text-[#ff5a26] text-label-sm font-bold';
+  return 'text-[#0d0b0a] text-label-md font-medium';
 }
 
 function descriptionStyle(variant: TipVariant): string {
-  if (variant === 'info') return 'text-[#9e928e] text-[12px] leading-[16px]';
+  if (variant === 'info') return 'text-[#9e928e] text-label-sm leading-4';
   if (variant === 'insight')
-    return 'text-[#9e928e] text-[14px] font-medium leading-[20px]';
-  return 'text-[#9e928e] text-[11px] leading-[16px]';
+    return 'text-[#9e928e] text-label-md font-medium leading-5';
+  return 'text-[#9e928e] text-caption leading-4';
 }
 
 export default Tip;

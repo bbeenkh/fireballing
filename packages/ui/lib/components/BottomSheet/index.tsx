@@ -94,10 +94,10 @@ function BottomSheet({
     >
       <BottomSheetView style={{ flex: 1 }}>
         <View
-          className={twMerge('flex flex-col gap-[20px] p-[24px]', className)}
+          className={twMerge('flex flex-col gap-gutter p-lg', className)}
         >
           {title && (
-            <Text className="text-[18px] font-bold text-[#0d0b0a]">
+            <Text className="text-subtitle font-bold text-[#0d0b0a]">
               {title}
             </Text>
           )}
@@ -124,12 +124,12 @@ function Action({ label, className, ...props }: IBottomSheetActionProps) {
   return (
     <Pressable
       className={twMerge(
-        'bg-[#ff5a26] rounded-[12px] p-[16px] items-center justify-center w-full active:bg-[#ff2e00]',
+        'bg-[#ff5a26] rounded-md p-md items-center justify-center w-full active:bg-[#ff2e00]',
         className,
       )}
       {...props}
     >
-      <Text className="text-[15px] font-bold text-[#0d0b0a]">{label}</Text>
+      <Text className="text-body font-bold text-[#0d0b0a]">{label}</Text>
     </Pressable>
   );
 }

@@ -71,7 +71,7 @@ function Layout({ children, styleClass, maxWidth, minWidth }: LayoutProps) {
 Layout.Body = ({ children, styleClass }: Props) => (
   <div
     className={cx(
-      'flex-1 flex flex-col gap-[32px] px-[20px] pt-[24px] pb-[32px]',
+      'flex-1 flex flex-col gap-xl px-gutter pt-lg pb-xl',
       styleClass?.root,
     )}
   >
