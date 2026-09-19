@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {View} from 'react-native';
-import {Input, Button, Typography, Tip} from '@fblg/core-ui';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { Input, Button, Typography, Tip } from '@fblg/core-ui';
 
 /**
  * # DummyForm
@@ -47,7 +47,12 @@ export function DummyForm() {
         onChangeText={setEmail}
         keyboardType="email-address"
       />
-      <Button testID="btn-submit" variant="primary" size="lg" onPress={handleSubmit}>
+      <Button
+        testID="btn-submit"
+        variant="primary"
+        size="lg"
+        onPress={handleSubmit}
+      >
         <Typography variant="label-md" className="text-on-primary">
           제출
         </Typography>

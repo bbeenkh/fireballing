@@ -15,8 +15,8 @@ function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  homeScreen: {flex: 1, backgroundColor: '#0d0b0a'},
-  homeTitle: {color: '#fff', fontSize: 20, padding: 16},
+  homeScreen: { flex: 1, backgroundColor: '#0d0b0a' },
+  homeTitle: { color: '#fff', fontSize: 20, padding: 16 },
 });
 
 /**
