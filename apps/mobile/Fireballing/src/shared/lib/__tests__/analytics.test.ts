@@ -16,11 +16,9 @@ describe('logEvent', () => {
     const { logEvent } = require('../analytics');
     logEvent('test_event', { key: 'value' });
     expect(mockGetAnalytics).toHaveBeenCalled();
-    expect(mockLogEvent).toHaveBeenCalledWith(
-      'mock-analytics',
-      'test_event',
-      { key: 'value' },
-    );
+    expect(mockLogEvent).toHaveBeenCalledWith('mock-analytics', 'test_event', {
+      key: 'value',
+    });
   });
 
   it('params 없이 호출할 수 있다', () => {
