@@ -53,13 +53,20 @@ function App() {
  * - 간단설명: Revopush OTA 업데이트 옵션
  * - 제약사항 및 특이사항:
  *   - ON_APP_RESUME: 앱 포그라운드 복귀 시 업데이트 확인
- *   - ON_NEXT_RESUME: 다음 포그라운드 복귀 시 업데이트 적용 (세션 중단 방지)
- *   - minimumBackgroundDuration: 10분 이상 백그라운드 후 적용
+ *   - IMMEDIATE: 사용자 확인 후 즉시 업데이트 적용
+ *   - updateDialog: 업데이트 발견 시 네이티브 Alert 팝업 표시
  */
 const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
-  installMode: codePush.InstallMode.ON_NEXT_RESUME,
-  minimumBackgroundDuration: 600,
+  installMode: codePush.InstallMode.IMMEDIATE,
+  updateDialog: {
+    title: '업데이트 안내',
+    optionalUpdateMessage: '새로운 버전이 있습니다. 업데이트하시겠습니까?',
+    optionalInstallButtonLabel: '업데이트',
+    optionalIgnoreButtonLabel: '나중에',
+    mandatoryUpdateMessage: '필수 업데이트가 있습니다. 앱을 업데이트합니다.',
+    mandatoryContinueButtonLabel: '업데이트',
+  },
   deploymentKey: Platform.select({
     android: Config.CODEPUSH_KEY_ANDROID,
     ios: Config.CODEPUSH_KEY_IOS,
