@@ -15,9 +15,7 @@ describe('AppController', () => {
     vi.clearAllMocks();
     const module = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [
-        { provide: SupabaseService, useValue: mockSupabaseService },
-      ],
+      providers: [{ provide: SupabaseService, useValue: mockSupabaseService }],
     }).compile();
 
     controller = module.get(AppController);
