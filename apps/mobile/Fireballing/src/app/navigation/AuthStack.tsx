@@ -21,7 +21,7 @@ export function AuthStack() {
       <Stack.Screen
         name="Onboarding"
         component={OnboardingScreen}
-        options={{ title: '온보딩' }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Login"

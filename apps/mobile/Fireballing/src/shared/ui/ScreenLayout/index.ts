@@ -1,1 +1,1 @@
-export { ScreenLayout } from './ScreenLayout';
+export { withLayout } from './ScreenLayout';

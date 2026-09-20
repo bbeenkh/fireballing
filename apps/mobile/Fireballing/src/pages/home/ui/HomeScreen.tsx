@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, Pressable, ScrollView, View } from 'react-native';
 import { useNavigation, type NavigationProp } from '@react-navigation/native';
-import { ScreenLayout } from '@/shared/ui/ScreenLayout';
+import { withLayout } from '@/shared/ui/ScreenLayout';
 import { useAuthStore } from '@/entities/auth';
 import type { AppTabParamList } from '@/shared/types';
 /**
@@ -9,101 +9,101 @@ import type { AppTabParamList } from '@/shared/types';
  * ---
  * - 간단설명: 홈 화면 (개발용 내비게이션 맵 포함)
  */
-export function HomeScreen() {
+function HomeScreenBase() {
   const navigation = useNavigation<NavigationProp<AppTabParamList>>();
   const logout = useAuthStore(s => s.logout);
 
   return (
-    <ScreenLayout>
-      <ScrollView style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
+      <Text
+        style={{
+          fontSize: 20,
+          fontWeight: 'bold',
+          padding: 16,
+          color: '#1a1a1a',
+        }}
+      >
+        홈
+      </Text>
+
+      <View style={{ padding: 16, gap: 12 }}>
+        <Text style={{ fontSize: 14, color: '#9e928e', marginBottom: 4 }}>
+          탭 네비게이션
+        </Text>
+        <NavButton
+          label="포트폴리오 탭"
+          onPress={() =>
+            navigation.navigate({
+              name: 'PortfolioTab',
+              params: { screen: 'Portfolio' },
+            })
+          }
+        />
+        <NavButton
+          label="시뮬레이터 탭"
+          onPress={() =>
+            navigation.navigate({
+              name: 'SimulatorTab',
+              params: { screen: 'Simulator' },
+            })
+          }
+        />
+        <NavButton
+          label="마이페이지 탭"
+          onPress={() =>
+            navigation.navigate({
+              name: 'MyPageTab',
+              params: { screen: 'MyPage' },
+            })
+          }
+        />
+
         <Text
           style={{
-            fontSize: 20,
-            fontWeight: 'bold',
-            padding: 16,
-            color: '#1a1a1a',
+            fontSize: 14,
+            color: '#9e928e',
+            marginTop: 12,
+            marginBottom: 4,
           }}
         >
-          홈
+          마이페이지 스택
         </Text>
+        <NavButton
+          label="프로필 수정"
+          onPress={() =>
+            navigation.navigate({
+              name: 'MyPageTab',
+              params: { screen: 'EditProfile' },
+            })
+          }
+        />
+        <NavButton
+          label="설정"
+          onPress={() =>
+            navigation.navigate({
+              name: 'MyPageTab',
+              params: { screen: 'Settings' },
+            })
+          }
+        />
 
-        <View style={{ padding: 16, gap: 12 }}>
-          <Text style={{ fontSize: 14, color: '#9e928e', marginBottom: 4 }}>
-            탭 네비게이션
-          </Text>
-          <NavButton
-            label="포트폴리오 탭"
-            onPress={() =>
-              navigation.navigate({
-                name: 'PortfolioTab',
-                params: { screen: 'Portfolio' },
-              })
-            }
-          />
-          <NavButton
-            label="시뮬레이터 탭"
-            onPress={() =>
-              navigation.navigate({
-                name: 'SimulatorTab',
-                params: { screen: 'Simulator' },
-              })
-            }
-          />
-          <NavButton
-            label="마이페이지 탭"
-            onPress={() =>
-              navigation.navigate({
-                name: 'MyPageTab',
-                params: { screen: 'MyPage' },
-              })
-            }
-          />
-
-          <Text
-            style={{
-              fontSize: 14,
-              color: '#9e928e',
-              marginTop: 12,
-              marginBottom: 4,
-            }}
-          >
-            마이페이지 스택
-          </Text>
-          <NavButton
-            label="프로필 수정"
-            onPress={() =>
-              navigation.navigate({
-                name: 'MyPageTab',
-                params: { screen: 'EditProfile' },
-              })
-            }
-          />
-          <NavButton
-            label="설정"
-            onPress={() =>
-              navigation.navigate({
-                name: 'MyPageTab',
-                params: { screen: 'Settings' },
-              })
-            }
-          />
-
-          <Text
-            style={{
-              fontSize: 14,
-              color: '#9e928e',
-              marginTop: 12,
-              marginBottom: 4,
-            }}
-          >
-            인증
-          </Text>
-          <NavButton label="로그아웃 → AuthStack" onPress={logout} danger />
-        </View>
-      </ScrollView>
-    </ScreenLayout>
+        <Text
+          style={{
+            fontSize: 14,
+            color: '#9e928e',
+            marginTop: 12,
+            marginBottom: 4,
+          }}
+        >
+          인증
+        </Text>
+        <NavButton label="로그아웃 → AuthStack" onPress={logout} danger />
+      </View>
+    </ScrollView>
   );
 }
+
+export const HomeScreen = withLayout(HomeScreenBase);
 
 function NavButton({
   label,

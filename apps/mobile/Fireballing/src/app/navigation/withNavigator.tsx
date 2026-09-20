@@ -9,49 +9,58 @@ import { MyPageStack } from './stacks/MyPageStack';
 const Tab = createBottomTabNavigator<AppTabParamList>();
 
 /**
- * # WithNavigator
+ * # withNavigator
  * ---
- * - 간단설명: 하단 4탭 네비게이터
+ * - 간단설명: 하단 4탭 네비게이터를 감싸는 HOC
  * - 제약사항 및 특이사항:
  *   - 각 탭은 내부 Stack Navigator를 포함
  *   - 아이콘은 별도 티켓에서 추가 예정
  * ---
+ * @param Component 래핑할 컴포넌트 (탭 네비게이터 내부에서 사용)
+ * ---
  * @example
- * <WithNavigator />
+ * const AppWithNav = withNavigator(AppContent);
  */
-export function WithNavigator() {
-  return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          backgroundColor: '#ffffff',
-          borderTopColor: '#e5e5e5',
-        },
-        tabBarActiveTintColor: '#ff5a26',
-        tabBarInactiveTintColor: '#9e928e',
-      }}
-    >
-      <Tab.Screen
-        name="HomeTab"
-        component={HomeStack}
-        options={{ tabBarLabel: '홈' }}
-      />
-      <Tab.Screen
-        name="PortfolioTab"
-        component={PortfolioStack}
-        options={{ tabBarLabel: '포트폴리오' }}
-      />
-      <Tab.Screen
-        name="SimulatorTab"
-        component={SimulatorStack}
-        options={{ tabBarLabel: '시뮬레이터' }}
-      />
-      <Tab.Screen
-        name="MyPageTab"
-        component={MyPageStack}
-        options={{ tabBarLabel: '마이페이지' }}
-      />
-    </Tab.Navigator>
-  );
+export function withNavigator<P extends Record<string, unknown>>(
+  Component: React.ComponentType<P>,
+) {
+  function WithNavigator(_props: P) {
+    return (
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            backgroundColor: '#ffffff',
+            borderTopColor: '#e5e5e5',
+          },
+          tabBarActiveTintColor: '#ff5a26',
+          tabBarInactiveTintColor: '#9e928e',
+        }}
+      >
+        <Tab.Screen
+          name="HomeTab"
+          component={HomeStack}
+          options={{ tabBarLabel: '홈' }}
+        />
+        <Tab.Screen
+          name="PortfolioTab"
+          component={PortfolioStack}
+          options={{ tabBarLabel: '포트폴리오' }}
+        />
+        <Tab.Screen
+          name="SimulatorTab"
+          component={SimulatorStack}
+          options={{ tabBarLabel: '시뮬레이터' }}
+        />
+        <Tab.Screen
+          name="MyPageTab"
+          component={MyPageStack}
+          options={{ tabBarLabel: '마이페이지' }}
+        />
+      </Tab.Navigator>
+    );
+  }
+
+  WithNavigator.displayName = `withNavigator(${Component.displayName || Component.name || 'Component'})`;
+  return WithNavigator;
 }

@@ -3,42 +3,41 @@ import { View, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 /**
- * # ScreenLayout
+ * # withLayout
  * ---
- * - 간단설명: SafeArea insets를 패딩으로 적용하는 화면 공통 레이아웃
+ * - 간단설명: SafeArea insets를 패딩으로 적용하는 화면 공통 레이아웃 HOC
  * - 제약사항 및 특이사항:
  *   - SafeAreaView 대신 useSafeAreaInsets 훅 사용 (Android 이슈 회피)
  *   - 기본 배경색 #ffffff
  * ---
- * @param children 화면 내용
- * @param style 추가 스타일 (선택)
+ * @param Component 래핑할 화면 컴포넌트
  * ---
  * @example
- * <ScreenLayout>
- *   <Text>화면 내용</Text>
- * </ScreenLayout>
+ * const MyScreenWithLayout = withLayout(MyScreen);
  */
-export function ScreenLayout({
-  children,
-  style,
-}: {
-  children: React.ReactNode;
-  style?: ViewStyle;
-}) {
-  const insets = useSafeAreaInsets();
+export function withLayout<P extends Record<string, unknown>>(
+  Component: React.ComponentType<P>,
+  style?: ViewStyle,
+) {
+  function WithLayout(props: P) {
+    const insets = useSafeAreaInsets();
 
-  return (
-    <View
-      style={[
-        {
-          flex: 1,
-          paddingBottom: insets.bottom,
-          backgroundColor: '#ffffff',
-        },
-        style,
-      ]}
-    >
-      {children}
-    </View>
-  );
+    return (
+      <View
+        style={[
+          {
+            flex: 1,
+            paddingBottom: insets.bottom,
+            backgroundColor: '#ffffff',
+          },
+          style,
+        ]}
+      >
+        <Component {...props} />
+      </View>
+    );
+  }
+
+  WithLayout.displayName = `withLayout(${Component.displayName || Component.name || 'Component'})`;
+  return WithLayout;
 }

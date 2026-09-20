@@ -1,8 +1,9 @@
 import React from 'react';
 import { Text, Pressable, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { ScreenLayout } from '@/shared/ui/ScreenLayout';
+import { withLayout } from '@/shared/ui/ScreenLayout';
 import { useAuthStore } from '@/entities/auth';
 import type { AuthStackParamList } from '@/shared/types';
 
@@ -10,14 +11,18 @@ import type { AuthStackParamList } from '@/shared/types';
  * # OnboardingScreen
  * ---
  * - 간단설명: 온보딩 화면 (개발용 내비게이션 링크 포함)
+ * - 제약사항 및 특이사항:
+ *   - 헤더, 하단 탭 없이 전체화면으로 표시
+ *   - headerShown: false이므로 상단 SafeArea를 직접 적용
  */
-export function OnboardingScreen() {
+function OnboardingScreenBase() {
   const navigation =
     useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
   const login = useAuthStore(s => s.login);
+  const insets = useSafeAreaInsets();
 
   return (
-    <ScreenLayout>
+    <View style={{ paddingTop: insets.top }}>
       <Text
         style={{
           fontSize: 20,
@@ -62,9 +67,11 @@ export function OnboardingScreen() {
           primary
         />
       </View>
-    </ScreenLayout>
+    </View>
   );
 }
+
+export const OnboardingScreen = withLayout(OnboardingScreenBase);
 
 function NavButton({
   label,

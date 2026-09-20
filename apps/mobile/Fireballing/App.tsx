@@ -8,7 +8,7 @@ import { QueryProvider } from './src/app/providers/QueryProvider';
 import { useAuthStore } from './src/entities/auth';
 import { navigationRef } from './src/shared/lib';
 import * as Sentry from '@sentry/react-native';
-import { WithNavigator } from '@/app/navigation/withNavigator';
+import { RootNavigator } from '@/app/navigation/RootNavigator';
 
 Sentry.init({
   dsn: 'https://03d51a9fe11f2b4ad5be9a94b6a2e511@o4507820076040192.ingest.us.sentry.io/4512116550991872',
@@ -45,7 +45,7 @@ function App() {
       <QueryProvider>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <NavigationContainer ref={navigationRef}>
-          <WithNavigator />
+          <RootNavigator />
         </NavigationContainer>
       </QueryProvider>
     </SafeAreaProvider>
