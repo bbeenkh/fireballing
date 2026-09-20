@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "772485094466",
+    "firebase_url": "https://myartic-44020-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "myartic-44020",
+    "storage_bucket": "myartic-44020.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772485094466:android:828b288ccd4a91642e61db",
+        "android_client_info": {
+          "package_name": "com.myapp.fireballing"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdjl0hEJWtW3LpsWGCG4bviCo2AKSSzvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772485094466-sa7grj6pmrcu112rsjkvpnbshctjqf8r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

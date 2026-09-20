@@ -7,6 +7,21 @@ import Config from 'react-native-config';
 import { TabNavigator } from './src/app/navigation';
 import { QueryProvider } from './src/app/providers/QueryProvider';
 import { loadTokensFromStorage } from './src/entities/auth';
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+  dsn: 'https://03d51a9fe11f2b4ad5be9a94b6a2e511@o4507820076040192.ingest.us.sentry.io/4512116550991872',
+
+  // Adds more context data to events (IP address, cookies, user, etc.)
+  // For more information, visit: https://docs.sentry.io/platforms/react-native/data-management/data-collected/
+  sendDefaultPii: true,
+
+  // Enable Logs
+  enableLogs: true,
+
+  // uncomment the line below to enable Spotlight (https://spotlightjs.com)
+  // spotlight: __DEV__,
+});
 
 /**
  * # App
@@ -51,4 +66,4 @@ const codePushOptions = {
   }),
 };
 
-export default codePush(codePushOptions)(App);
+export default Sentry.wrap(codePush(codePushOptions)(App));

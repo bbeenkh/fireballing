@@ -3,6 +3,10 @@ const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const { withNativeWind } = require('nativewind/metro');
 const path = require('path');
 
+const {
+  withSentryConfig
+} = require("@sentry/react-native/metro");
+
 const projectRoot = __dirname;
 const monorepoRoot = path.resolve(projectRoot, '../../..');
 
@@ -24,6 +28,6 @@ const config = {
     ],
   },
 };
-module.exports = withNativeWind(mergeConfig(getDefaultConfig(__dirname), config), {
+module.exports = withSentryConfig(withNativeWind(mergeConfig(getDefaultConfig(__dirname), config), {
   input: './global.css',
-});
+}));
