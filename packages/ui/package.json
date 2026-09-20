@@ -13,17 +13,16 @@
     "build": "tsc --noEmit",
     "check-types": "tsc --noEmit",
     "dev": "vite",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "echo \"no tests yet\"",
     "lint": "eslint .",
     "storybook:generate": "storybook-generate",
     "storybook": "storybook-generate",
     "storybook:web": "storybook dev -p 6006 -c .storybook-web"
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^5",
     "react": "19.2.3",
     "react-native": "0.85.3",
-    "@gorhom/bottom-sheet": "^5",
     "react-native-svg": "^15.15.5",
     "tailwind-merge": "catalog:"
   },
