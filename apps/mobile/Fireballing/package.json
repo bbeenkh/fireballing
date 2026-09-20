@@ -7,6 +7,7 @@
     "android:local": "APP_ENV=dev react-native run-android",
     "android:dev": "APP_ENV=dev react-native run-android",
     "android:prod": "APP_ENV=prod react-native run-android",
+    "android:apk": "ENVFILE=.env.prod sh -c 'cd android && ./gradlew assembleRelease' && open android/app/build/outputs/apk/release",
     "ios": "react-native run-ios",
     "ios:local": "APP_ENV=dev react-native run-ios",
     "ios:dev": "APP_ENV=dev react-native run-ios",
@@ -68,6 +69,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/plugin-transform-class-static-block": "^7.29.7",
+    "@babel/plugin-transform-react-jsx": "^7.29.7",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
     "@msw/data": "^1.1.6",

@@ -12,6 +12,17 @@ gradle.afterProject { project ->
             if (defaultConfig.minSdkVersion != null && defaultConfig.minSdkVersion.apiLevel < 24) {
                 defaultConfig.minSdkVersion 24
             }
+            packagingOptions {
+                pickFirst '**/libc++_shared.so'
+                pickFirst '**/libreactnative.so'
+                pickFirst '**/libfbjni.so'
+                pickFirst '**/libfolly_runtime.so'
+                pickFirst '**/libglog.so'
+                pickFirst '**/libhermes.so'
+                pickFirst '**/libjsi.so'
+                pickFirst '**/libturbomodulejsijni.so'
+                pickFirst '**/libreactnativejni.so'
+            }
         }
         // react-native-encrypted-storage의 androidTest는 RN 0.85와 비호환
         if (project.name == "react-native-encrypted-storage") {

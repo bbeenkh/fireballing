@@ -42,7 +42,13 @@ const cx = (...classes: (string | undefined)[]) =>
  *   <Layout.Footer>푸터</Layout.Footer>
  * </Layout>
  */
-function Layout({ children, styleClass, maxWidth, minWidth, testID }: LayoutProps) {
+function Layout({
+  children,
+  styleClass,
+  maxWidth,
+  minWidth,
+  testID,
+}: LayoutProps) {
   return (
     <main
       data-testid={testID}

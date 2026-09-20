@@ -54,7 +54,8 @@ react {
 
     /* Hermes Commands */
     //   The hermes compiler command to run. By default it is 'hermesc'
-    // hermesCommand = "$rootDir/my-custom-hermesc/bin/hermesc"
+    // pnpm 환경에서 hermesc 경로를 node로 resolve
+    hermesCommand = ["node", "-e", "console.log(require('path').resolve(require('path').dirname(require.resolve('react-native/package.json')), '../hermes-compiler/hermesc/osx-bin/hermesc'))"].execute(null, file("../../")).text.trim()
     //
     //   The list of flags to pass to the Hermes compiler. By default is "-O", "-output-source-map"
     // hermesFlags = ["-O", "-output-source-map"]

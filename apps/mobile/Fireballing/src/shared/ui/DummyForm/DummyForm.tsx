@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  Button,
-} from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
 
 /**
  * # DummyForm
@@ -51,11 +45,7 @@ export function DummyForm() {
         onChangeText={setEmail}
         keyboardType="email-address"
       />
-      <Button
-        testID="btn-submit"
-        onPress={handleSubmit}
-        title="submit"
-      />
+      <Button testID="btn-submit" onPress={handleSubmit} title="submit" />
       {message ? (
         <Text testID="text-result" style={styles.message}>
           {message}

@@ -96,7 +96,10 @@ function BottomSheet({
       }}
     >
       <BottomSheetView style={{ flex: 1 }}>
-        <View testID={testID} className={twMerge('flex flex-col gap-gutter p-lg', className)}>
+        <View
+          testID={testID}
+          className={twMerge('flex flex-col gap-gutter p-lg', className)}
+        >
           {title && (
             <Text className="text-subtitle font-bold text-[#0d0b0a]">
               {title}
