@@ -13,7 +13,11 @@ const Stack = createNativeStackNavigator<SimulatorStackParamList>();
 export function SimulatorStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="Simulator" component={SimulatorScreen} options={{ title: '시뮬레이터' }} />
+      <Stack.Screen
+        name="Simulator"
+        component={SimulatorScreen}
+        options={{ title: '시뮬레이터' }}
+      />
     </Stack.Navigator>
   );
 }

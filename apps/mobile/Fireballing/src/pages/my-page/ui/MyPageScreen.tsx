@@ -10,7 +10,9 @@ import { ScreenLayout } from '@/shared/ui/ScreenLayout';
 export function MyPageScreen() {
   return (
     <ScreenLayout>
-      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>마이페이지</Text>
+      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>
+        마이페이지
+      </Text>
     </ScreenLayout>
   );
 }

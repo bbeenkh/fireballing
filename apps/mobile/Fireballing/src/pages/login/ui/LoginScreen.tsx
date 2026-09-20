@@ -10,7 +10,9 @@ import { ScreenLayout } from '@/shared/ui/ScreenLayout';
 export function LoginScreen() {
   return (
     <ScreenLayout>
-      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>로그인</Text>
+      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>
+        로그인
+      </Text>
     </ScreenLayout>
   );
 }

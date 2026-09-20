@@ -36,7 +36,7 @@ interface IAuthState {
  * @example
  * const isLoggedIn = useAuthStore(s => s.isLoggedIn);
  */
-export const useAuthStore = create<IAuthState>((set) => ({
+export const useAuthStore = create<IAuthState>(set => ({
   isLoggedIn: authManager.isLogined,
 
   initialize: async () => {

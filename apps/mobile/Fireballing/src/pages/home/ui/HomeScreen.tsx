@@ -123,8 +123,8 @@ function NavButton({
             ? '#cc3300'
             : '#ff5a26'
           : pressed
-          ? '#f0f0f0'
-          : '#f8f8f8',
+            ? '#f0f0f0'
+            : '#f8f8f8',
         paddingVertical: 12,
         paddingHorizontal: 16,
         borderRadius: 8,
@@ -138,4 +138,3 @@ function NavButton({
     </Pressable>
   );
 }
-

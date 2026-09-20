@@ -10,7 +10,9 @@ import { ScreenLayout } from '@/shared/ui/ScreenLayout';
 export function SimulatorScreen() {
   return (
     <ScreenLayout>
-      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>시뮬레이터</Text>
+      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>
+        시뮬레이터
+      </Text>
     </ScreenLayout>
   );
 }

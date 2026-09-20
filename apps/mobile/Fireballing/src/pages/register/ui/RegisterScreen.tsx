@@ -10,7 +10,9 @@ import { ScreenLayout } from '@/shared/ui/ScreenLayout';
 export function RegisterScreen() {
   return (
     <ScreenLayout>
-      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>회원가입</Text>
+      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>
+        회원가입
+      </Text>
     </ScreenLayout>
   );
 }

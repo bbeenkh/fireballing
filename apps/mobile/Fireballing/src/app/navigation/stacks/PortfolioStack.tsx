@@ -13,7 +13,11 @@ const Stack = createNativeStackNavigator<PortfolioStackParamList>();
 export function PortfolioStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="Portfolio" component={PortfolioScreen} options={{ title: '포트폴리오' }} />
+      <Stack.Screen
+        name="Portfolio"
+        component={PortfolioScreen}
+        options={{ title: '포트폴리오' }}
+      />
     </Stack.Navigator>
   );
 }

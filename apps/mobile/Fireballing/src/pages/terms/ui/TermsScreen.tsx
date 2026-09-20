@@ -10,7 +10,9 @@ import { ScreenLayout } from '@/shared/ui/ScreenLayout';
 export function TermsScreen() {
   return (
     <ScreenLayout>
-      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>이용약관</Text>
+      <Text style={{ fontSize: 20, padding: 16, color: '#1a1a1a' }}>
+        이용약관
+      </Text>
     </ScreenLayout>
   );
 }

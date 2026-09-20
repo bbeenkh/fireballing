@@ -12,7 +12,7 @@ import { WithNavigator } from './withNavigator';
  *   - 로그인 시 WithNavigator(하단 탭), 비로그인 시 AuthStack 표시
  */
 export function RootNavigator() {
-  const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
+  const isLoggedIn = useAuthStore(s => s.isLoggedIn);
 
   return isLoggedIn ? <WithNavigator /> : <AuthStack />;
 }

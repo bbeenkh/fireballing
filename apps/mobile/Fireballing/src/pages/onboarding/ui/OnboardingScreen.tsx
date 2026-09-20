@@ -14,11 +14,18 @@ import type { AuthStackParamList } from '@/shared/types';
 export function OnboardingScreen() {
   const navigation =
     useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
-  const login = useAuthStore((s) => s.login);
+  const login = useAuthStore(s => s.login);
 
   return (
     <ScreenLayout>
-      <Text style={{ fontSize: 20, fontWeight: 'bold', padding: 16, color: '#1a1a1a' }}>
+      <Text
+        style={{
+          fontSize: 20,
+          fontWeight: 'bold',
+          padding: 16,
+          color: '#1a1a1a',
+        }}
+      >
         온보딩
       </Text>
 
@@ -26,11 +33,27 @@ export function OnboardingScreen() {
         <Text style={{ fontSize: 14, color: '#9e928e', marginBottom: 4 }}>
           인증 스택
         </Text>
-        <NavButton label="로그인" onPress={() => navigation.navigate('Login')} />
-        <NavButton label="회원가입" onPress={() => navigation.navigate('Register')} />
-        <NavButton label="이용약관" onPress={() => navigation.navigate('Terms')} />
+        <NavButton
+          label="로그인"
+          onPress={() => navigation.navigate('Login')}
+        />
+        <NavButton
+          label="회원가입"
+          onPress={() => navigation.navigate('Register')}
+        />
+        <NavButton
+          label="이용약관"
+          onPress={() => navigation.navigate('Terms')}
+        />
 
-        <Text style={{ fontSize: 14, color: '#9e928e', marginTop: 12, marginBottom: 4 }}>
+        <Text
+          style={{
+            fontSize: 14,
+            color: '#9e928e',
+            marginTop: 12,
+            marginBottom: 4,
+          }}
+        >
           테스트
         </Text>
         <NavButton
@@ -57,8 +80,12 @@ function NavButton({
       onPress={onPress}
       style={({ pressed }) => ({
         backgroundColor: primary
-          ? pressed ? '#cc3300' : '#ff5a26'
-          : pressed ? '#f0f0f0' : '#f8f8f8',
+          ? pressed
+            ? '#cc3300'
+            : '#ff5a26'
+          : pressed
+            ? '#f0f0f0'
+            : '#f8f8f8',
         paddingVertical: 12,
         paddingHorizontal: 16,
         borderRadius: 8,

@@ -17,9 +17,21 @@ const Stack = createNativeStackNavigator<MyPageStackParamList>();
 export function MyPageStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="MyPage" component={MyPageScreen} options={{ title: '마이페이지' }} />
-      <Stack.Screen name="EditProfile" component={EditProfileScreen} options={{ title: '프로필 수정' }} />
-      <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: '설정' }} />
+      <Stack.Screen
+        name="MyPage"
+        component={MyPageScreen}
+        options={{ title: '마이페이지' }}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfileScreen}
+        options={{ title: '프로필 수정' }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{ title: '설정' }}
+      />
     </Stack.Navigator>
   );
 }

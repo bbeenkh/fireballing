@@ -18,10 +18,26 @@ const Stack = createNativeStackNavigator<AuthStackParamList>();
 export function AuthStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="Onboarding" component={OnboardingScreen} options={{ title: '온보딩' }} />
-      <Stack.Screen name="Login" component={LoginScreen} options={{ title: '로그인' }} />
-      <Stack.Screen name="Register" component={RegisterScreen} options={{ title: '회원가입' }} />
-      <Stack.Screen name="Terms" component={TermsScreen} options={{ title: '이용약관' }} />
+      <Stack.Screen
+        name="Onboarding"
+        component={OnboardingScreen}
+        options={{ title: '온보딩' }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{ title: '로그인' }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{ title: '회원가입' }}
+      />
+      <Stack.Screen
+        name="Terms"
+        component={TermsScreen}
+        options={{ title: '이용약관' }}
+      />
     </Stack.Navigator>
   );
 }
