@@ -27,6 +27,7 @@
     },
     "check-types": {
       "dependsOn": [
+        "^build",
         "^check-types"
       ]
     },
@@ -42,7 +43,7 @@
       "cache": false
     },
     "test": {
-      "dependsOn": [],
+      "dependsOn": ["^build"],
       "outputs": [],
       "cache": false
     }

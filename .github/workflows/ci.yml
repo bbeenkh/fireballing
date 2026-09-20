@@ -1,0 +1,35 @@
+name: CI - Mobile
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "apps/mobile/**"
+      - "packages/**"
+      - "pnpm-lock.yaml"
+      - "turbo.json"
+
+jobs:
+  checks:
+    name: Lint, Type-check, Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.18.0"
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm turbo run lint --filter=fblg-mobile...
+
+      - name: Type-check
+        run: pnpm turbo run check-types --filter=fblg-mobile...
+
+      - name: Test
+        run: pnpm turbo run test --filter=fblg-mobile...

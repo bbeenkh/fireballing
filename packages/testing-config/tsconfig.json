@@ -3,8 +3,11 @@
   "compilerOptions": {
     "moduleResolution": "bundler",
     "module": "ESNext",
-    "allowImportingTsExtensions": true
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "rootDir": "."
   },
-  "include": ["**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["index.ts", "presets/**/*.ts", "setup/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

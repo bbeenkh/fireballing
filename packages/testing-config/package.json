@@ -4,13 +4,29 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./index.ts",
-    "./presets/react": "./presets/react.ts",
-    "./presets/node": "./presets/node.ts",
-    "./setup/jest-dom": "./setup/jest-dom.ts",
-    "./setup/radix-polyfill": "./setup/radix-polyfill.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./presets/react": {
+      "types": "./dist/presets/react.d.ts",
+      "default": "./dist/presets/react.js"
+    },
+    "./presets/node": {
+      "types": "./dist/presets/node.d.ts",
+      "default": "./dist/presets/node.js"
+    },
+    "./setup/jest-dom": {
+      "types": "./dist/setup/jest-dom.d.ts",
+      "default": "./dist/setup/jest-dom.js"
+    },
+    "./setup/radix-polyfill": {
+      "types": "./dist/setup/radix-polyfill.d.ts",
+      "default": "./dist/setup/radix-polyfill.js"
+    }
   },
   "scripts": {
+    "build": "tsc",
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
