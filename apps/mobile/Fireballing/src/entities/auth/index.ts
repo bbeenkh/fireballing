@@ -4,3 +4,4 @@ export {
   persistTokens,
   clearPersistedTokens,
 } from './model/authStorageSync';
+export { useAuthStore } from './model/authStore';

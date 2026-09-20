@@ -4,10 +4,11 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import codePush from '@revopush/react-native-code-push';
 import Config from 'react-native-config';
-import { TabNavigator } from './src/app/navigation';
 import { QueryProvider } from './src/app/providers/QueryProvider';
-import { loadTokensFromStorage } from './src/entities/auth';
+import { useAuthStore } from './src/entities/auth';
+import { navigationRef } from './src/shared/lib';
 import * as Sentry from '@sentry/react-native';
+import { WithNavigator } from '@/app/navigation/withNavigator';
 
 Sentry.init({
   dsn: 'https://03d51a9fe11f2b4ad5be9a94b6a2e511@o4507820076040192.ingest.us.sentry.io/4512116550991872',
@@ -18,6 +19,7 @@ Sentry.init({
 
   // Enable Logs
   enableLogs: true,
+  enabled: false,
 
   // uncomment the line below to enable Spotlight (https://spotlightjs.com)
   // spotlight: __DEV__,
@@ -27,20 +29,23 @@ Sentry.init({
  * # App
  * ---
  * - 간단설명: 앱 루트 컴포넌트 (SafeArea + Navigation + QueryProvider 설정)
+ * - 제약사항 및 특이사항:
+ *   - useAuthStore.initialize()로 토큰 복원 후 인증 상태 자동 분기
+ *   - navigationRef로 React 외부 명령형 네비게이션 지원
  */
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   useEffect(() => {
-    loadTokensFromStorage();
+    useAuthStore.getState().initialize();
   }, []);
 
   return (
     <SafeAreaProvider>
       <QueryProvider>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <NavigationContainer>
-          <TabNavigator />
+        <NavigationContainer ref={navigationRef}>
+          <WithNavigator />
         </NavigationContainer>
       </QueryProvider>
     </SafeAreaProvider>
