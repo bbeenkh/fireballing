@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pnpm format",
+            "args": [],
+            "timeout": 120,
+            "statusMessage": "Prettier 실행 중..."
+          }
+        ]
+      }
+    ]
+  }
+}
