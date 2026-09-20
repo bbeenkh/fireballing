@@ -2,32 +2,32 @@
 
 ## CI - Mobile (`ci.yml`)
 
-| 항목 | 내용 |
-|------|------|
-| **트리거** | `master` 브랜치로의 **Pull Request** |
+| 항목          | 내용                                                            |
+| ------------- | --------------------------------------------------------------- |
+| **트리거**    | `master` 브랜치로의 **Pull Request**                            |
 | **경로 필터** | `apps/mobile/**`, `packages/**`, `pnpm-lock.yaml`, `turbo.json` |
-| **Runner** | `ubuntu-latest` |
-| **수행 작업** | Lint, Type-check, Test (`turbo --filter=fblg-mobile...`) |
+| **Runner**    | `ubuntu-latest`                                                 |
+| **수행 작업** | Lint, Type-check, Test (`turbo --filter=fblg-mobile...`)        |
 
 ## CD - Android (`cd-android.yml`)
 
-| 항목 | 내용 |
-|------|------|
-| **트리거** | `master` 브랜치로의 **Push** (머지 시 자동 실행) 또는 **workflow_dispatch** (수동) |
-| **경로 필터** | `apps/mobile/**`, `packages/**` (push 시에만 적용) |
-| **Runner** | `ubuntu-latest` |
-| **수동 입력** | `deploy_type`: `native` (Play Store 배포) / `ota` (RevoPush OTA 배포) |
+| 항목          | 내용                                                                                    |
+| ------------- | --------------------------------------------------------------------------------------- |
+| **트리거**    | `master` 브랜치로의 **Push** (머지 시 자동 실행) 또는 **workflow_dispatch** (수동)      |
+| **경로 필터** | `apps/mobile/**`, `packages/**` (push 시에만 적용)                                      |
+| **Runner**    | `ubuntu-latest`                                                                         |
+| **수동 입력** | `deploy_type`: `native` (Play Store 배포) / `ota` (RevoPush OTA 배포)                   |
 | **수행 작업** | native → Release AAB 빌드 → Play Store internal 트랙 배포 / ota → RevoPush JS 번들 배포 |
 
 ## CD - iOS (`cd-ios.yml`)
 
-| 항목 | 내용 |
-|------|------|
-| **트리거** | `master` 브랜치로의 **Push** (머지 시 자동 실행) 또는 **workflow_dispatch** (수동) |
-| **경로 필터** | `apps/mobile/**`, `packages/**` (push 시에만 적용) |
-| **Runner** | `macos-15` (Apple Silicon) |
-| **수동 입력** | `deploy_type`: `native` (TestFlight 배포) / `ota` (RevoPush OTA 배포) |
-| **수행 작업** | native → Release 빌드 → TestFlight 배포 / ota → RevoPush JS 번들 배포 |
+| 항목          | 내용                                                                               |
+| ------------- | ---------------------------------------------------------------------------------- |
+| **트리거**    | `master` 브랜치로의 **Push** (머지 시 자동 실행) 또는 **workflow_dispatch** (수동) |
+| **경로 필터** | `apps/mobile/**`, `packages/**` (push 시에만 적용)                                 |
+| **Runner**    | `macos-15` (Apple Silicon)                                                         |
+| **수동 입력** | `deploy_type`: `native` (TestFlight 배포) / `ota` (RevoPush OTA 배포)              |
+| **수행 작업** | native → Release 빌드 → TestFlight 배포 / ota → RevoPush JS 번들 배포              |
 
 ---
 
