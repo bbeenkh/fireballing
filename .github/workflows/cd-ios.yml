@@ -6,6 +6,16 @@ on:
     paths:
       - "apps/mobile/**"
       - "packages/**"
+  workflow_dispatch:
+    inputs:
+      deploy_type:
+        description: "배포 방식"
+        required: true
+        default: "native"
+        type: choice
+        options:
+          - native
+          - ota
 
 jobs:
   build-and-deploy:
@@ -47,7 +57,8 @@ jobs:
       - name: Install Pods
         run: cd ios && pod install
 
-      - name: Build & Deploy
+      - name: Build & Deploy (Native)
+        if: github.event.inputs.deploy_type != 'ota'
         run: bundle exec fastlane ios deploy
         env:
           MATCH_GIT_URL: ${{ secrets.MATCH_GIT_URL }}
@@ -57,3 +68,11 @@ jobs:
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
           GITHUB_RUN_NUMBER: ${{ github.run_number }}
+
+      - name: OTA Deploy (RevoPush)
+        if: github.event.inputs.deploy_type == 'ota'
+        run: |
+          npx revopush release ios -d Production \
+            --description "OTA update v$(node -p "require('../package.json').version")"
+        env:
+          REVOPUSH_ACCESS_KEY: ${{ secrets.REVOPUSH_ACCESS_KEY }}

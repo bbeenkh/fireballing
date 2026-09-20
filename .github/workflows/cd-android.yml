@@ -6,6 +6,16 @@ on:
     paths:
       - "apps/mobile/**"
       - "packages/**"
+  workflow_dispatch:
+    inputs:
+      deploy_type:
+        description: "배포 방식"
+        required: true
+        default: "native"
+        type: choice
+        options:
+          - native
+          - ota
 
 jobs:
   build-and-deploy:
@@ -57,7 +67,8 @@ jobs:
           key: gradle-${{ hashFiles('apps/mobile/Fireballing/android/**/*.gradle*', 'apps/mobile/Fireballing/android/gradle/wrapper/gradle-wrapper.properties') }}
           restore-keys: gradle-
 
-      - name: Build & Deploy
+      - name: Build & Deploy (Native)
+        if: github.event.inputs.deploy_type != 'ota'
         run: bundle exec fastlane android deploy
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
@@ -65,3 +76,11 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           GOOGLE_PLAY_JSON_KEY_PATH: google-play-key.json
           GITHUB_RUN_NUMBER: ${{ github.run_number }}
+
+      - name: OTA Deploy (RevoPush)
+        if: github.event.inputs.deploy_type == 'ota'
+        run: |
+          npx revopush release android -d Production \
+            --description "OTA update v$(node -p "require('../package.json').version")"
+        env:
+          REVOPUSH_ACCESS_KEY: ${{ secrets.REVOPUSH_ACCESS_KEY }}
