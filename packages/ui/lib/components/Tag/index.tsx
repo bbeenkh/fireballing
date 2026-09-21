@@ -1,70 +1,55 @@
 import React from 'react';
-import { Text, type TextProps } from 'react-native';
+import { Text, View, type ViewProps } from 'react-native';
 
-type TagIntent = 'profit' | 'loss' | 'neutral';
-type TagSize = 'sm' | 'md';
+type TagVariant = 'filled' | 'outlined' | 'light';
 
-interface ITagProps extends TextProps {
-  /** 'profit' | 'loss' | 'neutral' — children 텍스트에서 자동감지 (명시 시 오버라이드) */
-  intent?: TagIntent;
-  /** 'sm' | 'md' (기본값: 'md') */
-  size?: TagSize;
+interface ITagProps extends ViewProps {
+  /** 'filled' | 'outlined' | 'light' (기본값: 'filled') */
+  variant?: TagVariant;
   className?: string;
   children: React.ReactNode;
 }
 
-function detectIntent(children: React.ReactNode): TagIntent {
-  if (typeof children === 'string') {
-    if (children.startsWith('+')) return 'profit';
-    if (children.startsWith('-')) return 'loss';
-  }
-  return 'neutral';
-}
-
-const intentStyles: Record<TagIntent, string> = {
-  profit: 'text-profit',
-  loss: 'text-loss',
-  neutral: 'text-on-surface-variant',
+const containerStyles: Record<TagVariant, string> = {
+  filled: 'bg-[#f5edff] rounded-full px-3 py-2',
+  outlined: 'border border-[#8c39fb] rounded-full px-3 py-2',
+  light: 'bg-[#f5edff] rounded-full px-3 py-2',
 };
 
-const sizeStyles: Record<TagSize, string> = {
-  sm: 'text-label-sm',
-  md: 'text-label-md',
+const textStyles: Record<TagVariant, string> = {
+  filled: 'text-[#1a1a1a] text-caption tracking-tight',
+  outlined: 'text-[#8c39fb] text-caption tracking-tight',
+  light: 'text-[#8c39fb] text-caption tracking-tight',
 };
 
 /**
  * # Tag
  * ---
- * - 간단설명: 수익률/퍼센티지 표시용 태그 컴포넌트
- * - children 텍스트가 +로 시작하면 profit(녹색), -로 시작하면 loss(적색) 자동 적용
- * - intent prop으로 명시적 오버라이드 가능
+ * - 간단설명: 카테고리/상태 표시용 태그 컴포넌트
+ * - variant로 filled(연보라 배경), outlined(보더), light(연보라+퍼플 텍스트) 선택
  * ---
- * @param intent 의도 ('profit' | 'loss' | 'neutral')
- * @param size 크기 ('sm' | 'md')
+ * @param variant 태그 스타일 ('filled' | 'outlined' | 'light')
  * @param children 표시할 텍스트
  * ---
  * @example
- * <Tag>+12.4%</Tag>
- * <Tag intent="loss">-1.32%</Tag>
+ * <Tag variant="filled">텍스트</Tag>
+ * <Tag variant="outlined">계정</Tag>
  */
 export function Tag({
-  intent,
-  size = 'md',
+  variant = 'filled',
   className,
   children,
   ...props
 }: ITagProps) {
-  const resolvedIntent = intent ?? detectIntent(children);
-
   return (
-    <Text
-      className={[intentStyles[resolvedIntent], sizeStyles[size], className]
+    <View
+      className={[containerStyles[variant], className]
         .filter(Boolean)
         .join(' ')}
       {...props}
     >
-      {children}
-    </Text>
+      <Text className={textStyles[variant]}>{children}</Text>
+    </View>
   );
 }
 

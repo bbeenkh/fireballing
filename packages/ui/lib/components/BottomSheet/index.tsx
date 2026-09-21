@@ -88,7 +88,7 @@ function BottomSheet({
       onClose={onClose}
       enablePanDownToClose
       backdropComponent={backdrop ? renderBackdrop : undefined}
-      handleIndicatorStyle={{ backgroundColor: '#e7ded6', width: 40 }}
+      handleIndicatorStyle={{ backgroundColor: '#e3e3e3', width: 40 }}
       backgroundStyle={{
         backgroundColor: '#ffffff',
         borderTopLeftRadius: 20,
@@ -101,7 +101,7 @@ function BottomSheet({
           className={twMerge('flex flex-col gap-gutter p-lg', className)}
         >
           {title && (
-            <Text className="text-subtitle font-bold text-[#0d0b0a]">
+            <Text className="text-subtitle font-bold text-[#1a1a1a]">
               {title}
             </Text>
           )}
@@ -117,7 +117,7 @@ function BottomSheet({
  * ---
  * - 간단설명: 바텀시트 하단 CTA 액션 버튼
  * - 제약사항 및 특이사항:
- *   - 피그마: bg-[#ff5a26], rounded-[12px], p-[16px], 텍스트 중앙정렬
+ *   - 피그마: bg-[#8c39fb], rounded-[12px], p-[16px], 텍스트 중앙정렬
  * ---
  * @param label 버튼 라벨 텍스트
  * ---
@@ -128,12 +128,12 @@ function Action({ label, className, ...props }: IBottomSheetActionProps) {
   return (
     <Pressable
       className={twMerge(
-        'bg-[#ff5a26] rounded-md p-md items-center justify-center w-full active:bg-[#ff2e00]',
+        'bg-[#8c39fb] rounded-md p-md items-center justify-center w-full active:bg-[#742bd5]',
         className,
       )}
       {...props}
     >
-      <Text className="text-body font-bold text-[#0d0b0a]">{label}</Text>
+      <Text className="text-body font-bold text-white">{label}</Text>
     </Pressable>
   );
 }

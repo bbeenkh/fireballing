@@ -16,7 +16,7 @@ interface ISelectButtonProps extends PressableProps {
 }
 
 interface ISelectButtonGroupProps extends ViewProps {
-  /** 그룹 라벨 (예: "계좌 유형") */
+  /** 그룹 라벨 */
   label?: string;
   className?: string;
   children: React.ReactNode;
@@ -25,19 +25,19 @@ interface ISelectButtonGroupProps extends ViewProps {
 /**
  * # SelectButton
  * ---
- * - 간단설명: 상호 배타적 선택을 위한 토글 버튼 컴포넌트
+ * - 간단설명: 선택 옵션 버튼 컴포넌트
  * - 제약사항 및 특이사항:
+ *   - 선택 시 퍼플 배경 + 체크 아이콘, 미선택 시 회색 배경
  *   - 선택 상태 관리는 부모에서 처리
- *   - SelectButton.Group으로 그룹핑하여 라벨과 수평 레이아웃 제공
+ *   - SelectButton.Group으로 그룹핑하여 라벨과 수직 레이아웃 제공
  * ---
  * @param selected 선택 상태
  * @param children 버튼 라벨 텍스트
  * ---
  * @example
- * <SelectButton.Group label="계좌 유형">
- *   <SelectButton selected onPress={() => setType('일반')}>일반</SelectButton>
- *   <SelectButton onPress={() => setType('ISA')}>ISA</SelectButton>
- *   <SelectButton onPress={() => setType('연금')}>연금</SelectButton>
+ * <SelectButton.Group label="질문">
+ *   <SelectButton selected onPress={() => setType('에겐')}>에겐</SelectButton>
+ *   <SelectButton onPress={() => setType('테토')}>테토</SelectButton>
  * </SelectButton.Group>
  */
 function SelectButton({
@@ -49,18 +49,18 @@ function SelectButton({
   return (
     <Pressable
       className={twMerge(
-        'rounded-pill px-md py-3 border items-center justify-center',
-        selected
-          ? 'bg-[rgba(255,90,38,0.1)] border-[#ff5a26]'
-          : 'bg-white border-[#e7ded6]',
+        'rounded-md px-md py-md flex-row items-center justify-between h-[52px]',
+        selected ? 'bg-[#f5edff] border border-[#8c39fb]' : 'bg-[#f5f5f5]',
         className,
       )}
       {...props}
     >
       <Text
         className={twMerge(
-          'text-label-md',
-          selected ? 'text-[#ff5a26]' : 'text-[#9e928e]',
+          'text-body-sm flex-1',
+          selected
+            ? 'text-[#8c39fb] font-semibold'
+            : 'text-[#1a1a1a] font-medium',
         )}
       >
         {children}
@@ -72,7 +72,7 @@ function SelectButton({
 /**
  * # SelectButton.Group
  * ---
- * - 간단설명: SelectButton을 수평 배치하고 라벨을 표시하는 컨테이너
+ * - 간단설명: SelectButton을 수직 배치하고 라벨을 표시하는 컨테이너
  * ---
  * @param label 그룹 상단에 표시할 라벨
  * @param children SelectButton 컴포넌트들
@@ -86,11 +86,11 @@ function SelectButtonGroup({
   return (
     <View className={twMerge('gap-sm', className)} {...props}>
       {label && (
-        <Text className="text-detail font-semibold text-[#9e928e]">
+        <Text className="text-detail font-semibold text-[#1a1a1a]">
           {label}
         </Text>
       )}
-      <View className="flex-row items-center gap-xs">{children}</View>
+      <View className="gap-sm">{children}</View>
     </View>
   );
 }
