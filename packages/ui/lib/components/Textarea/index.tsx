@@ -3,10 +3,10 @@ import { TextInput, View, Text, type TextInputProps } from 'react-native';
 import { twMerge } from 'tailwind-merge';
 
 /**
- * Textbox 컴포넌트 Props
+ * Textarea 컴포넌트 Props
  * @extends TextInputProps
  */
-interface ITextboxProps extends TextInputProps {
+interface ITextareaProps extends TextInputProps {
   /** 현재 글자수 (카운터 표시용) */
   currentLength?: number;
   /** 최대 글자수 (카운터 표시용) */
@@ -18,7 +18,7 @@ interface ITextboxProps extends TextInputProps {
 }
 
 /**
- * # Textbox
+ * # Textarea
  * ---
  * - 간단설명: 멀티라인 텍스트 입력 컴포넌트
  * - 제약사항 및 특이사항:
@@ -31,16 +31,16 @@ interface ITextboxProps extends TextInputProps {
  * @param inputClassName TextInput 추가 클래스
  * ---
  * @example
- * <Textbox placeholder="프로필 이름을 입력해주세요" maxCharLength={300} />
+ * <Textarea placeholder="프로필 이름을 입력해주세요" maxCharLength={300} />
  */
-export function Textbox({
+export function Textarea({
   currentLength,
   maxCharLength,
   className,
   inputClassName,
   testID,
   ...props
-}: ITextboxProps) {
+}: ITextareaProps) {
   return (
     <View
       accessible={false}
@@ -73,4 +73,4 @@ export function Textbox({
   );
 }
 
-export default Textbox;
+export default Textarea;

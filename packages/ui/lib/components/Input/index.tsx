@@ -48,9 +48,7 @@ export function Input({
   return (
     <View accessible={false} className={twMerge('gap-3', className)}>
       {label && (
-        <Text className="text-text-primary text-body font-medium">
-          {label}
-        </Text>
+        <Text className="text-text-primary text-body font-medium">{label}</Text>
       )}
       <View
         accessible={false}

@@ -20,7 +20,7 @@ export { default as ProgressIndicator } from './components/ProgressIndicator';
 export { default as StepIndicator } from './components/StepIndicator';
 export { default as Accordion } from './components/Accordion';
 export { default as SearchInput } from './components/SearchInput';
-export { default as Textbox } from './components/Textbox';
+export { default as Textarea } from './components/Textarea';
 export { default as TmiCard } from './components/TmiCard';
 export { default as UnderlineTab } from './components/UnderlineTab';
 
