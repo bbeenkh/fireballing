@@ -33,8 +33,14 @@ export type ProfileStackParamList = {
 
 /**
  * 시뮬레이터 스택 파라미터
+ * - MyInfo = 내 정보 입력
+ * - PartnerInfo = 상대 정보 입력
+ * - Simulator = 시뮬레이션 채팅
  */
 export type SimulatorStackParamList = {
+  MyInfo: undefined;
+  MyInfoDetails: { gender: 'M' | 'F'; mbti?: string };
+  PartnerInfo: undefined;
   Simulator: undefined;
 };
 
