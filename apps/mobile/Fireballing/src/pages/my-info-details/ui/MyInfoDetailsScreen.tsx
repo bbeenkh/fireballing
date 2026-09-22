@@ -246,8 +246,7 @@ function MyInfoDetailsScreenBase() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: 10,
-                  backgroundColor:
-                    style === s.value ? '#f5edff' : '#f5f5f5',
+                  backgroundColor: style === s.value ? '#f5edff' : '#f5f5f5',
                   borderWidth: style === s.value ? 1 : 0,
                   borderColor: style === s.value ? '#8c39fb' : 'transparent',
                 }}
@@ -285,8 +284,7 @@ function MyInfoDetailsScreenBase() {
                   paddingVertical: 10,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor:
-                    job === j.value ? '#f5edff' : '#f5f5f5',
+                  backgroundColor: job === j.value ? '#f5edff' : '#f5f5f5',
                   borderWidth: job === j.value ? 1 : 0,
                   borderColor: job === j.value ? '#8c39fb' : 'transparent',
                 }}
