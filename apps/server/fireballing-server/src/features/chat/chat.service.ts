@@ -33,7 +33,7 @@ export class ChatService {
     const systemPrompt = PERSONAS[persona] ?? PERSONAS['default']!;
     const model = this.genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
-    const history = messages.slice(0, -1).map((msg) => ({
+    const history = messages.slice(0, -1).map(msg => ({
       role: msg.role,
       parts: [{ text: msg.content }],
     }));

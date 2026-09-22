@@ -68,9 +68,7 @@ describe('ChatService', () => {
     });
 
     it('존재하지 않는 페르소나는 default로 폴백한다', async () => {
-      const messages: IChatMessage[] = [
-        { role: 'user', content: '테스트' },
-      ];
+      const messages: IChatMessage[] = [{ role: 'user', content: '테스트' }];
 
       mockGenerateContent.mockResolvedValue({
         response: { text: () => '응답' },
@@ -82,9 +80,7 @@ describe('ChatService', () => {
     });
 
     it('Gemini API 에러 시 예외를 던진다', async () => {
-      const messages: IChatMessage[] = [
-        { role: 'user', content: '안녕' },
-      ];
+      const messages: IChatMessage[] = [{ role: 'user', content: '안녕' }];
 
       mockGenerateContent.mockRejectedValue(new Error('API 호출 실패'));
 

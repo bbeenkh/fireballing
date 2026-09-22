@@ -25,7 +25,7 @@ export const chatRequestSchema = z
     /** 페르소나 키 (기본값: 'default') */
     persona: z.string().optional().default('default'),
   })
-  .refine((data) => data.messages[data.messages.length - 1]!.role === 'user', {
+  .refine(data => data.messages[data.messages.length - 1]!.role === 'user', {
     message: '마지막 메시지는 반드시 사용자(user) 메시지여야 합니다',
     path: ['messages'],
   });
