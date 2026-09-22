@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { IconHome, IconUser, IconSimulator, IconNote } from '@fblg/core-ui';
 import type { AppTabParamList } from '@/shared/types';
 import { HomeStack } from './stacks/HomeStack';
@@ -26,6 +27,8 @@ export function withNavigator<P extends Record<string, unknown>>(
   Component: React.ComponentType<P>,
 ) {
   function WithNavigator(_props: P) {
+    const insets = useSafeAreaInsets();
+
     return (
       <Tab.Navigator
         screenOptions={{
@@ -33,7 +36,8 @@ export function withNavigator<P extends Record<string, unknown>>(
           tabBarStyle: {
             backgroundColor: '#ffffff',
             borderTopColor: '#e3e3e3',
-            height: 64,
+            height: 64 + insets.bottom,
+            paddingBottom: insets.bottom,
             shadowColor: '#000',
             shadowOffset: { width: 0, height: -2 },
             shadowOpacity: 0.1,

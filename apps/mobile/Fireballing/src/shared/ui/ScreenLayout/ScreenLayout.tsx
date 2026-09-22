@@ -27,6 +27,7 @@ export function withLayout<P extends Record<string, unknown>>(
         style={[
           {
             flex: 1,
+            paddingTop: insets.top,
             paddingBottom: insets.bottom,
             backgroundColor: '#ffffff',
           },
