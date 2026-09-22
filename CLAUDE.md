@@ -107,9 +107,9 @@ Shared: 공용 ui, 유틸 순수함수들-슬라이스 없이 세그먼트만 �
 
 ## Package Manager & Runtime
 
-- **Package manager**: pnpm 9.0.0 (use `pnpm`, not `npm` or `yarn`)
-- **Node.js**: >= 18 required
-- **Monorepo tool**: Turborepo — all tasks run through `turbo`
+- **Package manager**: pnpm 9.15.9 (use `pnpm`, not `npm` or `yarn`)
+- **Node.js**: >= 18 (Volta 24.18.0)
+- **Monorepo tool**: Turborepo 2.10 — all tasks run through `turbo`
 
 ## Common Commands
 
@@ -127,49 +127,74 @@ pnpm format            # Prettier format (*.ts, *.tsx, *.md)
 
 # Run tasks for a specific package only
 pnpm --filter @fblg/core-ui build
-pnpm --filter web dev
+pnpm --filter fblg-mobile local:a   # Android
+pnpm --filter fblg-mobile local:i   # iOS
+
+# Storybook
+pnpm storybook         # Native (ondevice)
+pnpm storybook:web     # Web (@6006)
+
+# Test
+pnpm test              # All tests via turbo
+pnpm test:e2e          # E2E (Detox)
 ```
 
 ## Project Summary
 
-**fireballing** — 개인 포트폴리오 프로젝트. Web, Server, Mobile 3개 앱을 포함하는 Turborepo 모노레포.
+- AI 연애 시뮬레이터 및 피드백 앱
+- Mobile + Server 2개 앱 운영 중 (Web 앱은 워크스페이스 정의만 존재, 미구현)
 
 ## Architecture
 
 ```
 fireballing/
 ├── apps/
-│   ├── web/fireballing-web/           # TanStack Start + Vite 프론트엔드
-│   ├── server/fireballing-server/     # Hono 백엔드 서버
-│   └── mobile/Fireballing/            # React Native 모바일 앱
+│   ├── mobile/Fireballing/            # React Native 모바일 앱 (fblg-mobile)
+│   └── server/fireballing-server/     # NestJS 백엔드 서버 (fblg-server)
 ├── packages/
-│   ├── ui/                            # @fblg/core-ui — 공용 React 컴포넌트 (button, card, code)
-│   ├── typescript-config/             # 공용 tsconfig (base, nextjs, react-library)
-│   └── eslint-config/                 # 공용 ESLint 설정 (base, next, react-internal)
-├── turbo.json                         # 파이프라인 설정
-└── pnpm-workspace.yaml                # 워크스페이스 정의 (apps/web/*, apps/server/*, apps/mobile/*, packages/*)
+│   ├── ui/                            # @fblg/core-ui — 공용 React 컴포넌트 (25+ 컴포넌트)
+│   ├── authmanager/                   # @fblg/authmanager — 인증 상태 관리 (Zustand)
+│   ├── schemas/                       # @fblg/schemas — 공용 Zod 스키마
+│   ├── types/                         # @fblg/types — 공용 TypeScript 타입
+│   ├── enums/                         # @fblg/enums — 공용 열거형
+│   ├── utils/                         # @fblg/utils — 유틸 함수 (dayjs, lodash-es)
+│   ├── testing-config/                # @fblg/testing-config — Vitest 프리셋 (react/node)
+│   ├── typescript-config/             # @fblg/typescript-config — 공용 tsconfig
+│   └── eslint-config/                 # @fblg/eslint-config — ESLint FlatConfig
+├── turbo.json
+└── pnpm-workspace.yaml
 ```
 
 **Key patterns:**
 
-- Apps consume `@fblg/core-ui` components and extend shared configs from `@fblg/eslint-config` and `@fblg/typescript-config`
-- TypeScript strict mode + ES2022 target is enforced via `packages/typescript-config/base.json`
-- Turbo task pipeline: `build` depends on upstream `^build`; `dev` runs persistently with no cache
+- Apps consume `@fblg/core-ui` components and extend shared configs
+- Mobile: FSD 폴더구조 (app/pages/widgets/features/entities/shared)
+- Mobile 내비게이션: React Navigation 7 (native-stack + bottom-tabs)
+- Server: NestJS 모듈 구조 + Supabase DB + Google Generative AI
+- TypeScript strict mode + ES2022 target
+- Turbo task pipeline: `build` depends on `^build`; `local` runs persistently with no cache
 
 ## Tech Stack
 
-| 영역                | 기술                               |
-| ------------------- | ---------------------------------- |
-| **Web 프레임워크**  | TanStack Start (React 19 + Vite 8) |
-| **서버 프레임워크** | Hono 4 (Node.js)                   |
-| **모바일**          | React Native 0.85 (React 19)       |
-| **스타일링**        | Tailwind CSS 4 (@tailwindcss/vite) |
-| **테스트 (Web)**    | Vitest + Testing Library           |
-| **테스트 (Mobile)** | Jest                               |
-| **TypeScript**      | 5.8 ~ 6.0 (앱별 상이)              |
-| **린트/포맷**       | ESLint 9 (FlatConfig) + Prettier 3 |
-| **모노레포**        | Turborepo 2.9 + pnpm 9.0           |
-| **공용 컴포넌트**   | @fblg/core-ui (React 19)           |
+| 영역                | 기술                                         |
+| ------------------- | -------------------------------------------- |
+| **서버 프레임워크** | NestJS 11.1 (Node.js, Express)               |
+| **모바일**          | React Native 0.85.3 (React 19.2)             |
+| **스타일링**        | Tailwind CSS 4 + NativeWind 4                |
+| **상태관리**        | Zustand 5 + Immer                            |
+| **데이터 페칭**     | TanStack Query 5 (mobile), Supabase (server) |
+| **유효성 검증**     | Zod 4                                        |
+| **AI**              | Google Generative AI (server)                |
+| **인증**            | Firebase Auth + App Check                    |
+| **에러 트래킹**     | Sentry (react-native)                        |
+| **OTA 업데이트**    | Revopush (react-native-code-push)            |
+| **테스트 (Server)** | Vitest 4 + NestJS Testing                    |
+| **테스트 (Mobile)** | Jest + Detox (E2E)                           |
+| **http api 통신**   | Axios                                        |
+| **TypeScript**      | 5.9.2 (root) / 5.8.3 (apps)                  |
+| **린트/포맷**       | ESLint 9 (FlatConfig) + Prettier 3           |
+| **모노레포**        | Turborepo 2.10 + pnpm 9.15                   |
+| **공용 컴포넌트**   | @fblg/core-ui (25+ 컴포넌트, Storybook 10)   |
 
 ### 타입정의 규칙
 
