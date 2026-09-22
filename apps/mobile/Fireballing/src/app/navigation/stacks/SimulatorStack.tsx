@@ -16,7 +16,7 @@ export function SimulatorStack() {
       <Stack.Screen
         name="Simulator"
         component={SimulatorScreen}
-        options={{ title: '시뮬레이터' }}
+        options={{ title: '시뮬레이션' }}
       />
     </Stack.Navigator>
   );

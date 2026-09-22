@@ -16,16 +16,19 @@ export type AuthStackParamList = {
 
 /**
  * 홈 스택 파라미터
+ * - HOME = 홈 메인
+ * - EDIT_PROFILE = 프로필 수정
  */
 export type HomeStackParamList = {
   Home: undefined;
+  EditProfile: undefined;
 };
 
 /**
- * 포트폴리오 스택 파라미터
+ * 내정보 스택 파라미터
  */
-export type PortfolioStackParamList = {
-  Portfolio: undefined;
+export type ProfileStackParamList = {
+  Profile: undefined;
 };
 
 /**
@@ -36,14 +39,9 @@ export type SimulatorStackParamList = {
 };
 
 /**
- * 마이페이지 스택 파라미터
- * - MY_PAGE = 마이페이지 메인
- * - EDIT_PROFILE = 프로필 수정
- * - SETTINGS = 설정
+ * 설정 스택 파라미터
  */
-export type MyPageStackParamList = {
-  MyPage: undefined;
-  EditProfile: undefined;
+export type SettingsStackParamList = {
   Settings: undefined;
 };
 
@@ -52,7 +50,7 @@ export type MyPageStackParamList = {
  */
 export type AppTabParamList = {
   HomeTab: NavigatorScreenParams<HomeStackParamList>;
-  PortfolioTab: NavigatorScreenParams<PortfolioStackParamList>;
+  ProfileTab: NavigatorScreenParams<ProfileStackParamList>;
   SimulatorTab: NavigatorScreenParams<SimulatorStackParamList>;
-  MyPageTab: NavigatorScreenParams<MyPageStackParamList>;
+  SettingsTab: NavigatorScreenParams<SettingsStackParamList>;
 };

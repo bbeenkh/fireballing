@@ -42,6 +42,8 @@ export {
   IconEdit,
   IconPortfolio,
   IconFlame,
+  IconUser,
+  IconNote,
 } from './assets/icons';
 
 // Utils

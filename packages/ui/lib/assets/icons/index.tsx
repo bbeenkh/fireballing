@@ -447,3 +447,61 @@ export function IconFlame({
     </Svg>
   );
 }
+
+/**
+ * # IconUser
+ * ---
+ * - 간단설명: 사용자 프로필 아이콘
+ * ---
+ * @param size - 아이콘 크기 (기본 24)
+ * @param color - 아이콘 색상 (기본 currentColor)
+ * ---
+ * @example
+ * <IconUser size={24} color="#363636" />
+ */
+export function IconUser({
+  size = 24,
+  color = 'currentColor',
+  ...props
+}: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...props}>
+      <Path
+        d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"
+        stroke={color}
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+/**
+ * # IconNote
+ * ---
+ * - 간단설명: 노트/문서 아이콘
+ * ---
+ * @param size - 아이콘 크기 (기본 24)
+ * @param color - 아이콘 색상 (기본 currentColor)
+ * ---
+ * @example
+ * <IconNote size={24} color="#363636" />
+ */
+export function IconNote({
+  size = 24,
+  color = 'currentColor',
+  ...props
+}: IconProps) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none" {...props}>
+      <Path
+        d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6M16 13H8M16 17H8M10 9H8"
+        stroke={color}
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}

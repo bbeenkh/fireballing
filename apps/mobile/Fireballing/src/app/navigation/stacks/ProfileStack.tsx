@@ -1,22 +1,22 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import type { PortfolioStackParamList } from '@/shared/types';
+import type { ProfileStackParamList } from '@/shared/types';
 import { PortfolioScreen } from '@/pages/portfolio';
 
-const Stack = createNativeStackNavigator<PortfolioStackParamList>();
+const Stack = createNativeStackNavigator<ProfileStackParamList>();
 
 /**
- * # PortfolioStack
+ * # ProfileStack
  * ---
- * - 간단설명: 포트폴리오 탭 내부 스택 네비게이터
+ * - 간단설명: 내정보 탭 내부 스택 네비게이터
  */
-export function PortfolioStack() {
+export function ProfileStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: true }}>
       <Stack.Screen
-        name="Portfolio"
+        name="Profile"
         component={PortfolioScreen}
-        options={{ title: '포트폴리오' }}
+        options={{ title: '내정보' }}
       />
     </Stack.Navigator>
   );
