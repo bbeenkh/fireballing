@@ -12,3 +12,8 @@ export {
   type CreatePortfolioRequest,
   type UpdatePortfolioRequest,
 } from './portfolio.js';
+export {
+  chatMessageSchema,
+  chatRequestSchema,
+  type ChatRequestSchema,
+} from './chat.js';

@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { SupabaseModule } from './common/supabase/supabase.module';
+import { ChatModule } from './features/chat/chat.module';
 
 /**
  * # AppModule
@@ -9,7 +10,7 @@ import { SupabaseModule } from './common/supabase/supabase.module';
  * ---
  */
 @Module({
-  imports: [SupabaseModule],
+  imports: [SupabaseModule, ChatModule],
   controllers: [AppController],
 })
 export class AppModule {}
