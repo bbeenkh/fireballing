@@ -11,16 +11,16 @@ AI 연애 시뮬레이터 및 피드백 앱. 모바일(React Native) + 서버(Ne
 
 ### 기술 스택 요약
 
-| 영역 | 기술 |
-|------|------|
-| 모바일 | React Native 0.85.3, React 19.2, NativeWind 4 |
-| 서버 | NestJS 11.1, tsx watch (esbuild) |
-| AI | Google Generative AI (Gemini 3.6 Flash) |
-| 상태관리 | Zustand 5 + Immer |
-| 데이터 페칭 | TanStack Query 5 (모바일), Supabase (서버) |
-| 검증 | Zod 4 |
-| 인증 | Firebase Auth + App Check (현재 비활성) |
-| 모노레포 | Turborepo 2.10 + pnpm 9.15 |
+| 영역        | 기술                                          |
+| ----------- | --------------------------------------------- |
+| 모바일      | React Native 0.85.3, React 19.2, NativeWind 4 |
+| 서버        | NestJS 11.1, tsx watch (esbuild)              |
+| AI          | Google Generative AI (Gemini 3.6 Flash)       |
+| 상태관리    | Zustand 5 + Immer                             |
+| 데이터 페칭 | TanStack Query 5 (모바일), Supabase (서버)    |
+| 검증        | Zod 4                                         |
+| 인증        | Firebase Auth + App Check (현재 비활성)       |
+| 모노레포    | Turborepo 2.10 + pnpm 9.15                    |
 
 ---
 
@@ -115,9 +115,17 @@ TextInput → useChatMutation → POST /api/chat → ChatService → generateCon
 ### 3.2 공유 타입 (`@fblg/types`)
 
 ```typescript
-interface IChatMessage { role: 'user' | 'model'; content: string }
-interface IChatRequest { messages: IChatMessage[]; persona?: string }
-interface IChatResponse { message: IChatMessage }
+interface IChatMessage {
+  role: 'user' | 'model';
+  content: string;
+}
+interface IChatRequest {
+  messages: IChatMessage[];
+  persona?: string;
+}
+interface IChatResponse {
+  message: IChatMessage;
+}
 ```
 
 ### 3.3 공유 스키마 (`@fblg/schemas`)
@@ -181,10 +189,10 @@ RootNavigator
 
 ### 모바일 (`react-native-config`)
 
-| 파일 | 용도 |
-|------|------|
-| `.env.development` | 개발용 (API_URL=http://localhost:8080) |
-| `.env.production` | 프로덕션 (API_URL=https://api.ddasangfolio.com) |
+| 파일               | 용도                                            |
+| ------------------ | ----------------------------------------------- |
+| `.env.development` | 개발용 (API_URL=http://localhost:8080)          |
+| `.env.production`  | 프로덕션 (API_URL=https://api.ddasangfolio.com) |
 
 - `.gitignore`에 `.env.development`, `.env.production` 등록됨
 - 네이티브 리빌드 시 `ENVFILE=.env.development` 환경변수로 선택
@@ -192,12 +200,12 @@ RootNavigator
 
 ### 서버
 
-| 변수 | 설명 |
-|------|------|
-| `PORT` | 서버 포트 (기본 8080) |
-| `SUPABASE_URL` | Supabase 프로젝트 URL |
-| `SUPABASE_ANON_KEY` | Supabase 익명 키 |
-| `GEMINI_API_KEY` | Google Gemini API 키 |
+| 변수                | 설명                  |
+| ------------------- | --------------------- |
+| `PORT`              | 서버 포트 (기본 8080) |
+| `SUPABASE_URL`      | Supabase 프로젝트 URL |
+| `SUPABASE_ANON_KEY` | Supabase 익명 키      |
+| `GEMINI_API_KEY`    | Google Gemini API 키  |
 
 - `.env.development`에 저장, `.gitignore`로 제외
 - `src/common/config/env.config.ts`에서 Zod로 검증 (GEMINI_API_KEY는 optional)
@@ -208,13 +216,13 @@ RootNavigator
 
 ### 즉시 해결 필요
 
-| 항목 | 상태 | 설명 |
-|------|------|------|
-| 챗봇 URL 하드코딩 | **임시** | `useChatMutation.ts`에 LAN IP 직접 기입. `env.API_URL` 연동 시 네이티브 리빌드 필요 |
-| CORS `origin: true` | **임시** | 개발 편의상 전체 허용. 프로덕션 시 특정 도메인만 허용 필요 |
-| iOS `NSAllowsArbitraryLoads` | **임시** | HTTP 허용 상태. 프로덕션 시 HTTPS만 사용하고 제거 |
-| Android `usesCleartextTraffic` | **임시** | 프로덕션 시 false로 변경 |
-| 인증 플로우 비활성 | **의도적** | 테스트 편의상 제거. 추후 AuthStack 재연결 필요 |
+| 항목                           | 상태       | 설명                                                                                |
+| ------------------------------ | ---------- | ----------------------------------------------------------------------------------- |
+| 챗봇 URL 하드코딩              | **임시**   | `useChatMutation.ts`에 LAN IP 직접 기입. `env.API_URL` 연동 시 네이티브 리빌드 필요 |
+| CORS `origin: true`            | **임시**   | 개발 편의상 전체 허용. 프로덕션 시 특정 도메인만 허용 필요                          |
+| iOS `NSAllowsArbitraryLoads`   | **임시**   | HTTP 허용 상태. 프로덕션 시 HTTPS만 사용하고 제거                                   |
+| Android `usesCleartextTraffic` | **임시**   | 프로덕션 시 false로 변경                                                            |
+| 인증 플로우 비활성             | **의도적** | 테스트 편의상 제거. 추후 AuthStack 재연결 필요                                      |
 
 ### tsx + NestJS DI 이슈
 
@@ -223,6 +231,7 @@ RootNavigator
 **현재 우회**: `ChatController`에서 `ChatService`를 모듈 레벨에서 직접 인스턴스화.
 
 **향후 해결 방안**:
+
 - `ts-node` + SWC로 전환 (SWC는 decorator metadata 지원)
 - 또는 프로덕션 빌드는 `tsc`로 하고 개발만 tsx 사용
 
@@ -260,17 +269,17 @@ pnpm storybook:web
 
 ## 8. 최근 커밋 히스토리 (주요)
 
-| 커밋 | 내용 |
-|------|------|
-| `79dad1f` | SafeArea inset 상단/하단 탭바에 적용 |
-| `0cfab7f` | 홈 화면 프로필 등록 완료 상태 UI 구현 |
-| `dd42793` | **모바일 챗봇 연동 + env 구조 정리** |
-| `d9fc170` | **Gemini API 기반 챗봇 서버 구현** |
-| `fdd6395` | Textbox → Textarea 리네임 |
-| `c1024b9` | 디자인 시스템 v0.0.1 기반 전면 업데이트 |
-| `348b747` | ScreenLayout → withLayout HOC 패턴 전환 |
+| 커밋      | 내용                                               |
+| --------- | -------------------------------------------------- |
+| `79dad1f` | SafeArea inset 상단/하단 탭바에 적용               |
+| `0cfab7f` | 홈 화면 프로필 등록 완료 상태 UI 구현              |
+| `dd42793` | **모바일 챗봇 연동 + env 구조 정리**               |
+| `d9fc170` | **Gemini API 기반 챗봇 서버 구현**                 |
+| `fdd6395` | Textbox → Textarea 리네임                          |
+| `c1024b9` | 디자인 시스템 v0.0.1 기반 전면 업데이트            |
+| `348b747` | ScreenLayout → withLayout HOC 패턴 전환            |
 | `ce9fc6f` | Auth Stack + Bottom Tab 네비게이션 + FSD 구조 구축 |
-| `1037071` | Hono → NestJS 서버 전면 재작성 |
+| `1037071` | Hono → NestJS 서버 전면 재작성                     |
 
 ---
 
