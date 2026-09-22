@@ -40,10 +40,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
         error: exception.message,
       });
     }
-
+    const msg =
+      exception instanceof Error ? exception.message : '알 수 없는 오류';
+    console.error('[unhandled]', exception);
     return response.status(500).json({
       success: false,
-      error: '서버 내부 오류가 발생했습니다',
+      error: msg,
     });
   }
 }

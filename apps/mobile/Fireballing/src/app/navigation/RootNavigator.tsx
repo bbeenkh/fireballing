@@ -1,7 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { useAuthStore } from '@/entities/auth';
-import { AuthStack } from './AuthStack';
 import { withNavigator } from './withNavigator';
 
 /**
@@ -14,13 +12,10 @@ const AppTabs = withNavigator(View);
 /**
  * # RootNavigator
  * ---
- * - 간단설명: 인증 상태에 따라 AuthStack 또는 AppTabs를 조건부 렌더링
+ * - 간단설명: 앱 루트 네비게이터 — AppTabs(하단 탭) 직접 렌더링
  * - 제약사항 및 특이사항:
- *   - useAuthStore의 isLoggedIn 구독으로 자동 전환
- *   - 로그인 시 AppTabs(하단 탭), 비로그인 시 AuthStack 표시
+ *   - 인증 플로우 미구현 상태이므로 바로 메인 화면 진입
  */
 export function RootNavigator() {
-  const isLoggedIn = useAuthStore(s => s.isLoggedIn);
-
-  return isLoggedIn ? <AppTabs /> : <AuthStack />;
+  return <AppTabs />;
 }

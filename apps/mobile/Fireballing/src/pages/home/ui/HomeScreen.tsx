@@ -26,6 +26,29 @@ function HomeScreenBase() {
         홈
       </Text>
 
+      <Pressable
+        onPress={() =>
+          navigation.navigate({
+            name: 'SimulatorTab',
+            params: { screen: 'Simulator' },
+          })
+        }
+        style={({ pressed }) => ({
+          margin: 16,
+          padding: 20,
+          backgroundColor: pressed ? '#e84d1c' : '#ff5a26',
+          borderRadius: 16,
+          gap: 6,
+        })}
+      >
+        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#ffffff' }}>
+          AI 챗봇
+        </Text>
+        <Text style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>
+          Gemini 기반 챗봇과 대화해보세요
+        </Text>
+      </Pressable>
+
       <View style={{ padding: 16, gap: 12 }}>
         <Text style={{ fontSize: 14, color: '#9e928e', marginBottom: 4 }}>
           탭 네비게이션
@@ -40,7 +63,7 @@ function HomeScreenBase() {
           }
         />
         <NavButton
-          label="시뮬레이터 탭"
+          label="AI 챗봇"
           onPress={() =>
             navigation.navigate({
               name: 'SimulatorTab',

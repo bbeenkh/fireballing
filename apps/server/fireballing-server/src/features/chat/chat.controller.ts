@@ -4,6 +4,9 @@ import { chatRequestSchema } from '@fblg/schemas';
 import type { ApiResponse } from '../../common/types/api-response';
 import type { IChatResponse } from '@fblg/types';
 
+// ponytail: tsx가 emitDecoratorMetadata를 지원하지 않아 DI 불가, 직접 생성
+const chatService = new ChatService();
+
 /**
  * # ChatController
  * ---
@@ -12,8 +15,6 @@ import type { IChatResponse } from '@fblg/types';
  */
 @Controller('api/chat')
 export class ChatController {
-  constructor(private readonly chatService: ChatService) {}
-
   /**
    * # POST /api/chat
    * ---
@@ -24,7 +25,7 @@ export class ChatController {
   @Post()
   async chat(@Body() body: unknown): Promise<ApiResponse<IChatResponse>> {
     const { messages, persona } = chatRequestSchema.parse(body);
-    const response = await this.chatService.chat(messages, persona);
+    const response = await chatService.chat(messages, persona);
 
     return {
       success: true,

@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ChatController } from './chat.controller';
 import { ChatService } from './chat.service';
-import { loadEnv } from '../../common/config/env.config';
 
 /**
  * # ChatModule
@@ -11,12 +10,6 @@ import { loadEnv } from '../../common/config/env.config';
  */
 @Module({
   controllers: [ChatController],
-  providers: [
-    ChatService,
-    {
-      provide: 'GEMINI_API_KEY',
-      useFactory: () => loadEnv().GEMINI_API_KEY,
-    },
-  ],
+  providers: [ChatService],
 })
 export class ChatModule {}

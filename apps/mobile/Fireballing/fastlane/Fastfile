@@ -19,7 +19,7 @@ platform :android do
       properties: {
         "versionCode" => version_code,
         "versionName" => current_version,
-        "ENVFILE" => "../.env.prod",
+        "ENVFILE" => "../.env.production",
       },
     )
 

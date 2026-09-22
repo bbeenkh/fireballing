@@ -7,16 +7,16 @@
 import { env } from '../env';
 
 jest.mock('react-native-config', () => ({
-  API_URL: 'http://localhost:3000',
-  APP_ENV: 'local',
+  API_URL: 'http://localhost:8080',
+  APP_ENV: 'development',
 }));
 
 describe('env 환경변수 모듈', () => {
   it('API_URL을 반환한다', () => {
-    expect(env.API_URL).toBe('http://localhost:3000');
+    expect(env.API_URL).toBe('http://localhost:8080');
   });
 
   it('APP_ENV를 반환한다', () => {
-    expect(env.APP_ENV).toBe('local');
+    expect(env.APP_ENV).toBe('development');
   });
 });

@@ -5,9 +5,8 @@ apply from: "../../node_modules/@revopush/react-native-code-push/android/codepus
 
 // react-native-config: APP_ENV 환경변수에 따라 .env 파일 선택
 project.ext.envConfigFiles = [
-    local: "../../.env.local",
-    dev:   "../../.env.dev",
-    prod:  "../../.env.prod",
+    debug:   "../../.env.development",
+    release: "../../.env.production",
 ]
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 

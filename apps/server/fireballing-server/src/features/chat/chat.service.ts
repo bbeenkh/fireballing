@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { IChatMessage } from '@fblg/types';
 import { HttpError } from '../../common/errors/http-error';
@@ -17,7 +17,10 @@ import { PERSONAS } from './personas';
 export class ChatService {
   private readonly genAI: GoogleGenerativeAI;
 
-  constructor(@Inject('GEMINI_API_KEY') apiKey: string) {
+  constructor() {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey)
+      throw new Error('GEMINI_API_KEY 환경변수가 설정되지 않았습니다');
     this.genAI = new GoogleGenerativeAI(apiKey);
   }
 
@@ -31,8 +34,8 @@ export class ChatService {
    */
   async chat(messages: IChatMessage[], persona: string): Promise<IChatMessage> {
     const systemPrompt = PERSONAS[persona] ?? PERSONAS['default']!;
-    const model = this.genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-
+    const model = this.genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
+    console.log('###########################');
     const history = messages.slice(0, -1).map(msg => ({
       role: msg.role,
       parts: [{ text: msg.content }],
