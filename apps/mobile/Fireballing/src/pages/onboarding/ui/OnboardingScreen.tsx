@@ -22,20 +22,12 @@ function OnboardingScreenBase() {
   const insets = useSafeAreaInsets();
 
   return (
+    // useSafeAreaInsets() 런타임 값이므로 tw 변환 불가
     <View style={{ paddingTop: insets.top }}>
-      <Text
-        style={{
-          fontSize: 20,
-          fontWeight: 'bold',
-          padding: 16,
-          color: '#1a1a1a',
-        }}
-      >
-        온보딩
-      </Text>
+      <Text className="text-[20px] font-bold p-md text-[#1a1a1a]">온보딩</Text>
 
-      <View style={{ padding: 16, gap: 12 }}>
-        <Text style={{ fontSize: 14, color: '#9e928e', marginBottom: 4 }}>
+      <View className="p-md gap-[12px]">
+        <Text className="text-label-md text-on-surface-variant mb-xs">
           인증 스택
         </Text>
         <NavButton
@@ -51,14 +43,7 @@ function OnboardingScreenBase() {
           onPress={() => navigation.navigate('Terms')}
         />
 
-        <Text
-          style={{
-            fontSize: 14,
-            color: '#9e928e',
-            marginTop: 12,
-            marginBottom: 4,
-          }}
-        >
+        <Text className="text-label-md text-on-surface-variant mt-[12px] mb-xs">
           테스트
         </Text>
         <NavButton
@@ -85,22 +70,15 @@ function NavButton({
   return (
     <Pressable
       onPress={onPress}
-      style={({ pressed }) => ({
-        backgroundColor: primary
-          ? pressed
-            ? '#cc3300'
-            : '#ff5a26'
-          : pressed
-            ? '#f0f0f0'
-            : '#f8f8f8',
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        borderRadius: 8,
-        borderWidth: 1,
-        borderColor: primary ? '#ff5a26' : '#e5e5e5',
-      })}
+      className={`py-[12px] px-md rounded border ${
+        primary
+          ? 'bg-primary border-primary active:bg-[#cc3300]'
+          : 'bg-[#f8f8f8] border-[#e5e5e5] active:bg-[#f0f0f0]'
+      }`}
     >
-      <Text style={{ fontSize: 15, color: primary ? '#ffffff' : '#1a1a1a' }}>
+      <Text
+        className={`text-[15px] ${primary ? 'text-white' : 'text-[#1a1a1a]'}`}
+      >
         {label}
       </Text>
     </Pressable>

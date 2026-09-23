@@ -9,6 +9,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
  * - 제약사항 및 특이사항:
  *   - SafeAreaView 대신 useSafeAreaInsets 훅 사용 (Android 이슈 회피)
  *   - 기본 배경색 #ffffff
+ *   - paddingTop/paddingBottom은 런타임 inset 값이므로 style 유지
  * ---
  * @param Component 래핑할 화면 컴포넌트
  * ---
@@ -17,21 +18,18 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
  */
 export function withLayout<P extends Record<string, unknown>>(
   Component: React.ComponentType<P>,
-  style?: ViewStyle,
+  extraStyle?: ViewStyle,
 ) {
   function WithLayout(props: P) {
     const insets = useSafeAreaInsets();
 
     return (
       <View
+        className="flex-1 bg-white"
+        // useSafeAreaInsets() 런타임 값이므로 tw 변환 불가
         style={[
-          {
-            flex: 1,
-            paddingTop: insets.top,
-            paddingBottom: insets.bottom,
-            backgroundColor: '#ffffff',
-          },
-          style,
+          { paddingTop: insets.top, paddingBottom: insets.bottom },
+          extraStyle,
         ]}
       >
         <Component {...props} />

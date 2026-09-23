@@ -95,7 +95,7 @@ function BottomSheet({
         borderTopRightRadius: 20,
       }}
     >
-      <BottomSheetView style={{ flex: 1 }}>
+      <BottomSheetView className="flex-1">
         <View
           testID={testID}
           className={twMerge('flex flex-col gap-gutter p-lg', className)}

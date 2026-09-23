@@ -49,25 +49,10 @@ function HomeScreenBase() {
   const profileData = useProfileStore(s => s.profileData);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View className="flex-1">
       {/* TopBar */}
-      <View
-        style={{
-          height: 56,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          paddingHorizontal: 20,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 18,
-            fontWeight: 'bold',
-            color: '#1a1a1a',
-            letterSpacing: -0.18,
-          }}
-        >
+      <View className="h-[56px] flex-row items-center justify-between px-gutter">
+        <Text className="text-[18px] font-bold text-[#1a1a1a] tracking-[-0.18px]">
           앱이름
         </Text>
         <Pressable hitSlop={8}>
@@ -76,7 +61,7 @@ function HomeScreenBase() {
       </View>
 
       {/* Content */}
-      <View style={{ flex: 1, padding: 20 }}>
+      <View className="flex-1 p-gutter">
         {hasProfile && profileData ? (
           <ProfileFilledContent
             profileData={profileData}
@@ -111,72 +96,43 @@ function ProfileFilledContent({
   const compatibleTypes = MBTI_COMPATIBILITY[profileData.mbti] ?? [];
 
   return (
-    <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+    <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
       {/* 프로필 요약 카드 */}
       <View
         testID="profile-summary-card"
-        style={{
-          backgroundColor: '#ffffff',
-          borderWidth: 1,
-          borderColor: '#f1ddd7',
-          borderRadius: 20,
-          padding: 20,
-          gap: 16,
-        }}
+        className="bg-white border border-[#f1ddd7] rounded-[20px] p-gutter gap-md"
       >
         {/* 카드 헤더 */}
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Text style={{ fontSize: 12, color: '#888', letterSpacing: -0.12 }}>
+        <View className="flex-row justify-between items-center">
+          <Text className="text-label-sm text-[#888] tracking-[-0.12px]">
             내 정보
           </Text>
           <Pressable testID="btn-edit-profile" onPress={onEdit} hitSlop={8}>
-            <Text
-              style={{
-                fontSize: 14,
-                fontWeight: '600',
-                color: '#8b5fa0',
-                letterSpacing: -0.14,
-              }}
-            >
+            <Text className="text-label-md text-[#8b5fa0] tracking-[-0.14px]">
               수정
             </Text>
           </Pressable>
         </View>
 
         {/* 칩 Row */}
-        <View
-          style={{
-            flexDirection: 'row',
-            gap: 8,
-            alignItems: 'center',
-            paddingTop: 12,
-          }}
-        >
+        <View className="flex-row gap-sm items-center pt-[12px]">
           <InfoChip label={profileData.mbti} />
           <InfoChip label={profileData.gender} />
           <InfoChip label={`${profileData.age}세`} />
         </View>
 
         {/* 구분선 */}
-        <View style={{ paddingVertical: 16 }}>
-          <View style={{ height: 1, backgroundColor: '#f1ddd7' }} />
+        <View className="py-md">
+          <View className="h-[1px] bg-[#f1ddd7]" />
         </View>
 
         {/* 궁합 섹션 */}
         {compatibleTypes.length > 0 && (
-          <View style={{ gap: 8 }}>
-            <Text style={{ fontSize: 12, color: '#888', letterSpacing: -0.12 }}>
+          <View className="gap-sm">
+            <Text className="text-label-sm text-[#888] tracking-[-0.12px]">
               {profileData.mbti}와 잘 맞는 유형
             </Text>
-            <View
-              style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}
-            >
+            <View className="flex-row gap-sm items-center">
               {compatibleTypes.map(type => (
                 <MatchChip key={type} label={`${type} ›`} />
               ))}
@@ -188,99 +144,35 @@ function ProfileFilledContent({
       {/* 최근 결과 카드 */}
       <View
         testID="recent-result-card"
-        style={{
-          backgroundColor: '#ffffff',
-          borderWidth: 1,
-          borderColor: '#f1ddd7',
-          borderRadius: 20,
-          padding: 20,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginTop: 16,
-        }}
+        className="bg-white border border-[#f1ddd7] rounded-[20px] p-gutter flex-row items-center justify-between mt-md"
       >
-        <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 12, color: '#888', letterSpacing: -0.12 }}>
+        <View className="flex-1">
+          <Text className="text-label-sm text-[#888] tracking-[-0.12px]">
             최근 결과
           </Text>
-          <View style={{ height: 6 }} />
-          <Text
-            style={{
-              fontSize: 14,
-              fontWeight: '600',
-              color: '#1a1a1a',
-              letterSpacing: -0.14,
-            }}
-          >
+          <View className="h-[6px]" />
+          <Text className="text-label-md text-[#1a1a1a] tracking-[-0.14px]">
             아직 결과가 없어요
           </Text>
         </View>
-        <Text style={{ fontSize: 16, color: '#888' }}>›</Text>
+        <Text className="text-[16px] text-[#888]">›</Text>
       </View>
 
       {/* 체크 Row */}
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 12,
-          height: 48,
-          marginTop: 16,
-        }}
-      >
-        <View
-          style={{
-            width: 24,
-            height: 24,
-            borderWidth: 1.5,
-            borderColor: '#e3e3e3',
-            borderRadius: 4,
-          }}
-        />
-        <Text
-          style={{
-            flex: 1,
-            fontSize: 16,
-            fontWeight: '500',
-            color: '#1a1a1a',
-            letterSpacing: -0.16,
-          }}
-        >
+      <View className="flex-row items-center gap-[12px] h-[48px] mt-md">
+        <View className="w-[24px] h-[24px] border-[1.5px] border-[#e3e3e3] rounded-sm" />
+        <Text className="flex-1 text-[16px] font-medium text-[#1a1a1a] tracking-[-0.16px]">
           연애 스타일 정보 등록하기
         </Text>
-        <Text
-          style={{
-            fontSize: 12,
-            color: '#888',
-            letterSpacing: -0.12,
-            textDecorationLine: 'underline',
-          }}
-        >
+        <Text className="text-label-sm text-[#888] tracking-[-0.12px] underline">
           보기
         </Text>
       </View>
 
       {/* 프로필 전체보기 */}
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: 16,
-        }}
-      >
-        <Pressable
-          style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}
-          hitSlop={8}
-        >
-          <Text
-            style={{
-              fontSize: 14,
-              fontWeight: '500',
-              color: '#111',
-              letterSpacing: -0.14,
-            }}
-          >
+      <View className="items-center justify-center mt-md">
+        <Pressable className="flex-row items-center gap-xs" hitSlop={8}>
+          <Text className="text-label-md text-[#111] tracking-[-0.14px]">
             프로필 전체보기
           </Text>
           <IconChevronDown size={20} color="#111" />
@@ -297,22 +189,8 @@ function ProfileFilledContent({
  */
 function InfoChip({ label }: { label: string }) {
   return (
-    <View
-      style={{
-        backgroundColor: '#f5f5f5',
-        borderRadius: 20,
-        paddingHorizontal: 12,
-        paddingVertical: 6,
-      }}
-    >
-      <Text
-        style={{
-          fontSize: 12,
-          fontWeight: '500',
-          color: '#888',
-          letterSpacing: -0.12,
-        }}
-      >
+    <View className="bg-[#f5f5f5] rounded-[20px] px-[12px] py-[6px]">
+      <Text className="text-label-sm text-[#888] tracking-[-0.12px]">
         {label}
       </Text>
     </View>
@@ -326,24 +204,8 @@ function InfoChip({ label }: { label: string }) {
  */
 function MatchChip({ label }: { label: string }) {
   return (
-    <View
-      style={{
-        backgroundColor: '#ffffff',
-        borderWidth: 1,
-        borderColor: '#8c39fb',
-        borderRadius: 20,
-        paddingHorizontal: 12,
-        paddingVertical: 6,
-      }}
-    >
-      <Text
-        style={{
-          fontSize: 12,
-          fontWeight: '500',
-          color: '#8c39fb',
-          letterSpacing: -0.12,
-        }}
-      >
+    <View className="bg-white border border-[#8c39fb] rounded-[20px] px-[12px] py-[6px]">
+      <Text className="text-label-sm text-[#8c39fb] tracking-[-0.12px]">
         {label}
       </Text>
     </View>
@@ -357,49 +219,25 @@ function MatchChip({ label }: { label: string }) {
  */
 function ProfileEmptyCard({ onRegister }: { onRegister: () => void }) {
   return (
-    <View
-      style={{
-        backgroundColor: '#f5edff',
-        borderWidth: 1,
-        borderColor: '#8c39fb',
-        borderRadius: 20,
-        padding: 20,
-        gap: 20,
-      }}
-    >
+    <View className="bg-[#f5edff] border border-[#8c39fb] rounded-[20px] p-gutter gap-gutter">
       {/* 카드 헤더 */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <Text style={{ fontSize: 12, color: '#888', letterSpacing: -0.12 }}>
+      <View className="flex-row justify-between items-center">
+        <Text className="text-label-sm text-[#888] tracking-[-0.12px]">
           내 정보
         </Text>
-        <View
-          style={{
-            backgroundColor: '#f5edff',
-            paddingHorizontal: 12,
-            paddingVertical: 8,
-            borderRadius: 20,
-          }}
-        >
-          <Text
-            style={{ fontSize: 12, color: '#1a1a1a', letterSpacing: -0.12 }}
-          >
+        <View className="bg-[#f5edff] px-[12px] py-sm rounded-[20px]">
+          <Text className="text-label-sm text-[#1a1a1a] tracking-[-0.12px]">
             미등록
           </Text>
         </View>
       </View>
 
       {/* 안내 텍스트 */}
-      <View style={{ gap: 8 }}>
-        <Text style={{ fontSize: 12, color: '#1a1a1a' }}>
+      <View className="gap-sm">
+        <Text className="text-label-sm text-[#1a1a1a]">
           아직 등록된 정보가 없어요
         </Text>
-        <Text style={{ fontSize: 12, color: '#888' }}>
+        <Text className="text-label-sm text-[#888]">
           이름, MBTI, 연애 스타일 등 내 정보를 등록하면 더 정확한 결과를
           알려드릴게요.
         </Text>
@@ -409,22 +247,9 @@ function ProfileEmptyCard({ onRegister }: { onRegister: () => void }) {
       <Pressable
         testID="cta-register-profile"
         onPress={onRegister}
-        style={({ pressed }) => ({
-          backgroundColor: pressed ? '#7a31e0' : '#8c39fb',
-          height: 56,
-          borderRadius: 12,
-          alignItems: 'center',
-          justifyContent: 'center',
-        })}
+        className="bg-[#8c39fb] h-[56px] rounded-md items-center justify-center active:bg-[#7a31e0]"
       >
-        <Text
-          style={{
-            fontSize: 16,
-            fontWeight: 'bold',
-            color: '#ffffff',
-            letterSpacing: -0.16,
-          }}
-        >
+        <Text className="text-[16px] font-bold text-white tracking-[-0.16px]">
           내 정보 등록하기
         </Text>
       </Pressable>

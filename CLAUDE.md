@@ -3,6 +3,11 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 Bundle id/App id: com.myapp.fireballing
 
+# 주의사항
+
+- 스타일은 style 쓰지말고 무조건 tailwind로만 작성할것
+- api호출 부분은 fetch말고 axios 사용할것
+
 # 케이스
 
 - storybook: xxx.stories.tsx

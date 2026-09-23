@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   Pressable,
-  StyleSheet,
   Text,
   TextInput,
   View,
@@ -52,9 +51,17 @@ function SimulatorScreenBase() {
     const isUser = item.role === 'user';
     return (
       <View
-        style={[styles.bubble, isUser ? styles.userBubble : styles.modelBubble]}
+        className={`max-w-[80%] px-[14px] py-[10px] rounded-lg ${
+          isUser
+            ? 'self-end bg-primary rounded-br-sm'
+            : 'self-start bg-[#f0f0f0] rounded-bl-sm'
+        }`}
       >
-        <Text style={isUser ? styles.userText : styles.modelText}>
+        <Text
+          className={`text-[15px] leading-[22px] ${
+            isUser ? 'text-white' : 'text-[#1a1a1a]'
+          }`}
+        >
           {item.content}
         </Text>
       </View>
@@ -63,7 +70,7 @@ function SimulatorScreenBase() {
 
   return (
     <KeyboardAvoidingView
-      style={styles.container}
+      className="flex-1"
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={100}
     >
@@ -72,14 +79,14 @@ function SimulatorScreenBase() {
         data={messages}
         renderItem={renderItem}
         keyExtractor={(_, i) => String(i)}
-        contentContainerStyle={styles.list}
+        contentContainerClassName="p-md gap-sm"
         onContentSizeChange={() =>
           flatListRef.current?.scrollToEnd({ animated: true })
         }
       />
-      <View style={styles.inputRow}>
+      <View className="flex-row p-[12px] gap-sm border-t border-[#e5e5e5] bg-white">
         <TextInput
-          style={styles.input}
+          className="flex-1 h-[42px] border border-[#d4d4d4] rounded-[21px] px-md text-[15px] text-[#1a1a1a]"
           value={input}
           onChangeText={setInput}
           placeholder="메시지를 입력하세요"
@@ -89,11 +96,15 @@ function SimulatorScreenBase() {
           editable={!isPending}
         />
         <Pressable
-          style={[styles.sendBtn, isPending && styles.sendBtnDisabled]}
+          className={`bg-primary rounded-[21px] px-[18px] justify-center ${
+            isPending ? 'opacity-50' : ''
+          }`}
           onPress={handleSend}
           disabled={isPending || !input.trim()}
         >
-          <Text style={styles.sendBtnText}>{isPending ? '...' : '전송'}</Text>
+          <Text className="text-white text-[15px] font-semibold">
+            {isPending ? '...' : '전송'}
+          </Text>
         </Pressable>
       </View>
     </KeyboardAvoidingView>
@@ -101,52 +112,3 @@ function SimulatorScreenBase() {
 }
 
 export const SimulatorScreen = withLayout(SimulatorScreenBase);
-
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  list: { padding: 16, gap: 8 },
-  bubble: {
-    maxWidth: '80%',
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    borderRadius: 16,
-  },
-  userBubble: {
-    alignSelf: 'flex-end',
-    backgroundColor: '#ff5a26',
-    borderBottomRightRadius: 4,
-  },
-  modelBubble: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#f0f0f0',
-    borderBottomLeftRadius: 4,
-  },
-  userText: { color: '#ffffff', fontSize: 15, lineHeight: 22 },
-  modelText: { color: '#1a1a1a', fontSize: 15, lineHeight: 22 },
-  inputRow: {
-    flexDirection: 'row',
-    padding: 12,
-    gap: 8,
-    borderTopWidth: 1,
-    borderTopColor: '#e5e5e5',
-    backgroundColor: '#ffffff',
-  },
-  input: {
-    flex: 1,
-    height: 42,
-    borderWidth: 1,
-    borderColor: '#d4d4d4',
-    borderRadius: 21,
-    paddingHorizontal: 16,
-    fontSize: 15,
-    color: '#1a1a1a',
-  },
-  sendBtn: {
-    backgroundColor: '#ff5a26',
-    borderRadius: 21,
-    paddingHorizontal: 18,
-    justifyContent: 'center',
-  },
-  sendBtnDisabled: { opacity: 0.5 },
-  sendBtnText: { color: '#ffffff', fontSize: 15, fontWeight: '600' },
-});

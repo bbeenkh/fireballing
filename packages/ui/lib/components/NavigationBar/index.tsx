@@ -40,6 +40,7 @@ function NavigationBar({ children, className }: INavigationBarProps) {
   return (
     <View
       className={twMerge('flex-row bg-white h-[64px] items-center', className)}
+      // RN shadow props(shadowOffset 등)와 Android elevation은 NativeWind className으로 변환 불가
       style={{
         shadowColor: '#000',
         shadowOffset: { width: 0, height: -2 },

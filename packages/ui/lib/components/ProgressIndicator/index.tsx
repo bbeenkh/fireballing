@@ -35,6 +35,7 @@ export function ProgressIndicator({
     >
       <View
         className="h-full bg-[#8c39fb] rounded-full"
+        // 런타임 계산된 퍼센트 값이므로 tw 변환 불가
         style={{ width: `${clampedProgress}%` }}
       />
     </View>

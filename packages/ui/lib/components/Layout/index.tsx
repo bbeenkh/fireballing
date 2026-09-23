@@ -56,6 +56,7 @@ function Layout({
         'flex flex-col min-h-screen bg-white relative',
         styleClass?.root,
       )}
+      // props로 전달되는 런타임 값이므로 tw 변환 불가
       style={{ maxWidth, minWidth }}
     >
       {children}
