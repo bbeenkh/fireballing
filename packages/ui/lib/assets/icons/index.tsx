@@ -423,7 +423,7 @@ export function IconPortfolio({
 /**
  * # IconFlame
  * ---
- * - 간단설명: 불꽃(fireballing 로고) 아이콘
+ * - 간단설명: 불꽃(썸핏 로고) 아이콘
  * ---
  * @param size - 아이콘 크기 (기본 24)
  * @param color - 아이콘 색상 (기본 currentColor)

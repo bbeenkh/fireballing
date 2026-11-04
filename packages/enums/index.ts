@@ -1,1 +1,1 @@
-// @fblg/enums — 공통 열거형 모듈
+// @somefit/enums — 공통 열거형 모듈

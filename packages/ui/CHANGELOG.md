@@ -1,4 +1,4 @@
-# @fblg/core-ui
+# @somefit/core-ui
 
 ## 0.2.0
 

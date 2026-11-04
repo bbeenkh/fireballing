@@ -10,7 +10,7 @@ import { defineConfig } from 'vitest/config';
  * ---
  * @example
  * // vitest.config.ts
- * import { defineNodeConfig } from '@fblg/testing-config'
+ * import { defineNodeConfig } from '@somefit/testing-config'
  * export default defineNodeConfig()
  */
 export function defineNodeConfig(

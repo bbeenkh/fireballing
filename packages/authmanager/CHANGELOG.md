@@ -1,4 +1,4 @@
-# @fblg/authmanager
+# @somefit/authmanager
 
 ## 0.1.1
 

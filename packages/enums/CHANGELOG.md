@@ -1,4 +1,4 @@
-# @fblg/enums
+# @somefit/enums
 
 ## 0.2.0
 

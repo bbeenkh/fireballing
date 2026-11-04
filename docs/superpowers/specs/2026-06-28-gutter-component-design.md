@@ -3,7 +3,7 @@
 ## 개요
 
 자식 요소를 감싸서 padding과 gap을 기존 spacing 토큰(`--space-xs` ~ `--space-2xl`) 기반으로 일관 적용하는 Wrapper 컴포넌트.
-`packages/ui`(`@fblg/core-ui`)에 추가하여 프로젝트 전반의 여백을 통일한다.
+`packages/ui`(`@somefit/core-ui`)에 추가하여 프로젝트 전반의 여백을 통일한다.
 
 ## Props
 

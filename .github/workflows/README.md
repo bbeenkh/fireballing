@@ -7,7 +7,7 @@
 | **트리거**    | `master` 브랜치로의 **Pull Request**                            |
 | **경로 필터** | `apps/mobile/**`, `packages/**`, `pnpm-lock.yaml`, `turbo.json` |
 | **Runner**    | `ubuntu-latest`                                                 |
-| **수행 작업** | Lint, Type-check, Test (`turbo --filter=fblg-mobile...`)        |
+| **수행 작업** | Lint, Type-check, Test (`turbo --filter=somefit-mobile...`)        |
 
 ## CD - Android (`cd-android.yml`)
 
@@ -100,7 +100,7 @@ ssh-keygen -t ed25519 -C "match" -f match_deploy_key -N ""
 
 ```bash
 # 최초 인증서 생성 (로컬에서 1회 실행)
-cd apps/mobile/Fireballing
+cd apps/mobile/Somefit
 bundle exec fastlane match appstore
 ```
 

@@ -1,7 +1,14 @@
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-Bundle id/App id: com.myapp.fireballing
+Bundle id/App id: com.bnsoft.somefit
+
+# urls
+### 디자인 피그마, 피그마 mcp 사용해 다음 프로젝트 읽기
+https://www.figma.com/design/u9n1PGpLBXIyt9KZfOfzVB/%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%B3%BC%EB%A7%81?node-id=0-1&p=f&m=draw
+
+### 기획, 기술스택 등 코드작성에 필요한 것은 여기에 정리되어있음, 노션 mcp 사용해 이 페이지 읽기
+https://app.notion.com/p/bobeenkoh/somefit-375f391739a98005915af4f9d9357d51
 
 # 케이스
 
@@ -126,9 +133,9 @@ pnpm check-types       # TypeScript type-check across all packages
 pnpm format            # Prettier format (*.ts, *.tsx, *.md)
 
 # Run tasks for a specific package only
-pnpm --filter @fblg/core-ui build
-pnpm --filter fblg-mobile local:a   # Android
-pnpm --filter fblg-mobile local:i   # iOS
+pnpm --filter @somefit/core-ui build
+pnpm --filter somefit-mobile local:a   # Android
+pnpm --filter somefit-mobile local:i   # iOS
 
 # Storybook
 pnpm storybook         # Native (ondevice)
@@ -147,27 +154,27 @@ pnpm test:e2e          # E2E (Detox)
 ## Architecture
 
 ```
-fireballing/
+somefit/
 ├── apps/
-│   ├── mobile/Fireballing/            # React Native 모바일 앱 (fblg-mobile)
-│   └── server/fireballing-server/     # NestJS 백엔드 서버 (fblg-server)
+│   ├── mobile/Somefit/            # React Native 모바일 앱 (somefit-mobile)
+│   └── server/somefit-server/     # NestJS 백엔드 서버 (somefit-server)
 ├── packages/
-│   ├── ui/                            # @fblg/core-ui — 공용 React 컴포넌트 (25+ 컴포넌트)
-│   ├── authmanager/                   # @fblg/authmanager — 인증 상태 관리 (Zustand)
-│   ├── schemas/                       # @fblg/schemas — 공용 Zod 스키마
-│   ├── types/                         # @fblg/types — 공용 TypeScript 타입
-│   ├── enums/                         # @fblg/enums — 공용 열거형
-│   ├── utils/                         # @fblg/utils — 유틸 함수 (dayjs, lodash-es)
-│   ├── testing-config/                # @fblg/testing-config — Vitest 프리셋 (react/node)
-│   ├── typescript-config/             # @fblg/typescript-config — 공용 tsconfig
-│   └── eslint-config/                 # @fblg/eslint-config — ESLint FlatConfig
+│   ├── ui/                            # @somefit/core-ui — 공용 React 컴포넌트 (25+ 컴포넌트)
+│   ├── authmanager/                   # @somefit/authmanager — 인증 상태 관리 (Zustand)
+│   ├── schemas/                       # @somefit/schemas — 공용 Zod 스키마
+│   ├── types/                         # @somefit/types — 공용 TypeScript 타입
+│   ├── enums/                         # @somefit/enums — 공용 열거형
+│   ├── utils/                         # @somefit/utils — 유틸 함수 (dayjs, lodash-es)
+│   ├── testing-config/                # @somefit/testing-config — Vitest 프리셋 (react/node)
+│   ├── typescript-config/             # @somefit/typescript-config — 공용 tsconfig
+│   └── eslint-config/                 # @somefit/eslint-config — ESLint FlatConfig
 ├── turbo.json
 └── pnpm-workspace.yaml
 ```
 
 **Key patterns:**
 
-- Apps consume `@fblg/core-ui` components and extend shared configs
+- Apps consume `@somefit/core-ui` components and extend shared configs
 - Mobile: FSD 폴더구조 (app/pages/widgets/features/entities/shared)
 - Mobile 내비게이션: React Navigation 7 (native-stack + bottom-tabs)
 - Server: NestJS 모듈 구조 + Supabase DB + Google Generative AI
@@ -194,7 +201,7 @@ fireballing/
 | **TypeScript**      | 5.9.2 (root) / 5.8.3 (apps)                  |
 | **린트/포맷**       | ESLint 9 (FlatConfig) + Prettier 3           |
 | **모노레포**        | Turborepo 2.10 + pnpm 9.15                   |
-| **공용 컴포넌트**   | @fblg/core-ui (25+ 컴포넌트, Storybook 10)   |
+| **공용 컴포넌트**   | @somefit/core-ui (25+ 컴포넌트, Storybook 10)   |
 
 ### 타입정의 규칙
 

@@ -1,21 +1,21 @@
 {
-  "name": "fblg",
-  "description": "파이어볼링",
+  "name": "somefit",
+  "description": "썸핏",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "local": "turbo run local",
-    "local:a": "pnpm --filter fblg-mobile local:a",
-    "local:i": "pnpm --filter fblg-mobile local:i",
+    "local:a": "pnpm --filter somefit-mobile local:a",
+    "local:i": "pnpm --filter somefit-mobile local:i",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "storybook": "pnpm --filter @fblg/core-ui storybook",
-    "storybook:web": "pnpm --filter @fblg/core-ui storybook:web",
-    "storybook:generate": "pnpm --filter @fblg/core-ui storybook:generate",
+    "storybook": "pnpm --filter @somefit/core-ui storybook",
+    "storybook:web": "pnpm --filter @somefit/core-ui storybook:web",
+    "storybook:generate": "pnpm --filter @somefit/core-ui storybook:generate",
     "prepare": "husky",
     "test": "turbo run test",
-    "test:e2e": "pnpm --filter fblg-web test:e2e"
+    "test:e2e": "pnpm --filter somefit-web test:e2e"
   },
   "devDependencies": {
     "husky": "^9.1.7",

@@ -1,4 +1,4 @@
-# @fblg/utils
+# @somefit/utils
 
 ## 1.1.0
 

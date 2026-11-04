@@ -18,7 +18,7 @@ export const Default: Story = {
     <Header>
       <View className="flex-row gap-sm items-center">
         <Text className="text-subtitle font-medium tracking-[-1px] text-[#0d0b0a]">
-          fireballing
+          썸핏
         </Text>
       </View>
     </Header>
@@ -30,7 +30,7 @@ export const WithAction: Story = {
     <Header>
       <View className="flex-row gap-sm items-center">
         <Text className="text-subtitle font-medium tracking-[-1px] text-[#0d0b0a]">
-          fireballing
+          썸핏
         </Text>
       </View>
       <Text className="text-label-md text-[#9e928e]">🔔</Text>
@@ -42,7 +42,7 @@ export const CustomStyle: Story = {
   render: () => (
     <Header styleClass={{ root: 'bg-[#0d0b0a]' }}>
       <Text className="text-subtitle font-medium tracking-[-1px] text-white">
-        fireballing
+        썸핏
       </Text>
     </Header>
   ),

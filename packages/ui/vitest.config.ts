@@ -1,8 +1,8 @@
-import { defineReactConfig } from '@fblg/testing-config';
+import { defineReactConfig } from '@somefit/testing-config';
 
 export default defineReactConfig({
   test: {
-    setupFiles: ['@fblg/testing-config/setup/radix-polyfill'],
+    setupFiles: ['@somefit/testing-config/setup/radix-polyfill'],
     exclude: [
       '**/node_modules/**',
       '**/dist/**',

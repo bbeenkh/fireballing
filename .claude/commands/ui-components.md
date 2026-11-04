@@ -1,4 +1,4 @@
-# @fblg/core-ui 컴포넌트 레퍼런스
+# @somefit/core-ui 컴포넌트 레퍼런스
 
 UI 컴포넌트를 사용하거나 새로 만들 때 이 스킬을 참조하세요.
 기존 컴포넌트를 우선 활용하고, 없는 경우에만 새로 만드세요.
@@ -7,11 +7,11 @@ UI 컴포넌트를 사용하거나 새로 만들 때 이 스킬을 참조하세�
 
 ## 패키지 정보
 
-- **패키지명**: `@fblg/core-ui`
+- **패키지명**: `@somefit/core-ui`
 - **경로**: `packages/ui/lib/`
 - **엔트리**: `packages/ui/lib/index.tsx`
-- **스타일**: `@fblg/core-ui/styles.css` (CSS 변수 + 기본 스타일)
-- **테마**: `@fblg/core-ui/theme.css` (Tailwind 4 @theme 통합)
+- **스타일**: `@somefit/core-ui/styles.css` (CSS 변수 + 기본 스타일)
+- **테마**: `@somefit/core-ui/theme.css` (Tailwind 4 @theme 통합)
 
 ---
 
@@ -52,7 +52,7 @@ UI 컴포넌트를 사용하거나 새로 만들 때 이 스킬을 참조하세�
 - **스타일**: `bg-card rounded-xl py-6 gap-6`, `data-slot` 속성 사용
 
 ```tsx
-import { CardUI, CardHeader, CardTitle, CardContent } from '@fblg/core-ui';
+import { CardUI, CardHeader, CardTitle, CardContent } from '@somefit/core-ui';
 <CardUI>
   <CardHeader>
     <CardTitle>제목</CardTitle>

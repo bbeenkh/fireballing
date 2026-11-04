@@ -26,7 +26,7 @@ const cx = (...classes: (string | undefined)[]) =>
  * ---
  * @example
  * <Header>
- *   <Text>fireballing</Text>
+ *   <Text>썸핏</Text>
  *   <Icon name="bell" />
  * </Header>
  */

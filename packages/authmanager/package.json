@@ -1,5 +1,5 @@
 {
-  "name": "@fblg/authmanager",
+  "name": "@somefit/authmanager",
   "private": true,
   "version": "0.1.1",
   "type": "module",
@@ -12,8 +12,8 @@
     "test:watch": "vitest"
   },
   "devDependencies": {
-    "@fblg/testing-config": "workspace:*",
-    "@fblg/typescript-config": "workspace:*",
+    "@somefit/testing-config": "workspace:*",
+    "@somefit/typescript-config": "workspace:*",
     "typescript": "^5.8.3",
     "vitest": "^4.1.5"
   }

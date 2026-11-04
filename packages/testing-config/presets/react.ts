@@ -37,9 +37,9 @@ const mockStaticAssetsPlugin: Plugin = {
  * ---
  * @example
  * // vitest.config.ts
- * import { defineReactConfig } from '@fblg/testing-config'
+ * import { defineReactConfig } from '@somefit/testing-config'
  * export default defineReactConfig({
- *   test: { setupFiles: ['@fblg/testing-config/setup/radix-polyfill'] }
+ *   test: { setupFiles: ['@somefit/testing-config/setup/radix-polyfill'] }
  * })
  */
 export function defineReactConfig(
@@ -68,7 +68,7 @@ export function defineReactConfig(
     test: {
       globals: true,
       environment: 'jsdom',
-      setupFiles: ['@fblg/testing-config/setup/jest-dom', ...extraSetupArray],
+      setupFiles: ['@somefit/testing-config/setup/jest-dom', ...extraSetupArray],
       exclude: ['**/node_modules/**', '**/dist/**'],
       ...restTest,
     },

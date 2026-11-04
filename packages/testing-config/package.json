@@ -1,5 +1,5 @@
 {
-  "name": "@fblg/testing-config",
+  "name": "@somefit/testing-config",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -30,7 +30,7 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@fblg/typescript-config": "workspace:*",
+    "@somefit/typescript-config": "workspace:*",
     "@testing-library/jest-dom": "*",
     "@vitejs/plugin-react": "*",
     "msw": "*",

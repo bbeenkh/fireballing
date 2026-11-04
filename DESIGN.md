@@ -1,5 +1,5 @@
 ---
-name: Fireballing
+name: Somefit
 colors:
   # Primary Hot Core
   primary: '#FF5A26'
@@ -86,7 +86,7 @@ spacing:
 
 ## Brand & Style
 
-Fireballing is a dark-themed portfolio valuation interface built around high-contrast fiery tones. The design system conveys intensity and momentum — a visual metaphor for compound growth and financial "fire." It targets dividend-focused investors who want to track their F.I.R.E. (Financial Independence, Retire Early) journey.
+Somefit is a dark-themed interface built around high-contrast fiery tones. The design system conveys intensity and momentum.
 
 The aesthetic blends **Dark Mode** with **Hot Core** accents. The deep charcoal backgrounds (#0D0B0A, #171311) create a dramatic canvas where orange/red primary colors (#FF5A26, #FF2E00) and amber accents (#FF9F1C) represent energy, growth, and urgency.
 
@@ -96,19 +96,19 @@ The palette is anchored by a near-black canvas (Void Space #0D0B0A) with elevate
 
 - **Primary Hot Core:** Magma Core (#FF5A26) is the main accent, with Molten Lava (#FF2E00) for deep tones and Amber Yield (#FF9F1C) for warm highlights. Gradients flow from #FF2E00 → #FF9F1C.
 - **Typography:** White Smoke (#F4EFEF) for primary text on dark backgrounds, Cool Charcoal (#9E928E) for secondary/muted text.
-- **Financial Status:** Yield Gain (#00E676, green) for profits and positive indicators; Ember Loss (#FF1744, red) for losses and negative indicators; System Info (#2979FF, blue) for neutral information.
+- **Semantic Status:** Yield Gain (#00E676, green) for positive indicators; Ember Loss (#FF1744, red) for negative indicators; System Info (#2979FF, blue) for neutral information.
 - **Borders:** Ashes Border (#261E1C) for all dividers and container outlines.
 
 ## Typography
 
-This design system uses **Outfit** as the universal sans-serif for both headings and body text, providing a clean, modern, and highly legible interface. **Geist Mono** is used exclusively for financial figures, numbers, and technical labels to ensure tabular alignment and numerical clarity.
+This design system uses **Outfit** as the universal sans-serif for both headings and body text, providing a clean, modern, and highly legible interface. **Geist Mono** is used exclusively for numbers and technical labels to ensure tabular alignment and numerical clarity.
 
 - H1: Outfit 48px, ExtraBold (800), 110% line-height — hero statements
 - H2: Outfit 32px, Bold (700), 120% — section headings
 - H3: Outfit 20px, SemiBold (600), 130% — subsection headings
 - Body: Outfit 15px, Regular (400), 150% — readable content
 - Caption: Outfit 11px, SemiBold (600), 140% — meta labels, uppercase
-- Numbers: Geist Mono 28px, Bold (700), 110% — financial figures
+- Numbers: Geist Mono 28px, Bold (700), 110% — numeric figures
 
 ## Layout & Spacing
 

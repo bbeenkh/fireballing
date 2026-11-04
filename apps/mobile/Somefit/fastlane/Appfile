@@ -1,0 +1,9 @@
+# Android
+json_key_file(ENV["GOOGLE_PLAY_JSON_KEY_PATH"])
+package_name("com.bnsoft.somefit")
+
+# iOS
+app_identifier("com.bnsoft.somefit")
+apple_id(ENV["APPLE_ID"])
+itc_team_id(ENV["ITC_TEAM_ID"])
+team_id(ENV["APPLE_TEAM_ID"])

@@ -1,9 +1,9 @@
 {
-  "name": "@fblg/core-ui",
+  "name": "@somefit/core-ui",
   "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "fblg headless ui",
+  "description": "somefit headless ui",
   "exports": {
     ".": "./lib/index.tsx",
     "./styles.css": "./lib/index.css",
@@ -27,8 +27,8 @@
     "tailwind-merge": "catalog:"
   },
   "devDependencies": {
-    "@fblg/eslint-config": "workspace:*",
-    "@fblg/typescript-config": "workspace:*",
+    "@somefit/eslint-config": "workspace:*",
+    "@somefit/typescript-config": "workspace:*",
     "@storybook/addon-ondevice-actions": "catalog:",
     "@storybook/addon-ondevice-controls": "catalog:",
     "@storybook/react": "^10.4.6",

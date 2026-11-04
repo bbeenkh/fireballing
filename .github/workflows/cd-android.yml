@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: apps/mobile/Fireballing
+        working-directory: apps/mobile/Somefit
     steps:
       - uses: actions/checkout@v4
 
@@ -43,7 +43,7 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler-cache: true
-          working-directory: apps/mobile/Fireballing
+          working-directory: apps/mobile/Somefit
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -64,7 +64,7 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: gradle-${{ hashFiles('apps/mobile/Fireballing/android/**/*.gradle*', 'apps/mobile/Fireballing/android/gradle/wrapper/gradle-wrapper.properties') }}
+          key: gradle-${{ hashFiles('apps/mobile/Somefit/android/**/*.gradle*', 'apps/mobile/Somefit/android/gradle/wrapper/gradle-wrapper.properties') }}
           restore-keys: gradle-
 
       - name: Build & Deploy (Native)

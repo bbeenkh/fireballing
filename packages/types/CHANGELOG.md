@@ -1,4 +1,4 @@
-# @fblg/types
+# @somefit/types
 
 ## 0.2.0
 

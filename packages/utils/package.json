@@ -1,8 +1,8 @@
 {
-  "name": "@fblg/utils",
+  "name": "@somefit/utils",
   "private": true,
   "version": "1.1.0",
-  "description": "파이어볼링 유틸 모듈",
+  "description": "썸핏 유틸 모듈",
   "main": "index.js",
   "keywords": [],
   "scripts": {
@@ -19,8 +19,8 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@fblg/testing-config": "workspace:*",
-    "@fblg/typescript-config": "workspace:*",
+    "@somefit/testing-config": "workspace:*",
+    "@somefit/typescript-config": "workspace:*",
     "@types/lodash-es": "^4.17.12",
     "vitest": "*"
   }

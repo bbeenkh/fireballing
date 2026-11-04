@@ -23,7 +23,7 @@ export const Default: Story = {
     <Layout {...args}>
       <Layout.Header>
         <Text className="text-subtitle font-medium tracking-[-1px] text-[#0d0b0a]">
-          fireballing
+          썸핏
         </Text>
       </Layout.Header>
       <Layout.Body>
@@ -76,7 +76,7 @@ export const HeaderOnly: Story = {
     <Layout {...args}>
       <Layout.Header>
         <Text className="text-subtitle font-medium text-[#0d0b0a]">
-          fireballing
+          썸핏
         </Text>
       </Layout.Header>
       <Layout.Body>
@@ -94,7 +94,7 @@ export const FullPage: Story = {
     <Layout {...args}>
       <Layout.Header>
         <Text className="text-subtitle font-medium tracking-[-1px] text-[#0d0b0a]">
-          fireballing
+          썸핏
         </Text>
       </Layout.Header>
       <Layout.Body>
