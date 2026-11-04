@@ -4,10 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Bundle id/App id: com.bnsoft.somefit
 
 # urls
+
 ### 디자인 피그마, 피그마 mcp 사용해 다음 프로젝트 읽기
+
 https://www.figma.com/design/u9n1PGpLBXIyt9KZfOfzVB/%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%B3%BC%EB%A7%81?node-id=0-1&p=f&m=draw
 
 ### 기획, 기술스택 등 코드작성에 필요한 것은 여기에 정리되어있음, 노션 mcp 사용해 이 페이지 읽기
+
 https://app.notion.com/p/bobeenkoh/somefit-375f391739a98005915af4f9d9357d51
 
 # 케이스
@@ -183,25 +186,25 @@ somefit/
 
 ## Tech Stack
 
-| 영역                | 기술                                         |
-| ------------------- | -------------------------------------------- |
-| **서버 프레임워크** | NestJS 11.1 (Node.js, Express)               |
-| **모바일**          | React Native 0.85.3 (React 19.2)             |
-| **스타일링**        | Tailwind CSS 4 + NativeWind 4                |
-| **상태관리**        | Zustand 5 + Immer                            |
-| **데이터 페칭**     | TanStack Query 5 (mobile), Supabase (server) |
-| **유효성 검증**     | Zod 4                                        |
-| **AI**              | Google Generative AI (server)                |
-| **인증**            | Firebase Auth + App Check                    |
-| **에러 트래킹**     | Sentry (react-native)                        |
-| **OTA 업데이트**    | Revopush (react-native-code-push)            |
-| **테스트 (Server)** | Vitest 4 + NestJS Testing                    |
-| **테스트 (Mobile)** | Jest + Detox (E2E)                           |
-| **http api 통신**   | Axios                                        |
-| **TypeScript**      | 5.9.2 (root) / 5.8.3 (apps)                  |
-| **린트/포맷**       | ESLint 9 (FlatConfig) + Prettier 3           |
-| **모노레포**        | Turborepo 2.10 + pnpm 9.15                   |
-| **공용 컴포넌트**   | @somefit/core-ui (25+ 컴포넌트, Storybook 10)   |
+| 영역                | 기술                                          |
+| ------------------- | --------------------------------------------- |
+| **서버 프레임워크** | NestJS 11.1 (Node.js, Express)                |
+| **모바일**          | React Native 0.85.3 (React 19.2)              |
+| **스타일링**        | Tailwind CSS 4 + NativeWind 4                 |
+| **상태관리**        | Zustand 5 + Immer                             |
+| **데이터 페칭**     | TanStack Query 5 (mobile), Supabase (server)  |
+| **유효성 검증**     | Zod 4                                         |
+| **AI**              | Google Generative AI (server)                 |
+| **인증**            | Firebase Auth + App Check                     |
+| **에러 트래킹**     | Sentry (react-native)                         |
+| **OTA 업데이트**    | Revopush (react-native-code-push)             |
+| **테스트 (Server)** | Vitest 4 + NestJS Testing                     |
+| **테스트 (Mobile)** | Jest + Detox (E2E)                            |
+| **http api 통신**   | Axios                                         |
+| **TypeScript**      | 5.9.2 (root) / 5.8.3 (apps)                   |
+| **린트/포맷**       | ESLint 9 (FlatConfig) + Prettier 3            |
+| **모노레포**        | Turborepo 2.10 + pnpm 9.15                    |
+| **공용 컴포넌트**   | @somefit/core-ui (25+ 컴포넌트, Storybook 10) |
 
 ### 타입정의 규칙
 

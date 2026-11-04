@@ -7,7 +7,7 @@
 | **트리거**    | `master` 브랜치로의 **Pull Request**                            |
 | **경로 필터** | `apps/mobile/**`, `packages/**`, `pnpm-lock.yaml`, `turbo.json` |
 | **Runner**    | `ubuntu-latest`                                                 |
-| **수행 작업** | Lint, Type-check, Test (`turbo --filter=somefit-mobile...`)        |
+| **수행 작업** | Lint, Type-check, Test (`turbo --filter=somefit-mobile...`)     |
 
 ## CD - Android (`cd-android.yml`)
 

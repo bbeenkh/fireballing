@@ -68,7 +68,10 @@ export function defineReactConfig(
     test: {
       globals: true,
       environment: 'jsdom',
-      setupFiles: ['@somefit/testing-config/setup/jest-dom', ...extraSetupArray],
+      setupFiles: [
+        '@somefit/testing-config/setup/jest-dom',
+        ...extraSetupArray,
+      ],
       exclude: ['**/node_modules/**', '**/dist/**'],
       ...restTest,
     },

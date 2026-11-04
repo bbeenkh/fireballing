@@ -8,13 +8,13 @@
 
 `somefit-server`에는 **실제로 동작하는 영속 저장소가 없다.**
 
-| 항목 | 현황 |
-| --- | --- |
-| 설치된 DB 라이브러리 | `@supabase/supabase-js` (`package.json`) |
-| 환경변수 | `.env.development` → `SUPABASE_URL=http://localhost:54321`, 키는 전부 `placeholder` |
-| Supabase 프로젝트 | 레포에 `supabase/` 디렉터리·마이그레이션·SQL **전무** |
-| 실제 사용처 | `src/app.controller.ts:34` 헬스체크(`checkConnection()`) **한 곳뿐** |
-| 스키마/쿼리 레이어 | 없음 |
+| 항목                 | 현황                                                                                |
+| -------------------- | ----------------------------------------------------------------------------------- |
+| 설치된 DB 라이브러리 | `@supabase/supabase-js` (`package.json`)                                            |
+| 환경변수             | `.env.development` → `SUPABASE_URL=http://localhost:54321`, 키는 전부 `placeholder` |
+| Supabase 프로젝트    | 레포에 `supabase/` 디렉터리·마이그레이션·SQL **전무**                               |
+| 실제 사용처          | `src/app.controller.ts:34` 헬스체크(`checkConnection()`) **한 곳뿐**                |
+| 스키마/쿼리 레이어   | 없음                                                                                |
 
 즉 DB 연동은 **이름만 붙어 있고 내용이 비어 있는 상태**다.
 
@@ -38,13 +38,13 @@ apps/server/somefit-server/src/
 
 ## 2. 확정된 방향
 
-| 항목 | 결정 | 비고 |
-| --- | --- | --- |
-| 로컬 DB | **Docker Postgres** | docker-compose로 기동 |
-| 운영 DB | 이번 범위 밖 | `DATABASE_URL` 교체만으로 전환되도록 설계 |
-| 접근 방식 | **Prisma** | 스키마 파일 1개로 마이그레이션 + 타입 생성 |
-| 첫 테이블 | **검증용 `User` 1개만** | 실제 도메인 연동은 하지 않음 |
-| 기존 Supabase | **건드리지 않고 유지** | 제거 여부는 별도 판단 |
+| 항목          | 결정                    | 비고                                       |
+| ------------- | ----------------------- | ------------------------------------------ |
+| 로컬 DB       | **Docker Postgres**     | docker-compose로 기동                      |
+| 운영 DB       | 이번 범위 밖            | `DATABASE_URL` 교체만으로 전환되도록 설계  |
+| 접근 방식     | **Prisma**              | 스키마 파일 1개로 마이그레이션 + 타입 생성 |
+| 첫 테이블     | **검증용 `User` 1개만** | 실제 도메인 연동은 하지 않음               |
+| 기존 Supabase | **건드리지 않고 유지**  | 제거 여부는 별도 판단                      |
 
 **목표:** "연결 → 마이그레이션 → 쿼리 → 헬스체크" 파이프라인을 실제로 한 번 관통시킨다.
 
@@ -125,6 +125,7 @@ const chatService = new ChatService();
   ```
 
   스네이크 케이스 테이블/컬럼 매핑 규칙을 여기서 정해두면 이후 도메인 테이블이 따라간다
+
 - `.gitignore`에 `src/generated/` 추가
 
 ### 3단계 — 환경변수 스키마 확장 (TDD)
@@ -201,12 +202,12 @@ CLAUDE.md 규칙대로 **테스트 desc 먼저 작성 → 검토 요청 → 승�
 
 ## 6. 재사용하는 기존 자산
 
-| 파일 | 재사용 내용 |
-| --- | --- |
-| `src/common/config/env.config.ts` | zod 환경변수 검증 — 새 config 레이어 없이 `DATABASE_URL`만 추가 |
-| `src/common/supabase/supabase.module.ts` | `@Global()` 모듈 패턴을 `PrismaModule`에 그대로 복사 |
-| `src/common/supabase/supabase.service.spec.ts` | 외부 SDK `vi.mock` + `Test.createTestingModule` 테스트 패턴 |
-| `src/app.controller.spec.ts` | mock provider 주입 패턴 |
+| 파일                                                                  | 재사용 내용                                                                  |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `src/common/config/env.config.ts`                                     | zod 환경변수 검증 — 새 config 레이어 없이 `DATABASE_URL`만 추가              |
+| `src/common/supabase/supabase.module.ts`                              | `@Global()` 모듈 패턴을 `PrismaModule`에 그대로 복사                         |
+| `src/common/supabase/supabase.service.spec.ts`                        | 외부 SDK `vi.mock` + `Test.createTestingModule` 테스트 패턴                  |
+| `src/app.controller.spec.ts`                                          | mock provider 주입 패턴                                                      |
 | `src/common/errors/http-error.ts`, `filters/http-exception.filter.ts` | DB 에러를 HTTP로 올릴 때 (이번엔 헬스체크뿐이라 미사용, 도메인 붙일 때 사용) |
 
 ---
@@ -243,10 +244,10 @@ docker compose stop db && curl localhost:8080/api/hello
 
 ## 8. 이번 범위에서 제외 — 나중에 할 일
 
-| 항목 | 내용 | 착수 시점 |
-| --- | --- | --- |
-| 운영 DB 연결 | Neon/RDS/Vercel Postgres. `DATABASE_URL` 교체 + 서버리스면 pooler URL(`?pgbouncer=true`) 필요 | 배포 타겟 확정 후 |
-| 서버 CI | `ci.yml`에 `apps/server/**` 트리거 + postgres service 컨테이너 | 실제 DB 테스트 생길 때 |
-| `SupabaseService` 제거 | 현재 헬스체크만 사용해 방치 비용 0. Firebase Auth를 쓰는 이상 Supabase Auth는 안 쓸 가능성이 높아 정리 대상 | 별도 티켓 |
-| 실제 도메인 테이블 | chat 대화 기록, user 프로필. 이번 `User`는 어디에도 연결 안 되는 검증용. `packages/types/user.ts`의 `UserProfile`이 Supabase Auth 기준으로 쓰여 있어 **Firebase uid 기준 재설계가 선행**돼야 함 | 도메인 작업 시 |
-| `tsx` → swc/ts-node 런너 교체 | 교체하면 `@Inject` 명시와 chat.controller의 `new` 우회가 모두 불필요해지지만, 앱 전체 기동 경로를 건드림 | 별도 판단 |
+| 항목                          | 내용                                                                                                                                                                                            | 착수 시점              |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| 운영 DB 연결                  | Neon/RDS/Vercel Postgres. `DATABASE_URL` 교체 + 서버리스면 pooler URL(`?pgbouncer=true`) 필요                                                                                                   | 배포 타겟 확정 후      |
+| 서버 CI                       | `ci.yml`에 `apps/server/**` 트리거 + postgres service 컨테이너                                                                                                                                  | 실제 DB 테스트 생길 때 |
+| `SupabaseService` 제거        | 현재 헬스체크만 사용해 방치 비용 0. Firebase Auth를 쓰는 이상 Supabase Auth는 안 쓸 가능성이 높아 정리 대상                                                                                     | 별도 티켓              |
+| 실제 도메인 테이블            | chat 대화 기록, user 프로필. 이번 `User`는 어디에도 연결 안 되는 검증용. `packages/types/user.ts`의 `UserProfile`이 Supabase Auth 기준으로 쓰여 있어 **Firebase uid 기준 재설계가 선행**돼야 함 | 도메인 작업 시         |
+| `tsx` → swc/ts-node 런너 교체 | 교체하면 `@Inject` 명시와 chat.controller의 `new` 우회가 모두 불필요해지지만, 앱 전체 기동 경로를 건드림                                                                                        | 별도 판단              |

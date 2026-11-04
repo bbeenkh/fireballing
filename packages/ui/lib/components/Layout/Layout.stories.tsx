@@ -75,9 +75,7 @@ export const HeaderOnly: Story = {
   render: args => (
     <Layout {...args}>
       <Layout.Header>
-        <Text className="text-subtitle font-medium text-[#0d0b0a]">
-          썸핏
-        </Text>
+        <Text className="text-subtitle font-medium text-[#0d0b0a]">썸핏</Text>
       </Layout.Header>
       <Layout.Body>
         <Text className="text-body text-[#0d0b0a]">
