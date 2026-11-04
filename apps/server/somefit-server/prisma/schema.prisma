@@ -1,0 +1,21 @@
+// client 설정
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs" // nestjs의 cjs 와 호환되도록 cjs 생성하도록
+}
+
+// 데이터베이스 설정
+datasource db {
+  provider = "postgresql"
+}
+
+// user table의 모델 설정
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}

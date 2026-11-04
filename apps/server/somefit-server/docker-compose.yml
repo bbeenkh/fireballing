@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:17-alpine # postgres 17 버전 사용
+    container_name: somefit-db # 컨테이너명
+    restart: unless-stopped
+    ports: ["5432:5432"] # 내 pc 포트: 컨테이너 포트
+    environment:
+      POSTGRES_USER: somefit
+      POSTGRES_PASSWORD: somefit
+      POSTGRES_DB: somefit
+      TZ: Asia/Seoul
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U somefit -d somefit"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
